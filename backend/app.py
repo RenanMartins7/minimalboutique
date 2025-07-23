@@ -9,7 +9,7 @@ app.register_blueprint(products_bp)
 app.register_blueprint(cart_bp)
 app.register_blueprint(checkout_bp)
 
-init_db()
+init_db(app)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
