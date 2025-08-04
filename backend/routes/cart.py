@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, session
 from models import CartItem, Product
 from database import db
 
@@ -6,7 +6,12 @@ cart_bp = Blueprint('cart', __name__, url_prefix = '/cart')
 
 @cart_bp.route('/', methods = ['GET'])
 def get_cart():
-    items = CartItem.query.all()
+
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'Usuário não encontrado'}), 401
+
+    items = CartItem.query.filter_by(user_id=user_id).all()
     result = []
     for item in items:
         result.append({

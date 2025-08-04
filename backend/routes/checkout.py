@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 from models import CartItem, Order
+from database import db
 
 
 checkout_bp = Blueprint('checkout', __name__, url_prefix = '/checkout')
