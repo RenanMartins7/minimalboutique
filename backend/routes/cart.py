@@ -26,6 +26,11 @@ def get_cart():
 
 @cart_bp.route('/', methods = ['POST'])
 def add_to_cart():
+
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'Faça login para adicionar itens ao carrinho'})
+    
     data = request.json
     product_id = data.get("product_id")
     quantity = data.get("quantity", 1)
@@ -33,12 +38,12 @@ def add_to_cart():
     product = Product.query.get(product_id)
     if not product:
         return jsonify({"error": "Produto não encontrado"}), 404
-    item = CartItem.query.filter_by(product_id=product_id).first()
+    item = CartItem.query.filter_by(user_id=user_id,product_id=product_id).first()
 
     if item:
         item.quantity += quantity
     else:
-        item = CartItem(product_id=product_id, quantity=quantity)
+        item = CartItem(user_id=user_id,product_id=product_id, quantity=quantity)
         db.session.add(item)
     
     db.session.commit()
@@ -46,7 +51,12 @@ def add_to_cart():
 
 @cart_bp.route('/<int:item_id>', methods=['DELETE'])
 def remove_from_cart(item_id):
-    item = CartItem.query.get(item_id)
+
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'Usuário não autenticado'})
+
+    item = CartItem.query.get(id=item_id, user_id=user_id).first()
     if not item:
         return jsonify({"error": "Item não encontrado"}), 404
     

@@ -8,19 +8,19 @@ auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 def register():
     data = request.json
 
-    if User.query.filter_by(username=data['username']).first():
+    if User.query.filter_by(username=data['email']).first():
         return jsonify({"error": "Usuário já existe"}), 400
 
-    user = User(username=data['username'], password=data['password'])
+    user = User(username=data['email'], password=data['password'])
     db.session.add(user)
     db.session.commit()
 
     return jsonify({'message': 'Usuário Criado com sucesso'}), 201
 
-@auth_bp.route('/logout', methods=['POST'])
+@auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.json
-    user = User.query.filter_by(username=data['username'], password = data['password']).first()
+    user = User.query.filter_by(username=data['email'], password = data['password']).first()
     
     if not user:
         return jsonify({'error': 'Credenciais inválidas'}), 401
