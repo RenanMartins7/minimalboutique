@@ -7,7 +7,8 @@ export default defineConfig({
         proxy: {
             '/products': 'http://backend:5000',
             '/cart': 'http://backend:5000',
-            '/checkout': 'http://backend:5000'
+            '/checkout': 'http://backend:5000',
+            '/auth': 'http://backend:5000'
         }
     }
 })

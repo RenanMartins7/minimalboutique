@@ -1,27 +1,26 @@
-// Login.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-export default function Login() {
+export default function Login({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-      credentials: 'include',
-    });
-
-    if (res.ok) navigate('/products');
-    else alert('Falha no login');
+    try {
+      await axios.post('/auth/login', { email, password });
+      await onLoginSuccess();
+      navigate('/products');
+    } catch (error) {
+        alert('Falha no login');
+        console.error(error);
+    }
   };
 
   const handleRegister = () => {
-  navigate('/register');
+    navigate('/register');
   }
 
   return (

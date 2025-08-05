@@ -1,6 +1,6 @@
-// Register.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Register() {
   const [email, setEmail] = useState('');
@@ -9,15 +9,19 @@ export default function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-      credentials: 'include',
-    });
-
-    if (res.ok) navigate('/login');
-    else alert('Erro ao registrar');
+    try {
+        const res = await axios.post('/auth/register', { email, password });
+        if (res.status === 201) {
+            navigate('/login');
+        }
+    } catch (error) {
+        if (error.response && error.response.data && error.response.data.error) {
+            alert(error.response.data.error);
+        } else {
+            alert('Erro ao registrar');
+        }
+        console.error(error);
+    }
   };
 
   return (

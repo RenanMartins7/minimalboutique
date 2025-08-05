@@ -33,4 +33,18 @@ def login():
 def logout():
     session.pop('user_id', None)
     return jsonify({'message':'Logout realizado com sucesso'})
+
+
+@auth_bp.route('/user', methods=['GET'])
+def get_user():
+    user_id = session.get('user_id')
+
+    if not user_id:
+        return jsonify(None)
+    
+    user = User.query.get(user_id)
+
+    if not user: return jsonify(None)
+
+    return jsonify({'email': user.username})
     
