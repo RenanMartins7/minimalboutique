@@ -54,9 +54,9 @@ def remove_from_cart(item_id):
 
     user_id = session.get('user_id')
     if not user_id:
-        return jsonify({'error': 'Usuário não autenticado'})
+        return jsonify({'error': 'Usuário não autenticado'}), 401
 
-    item = CartItem.query.get(id=item_id, user_id=user_id).first()
+    item = CartItem.query.filter_by(id=item_id, user_id=user_id).first()
     if not item:
         return jsonify({"error": "Item não encontrado"}), 404
     
