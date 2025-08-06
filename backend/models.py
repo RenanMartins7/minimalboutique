@@ -22,11 +22,21 @@ class CartItem(db.Model):
     product = db.relationship('Product')
     user = db.relationship('User')
 
+class OrderItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable = False)
+    price = db.Column(db.Float, nullable=False)
+    product = db.relationship('Product')
+
+
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
     total = db.Column(db.Float, nullable = False)
     user = db.relationship('User')
+    items = db.relationship('OrderItem', backref = 'order', lazy=True)
 
 
 

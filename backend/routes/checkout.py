@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session
-from models import CartItem, Order
+from models import CartItem, Order, OrderItem
 from database import db
 
 
@@ -20,8 +20,16 @@ def checkout():
     
     order = Order(user_id=user_id, total=total)
     db.session.add(order)
+    db.session.flush()
 
     for item in cart_items:
+        order_item = OrderItem(
+            order_id=order.id,
+            product_id=item.product_id,
+            quantity=item.quantity,
+            price=item.product.price
+        )
+        db.session.add(order_item)
         db.session.delete(item)
     
     db.session.commit()
