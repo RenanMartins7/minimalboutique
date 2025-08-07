@@ -14,6 +14,9 @@ export default function UserStatus({ user, onLogout }) {
       {user && user.email ? (
         <div>
           <span>Olá, {user.email}</span>
+          <Link to="/orders" style={{ marginLeft: '10px' }}>
+            <button>Meus Pedidos</button>
+          </Link>
           <button onClick={handleLogoutClick} style={{ marginLeft: '10px' }}>Logout</button>
         </div>
       ) : (

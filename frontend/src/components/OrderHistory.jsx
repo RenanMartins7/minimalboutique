@@ -5,16 +5,29 @@ function OrderHistory(){
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [error, setError] = useState(false);
+
     useEffect(()=>{
-        axios.get('/orders')
+        axios.get('/orders', {withCredentials: true})
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);
             })
             .catch(err => {
-                console.error("Erro ao buscar histórico de pedidos:", err);
+
+                if(err.response){
+                    console.error("Erro ao buscar histórico de pedidos");
+                    console.error("Status:", err.response.status);
+                    console.error("Dados:", err.response.data);
+                    console.error("Headers:", err.response.headers);
+                } else if( err.request){
+                    console.error("Nenhuma resposta recebida. Request: ", err.request);
+                } else {
+                    console.error("Erro na configuração da requisição", err.message);
+                }
+                // console.error("Erro ao buscar histórico de pedidos:", err);
                 setLoading(false);
-                alert("Não foi possível buscar o histórico de pedidos");
+                setError(true);
             });
     }, []);
 
@@ -22,7 +35,9 @@ function OrderHistory(){
         return <div>Carregando histórico de pedidos...</div>
     }
 
-    if(orders.lenght === 0){
+    if(error) return <div>Erro ao carregar o histórico de pedidos</div>
+
+    if(orders.length === 0){
         return (
             <div>
                 <h2>Meus Pedidos</h2>

@@ -16,11 +16,14 @@ def get_orders():
     for order in orders:
         items_data = []
         for item in order.items:
-            items_data.append({
-                'product_name': item.product_name,
-                'quantity': item.quantity,
-                'price': item.price
-            })
+            try:
+                items_data.append({
+                    'product_name': item.product.name,
+                    'quantity': item.quantity,
+                    'price': item.price
+                })
+            except Exception as e:
+                print(f'Erro ao processar item do pedido #{order.id}:', e)
         result.append({
             'id': order.id,
             'total': order.total,
