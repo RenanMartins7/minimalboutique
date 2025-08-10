@@ -8,7 +8,7 @@ function OrderHistory(){
     const [error, setError] = useState(false);
 
     useEffect(()=>{
-        axios.get('/orders', {withCredentials: true})
+        axios.get('/orders/', {withCredentials: true})
             .then(res => {
                 setOrders(res.data);
                 setLoading(false);

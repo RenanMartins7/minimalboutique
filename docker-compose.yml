@@ -9,6 +9,21 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/app
+    depends_on:
+      - products
+
+
+  products:
+    build:
+      context: ./backend
+      dockerfile: products/Dockerfile
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./backend/products:/app
+      - products_db:/app/instance
+
+
   frontend:
     build:
       context: .
@@ -21,3 +36,6 @@ services:
     command: npm run dev -- --host
     depends_on:
       - backend
+
+volumes:
+  products_db:
