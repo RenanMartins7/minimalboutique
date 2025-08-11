@@ -3,7 +3,7 @@ import requests
 import json
 
 # URL do microsserviço de produtos
-PRODUCTS_API_URL = "http://localhost:5001/products/"
+PRODUCTS_API_URL = "http://products:5001/products/"
 
 # Lista de produtos para adicionar
 products_to_seed = [

@@ -23,6 +23,17 @@ services:
       - ./backend/products:/app
       - products_db:/app/instance
 
+  orders:
+    build:
+      context: ./backend
+      dockerfile: orders/Dockerfile
+    ports:
+      - "5002:5002"
+    volumes:
+      - ./backend/orders:/app
+      - orders_db:/app/instance
+    depends_on:
+      - products
 
   frontend:
     build:
@@ -39,3 +50,4 @@ services:
 
 volumes:
   products_db:
+  orders_db:

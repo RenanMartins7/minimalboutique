@@ -38,6 +38,18 @@ def delete_product(product_id):
     db.session.commit()
     return jsonify({'message':'Producto removido com sucesso'}), 200
 
+@products_bp.route('/<int:product_id>', methods=['GET'])
+def get_product(product_id):
+    product = Product.query.get(product_id)
+    if product is None:
+        return jsonify({'error': 'Produto não encontrado'}), 404
+    return jsonify({
+        "id": product.id,
+        "name": product.name,
+        "price": product.price,
+        "description": product.description,
+        "image_url": product.image_url
+    })
 
 
 
