@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import UserStatus from './components/UserStatus';
 import OrderHistory from './components/OrderHistory';
+import Payment from './components/Payment';
 import axios from 'axios';
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/login" element={<Login onLoginSuccess={fetchUser} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/orders" element={<OrderHistory/>}/>
+        <Route path="/payment/:orderId" element={<Payment/>}/>
       </Routes>
     </Router>
   );

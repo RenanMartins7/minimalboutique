@@ -5,11 +5,12 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            '/products': 'http://products:5001',
+            '/products': 'http://backend:5000',
             '/cart': 'http://backend:5000',
             '/checkout': 'http://backend:5000',
             '/auth': 'http://backend:5000',
-            '/orders': 'http://backend:5000'
+            '/orders': 'http://backend:5000', 
+            '/payment': 'http://backend:5000'
         }
     }
 })

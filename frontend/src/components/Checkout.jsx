@@ -23,8 +23,9 @@ function Checkout() {
     const handleCheckout = () => {
         axios.post('/checkout/')
             .then(res => {
-                alert(`${res.data.message}! Total: R$ ${res.data.total.toFixed(2)}`);
-                navigate('/');
+                const newOrderId = res.data.order_id;
+                alert(`Pedido #${newOrderId} criado com sucesso! Você será redirecionado para o pagamento.`);
+                navigate(`/payment/${newOrderId}`);
             })
             .catch(err => {
                 if (err.response && err.response.data && err.response.data.error) {

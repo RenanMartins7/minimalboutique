@@ -64,3 +64,14 @@ def get_orders():
         result.append({'id': order.id, 'total': order.total, 'items': items_data})
 
     return jsonify(result)
+
+@orders_bp.route('/<int:order_id>/confirm_payment', methods=['POST'])
+def confirm_payment(order_id):
+    order = Order.query.get(order_id)
+    if not order:
+        return jsonify({"error":"Pedido não encontrado"}), 404
+    
+    order.status = 'paid'
+    db.session.commit()
+
+    return jsonify({"message":"Pagamento do pedido confirmado com sucesso"}), 200

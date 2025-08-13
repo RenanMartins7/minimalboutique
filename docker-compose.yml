@@ -11,6 +11,8 @@ services:
       - ./backend:/app
     depends_on:
       - products
+      - checkout
+      - orders
 
 
   products:
@@ -35,6 +37,18 @@ services:
     depends_on:
       - products
 
+  checkout:
+    build:
+      context: ./backend
+      dockerfile: checkout/Dockerfile
+    ports:
+      - "5003:5003"
+    volumes:
+      - ./backend/checkout:/app
+    depends_on:
+      - products
+      - orders
+
   frontend:
     build:
       context: .
@@ -47,6 +61,16 @@ services:
     command: npm run dev -- --host
     depends_on:
       - backend
+  payment:
+    build:
+      context: ./backend
+      dockerfile: payment/Dockerfile
+    ports:
+      - "5004:5004"
+    volumes:
+      - ./backend/payment:/app
+    depends_on:
+      - orders
 
 volumes:
   products_db:

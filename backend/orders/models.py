@@ -10,4 +10,5 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, nullable=False)
     total = db.Column(db.Float, nullable=False)
+    status = db.Column(db.String(20), nullable=False, default = 'pending')
     items = db.relationship('OrderItem', backref='order', lazy=True, cascade="all, delete-orphan")
