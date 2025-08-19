@@ -13,11 +13,11 @@ def add_to_cart():
     if not user_id:
         return jsonify({'error': 'Usuário não encontrado'}), 401
 
-
     data = request.json
     product_id = data.get("product_id")
     quantity = data.get("quantity", 1)
 
+    # A reserva de estoque agora é feita independentemente de o item estar ou não no carrinho
     try:
         reserve_response = requests.post(f"{PRODUCTS_API_URL}/{product_id}/reserve", json={'quantity': quantity})
         if reserve_response.status_code != 200:
@@ -26,11 +26,11 @@ def add_to_cart():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'Erro de comunicação com o serviço de produtos', 'details': str(e)}), 503
 
+    # A lógica do banco de dados do carrinho permanece a mesma
     item = CartItem.query.filter_by(user_id=user_id, product_id=product_id).first()
 
     if item:
         item.quantity += quantity 
-    
     else: 
         item = CartItem(user_id=user_id, product_id=product_id, quantity=quantity)
         db.session.add(item)
@@ -100,4 +100,3 @@ def get_cart():
             return jsonify({'error': f'Erro ao buscar dados do produto {item.product_id}'}), 503
 
     return jsonify(result)
-

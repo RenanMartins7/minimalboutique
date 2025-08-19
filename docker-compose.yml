@@ -14,7 +14,6 @@ services:
       - checkout
       - orders
 
-
   products:
     build:
       context: ./backend
@@ -61,6 +60,7 @@ services:
     command: npm run dev -- --host
     depends_on:
       - backend
+
   payment:
     build:
       context: ./backend
@@ -72,6 +72,20 @@ services:
     depends_on:
       - orders
 
+  cart:
+    build:
+      context: ./backend
+      dockerfile: cart/Dockerfile
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./backend/cart:/app
+      - cart_db:/app/instance
+    depends_on:
+      - products
+
+
 volumes:
   products_db:
   orders_db:
+  cart_db:

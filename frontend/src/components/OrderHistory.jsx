@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function OrderHistory(){
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const [error, setError] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         axios.get('/orders/', {withCredentials: true})
@@ -31,6 +32,21 @@ function OrderHistory(){
             });
     }, []);
 
+    const handlePayment = (orderId) => {
+        navigate(`/payment/${orderId}`);
+    };
+
+    const handleDeleteOrder = (orderId) => {
+        axios.delete(`/orders/${orderId}`, {withCredentials: true})
+            .then(() => {
+                setOrders(orders.filter(order => order.id !== orderId));
+            })
+            .catch(err => {
+                console.error("Erro ao cancelar o pedido:", err);
+                alert("Não foi possível cancelar o pedido.");
+            });
+    };
+
     if(loading){
         return <div>Carregando histórico de pedidos...</div>
     }
@@ -52,6 +68,7 @@ function OrderHistory(){
             {orders.map(order=> (
                 <div key = {order.id} style={{border:'1px solid #ccc', margin: '10px', padding: '10px', borderRadius:'5px'}}>
                     <h4>Pedido #{order.id}</h4>
+                    <p><strong>Status:</strong> {order.status}</p>
                     <ul>
                         {order.items.map((item,index)=> (
                             <li key = {index}>
@@ -61,6 +78,12 @@ function OrderHistory(){
                         ))}
                     </ul>
                     <p><strong>Total do Pedido: R$ {order.total.toFixed(2)}</strong></p>
+                    {order.status === 'pending' && (
+                        <>
+                            <button onClick={() => handlePayment(order.id)}>Pagar</button>
+                            <button onClick={() => handleDeleteOrder(order.id)} style={{marginLeft: '10px'}}>Cancelar Pedido</button>
+                        </>
+                    )}
                 </div>
             ))}
         </div>

@@ -61,7 +61,7 @@ def get_orders():
                 print(f"ERRO ao buscar produto {item.product_id} para o pedido #{order.id}: {e}")
                 items_data.append({'product_name': 'Erro ao carregar produto', 'quantity': item.quantity, 'price': item.price})
                 
-        result.append({'id': order.id, 'total': order.total, 'items': items_data})
+        result.append({'id': order.id, 'total': order.total, 'status':order.status, 'items': items_data})
 
     return jsonify(result)
 
@@ -75,3 +75,23 @@ def confirm_payment(order_id):
     db.session.commit()
 
     return jsonify({"message":"Pagamento do pedido confirmado com sucesso"}), 200
+
+@orders_bp.route('/<int:order_id>', methods=['DELETE'])
+def delete_order(order_id):
+    order = Order.query.get(order_id)
+    if not order:
+        return jsonify({"error": "Pedido não encontrado"}), 404
+    
+    if order.status != 'pending':
+        return jsonify({"error": "Apenas pedidos pendentes podem ser cancelados"}), 400
+    
+    for item in order.items:
+        try:
+            requests.post(f"http://products:5001/products/{item.product_id}/release", json={'quantity' : item.quantity})
+        except requests.exceptions.RequestException as e:
+            print(f"ERRO CRÍTICO: Falha ao liberar estoque para product_id {item.product_id}. Detalhes: {e}")
+    
+    db.session.delete(order)
+    db.session.commit()
+
+    return jsonify({"message": "Pedido cancelado com sucesso"}), 200
