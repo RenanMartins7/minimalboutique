@@ -1,6 +1,30 @@
 version: '3'
 
 services:
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "4318:4318"
+      - "16686:16686"
+    environment:
+      COLLECTOR_OTLP_ENABLED: 1
+      SPAN_STORAGE_TYPE: elasticsearch
+      ES_SERVER_URLS: http://elasticsearch:9200
+
+  collector:
+    container_name: collector
+    image: otel/opentelemetry-collector-contrib:latest
+    ports:
+      - "4320:4320"
+      - "4321:4321"
+      - "9464:9464"
+    volumes:
+      - ./collector-config.yaml:/etc/otel/config.yaml
+    command: ["--config=/etc/otel/config.yaml"]
+    depends_on:
+      - jaeger
+
   backend:
     build:
       context: .
@@ -13,6 +37,7 @@ services:
       - products
       - checkout
       - orders
+      - collector
 
   products:
     build:
@@ -23,6 +48,8 @@ services:
     volumes:
       - ./backend/products:/app
       - products_db:/app/instance
+    depends_on:
+      - collector
 
   orders:
     build:
@@ -35,6 +62,7 @@ services:
       - orders_db:/app/instance
     depends_on:
       - products
+      - collector
 
   checkout:
     build:
@@ -47,6 +75,7 @@ services:
     depends_on:
       - products
       - orders
+      - collector
 
   frontend:
     build:
@@ -60,6 +89,7 @@ services:
     command: npm run dev -- --host
     depends_on:
       - backend
+      - collector
 
   payment:
     build:
@@ -71,6 +101,7 @@ services:
       - ./backend/payment:/app
     depends_on:
       - orders
+      - collector
 
   cart:
     build:
@@ -83,6 +114,7 @@ services:
       - cart_db:/app/instance
     depends_on:
       - products
+      - collector
 
 
 volumes:

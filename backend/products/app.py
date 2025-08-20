@@ -3,8 +3,10 @@ from routes.products import products_bp
 from database import init_db, db
 from models import Product
 from flask_cors import CORS
+from telemetry import configure_telemetry
 import json
 import os
+
 
 app = Flask(__name__)
 app.secret_key = 'secret_key_products'
@@ -39,6 +41,7 @@ with app.app_context():
     else:
         print("Banco de dados de produtos já contém dados.")
 
+configure_telemetry(app, "products")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
