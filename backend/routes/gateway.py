@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 import requests
+from opentelemetry import trace
 
 gateway_bp = Blueprint('gateway', __name__)
 
@@ -9,12 +10,20 @@ CHECKOUT_API_URL = "http://checkout:5003/checkout/"
 PAYMENT_API_URL = "http://payment:5004/payment/"
 CART_API_URL = "http://cart:5005/cart/"
 
-# --- Nenhuma alteração necessária nas rotas de orders e products ---
+
+tracer = trace.get_tracer(__name__)
+
 @gateway_bp.route('/orders/', methods=['GET'])
 def get_user_orders():
+    #Inicialização da telemetria
+    span = trace.get_current_span()
+
+    #Verificação de autenticação do usuário
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({"error": "Usuário não autenticado"}), 401
+    span.set_attribute("user.id", user_id)
+
     try:
         # Repassando os cookies para o serviço de pedidos
         response = requests.get(ORDERS_API_URL, params={'user_id': user_id}, cookies=request.cookies)
@@ -38,12 +47,13 @@ def get_product_by_id(product_id):
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Não foi possível conectar ao serviço de produtos", "details": str(e)}), 503
 
-# --- Nenhuma alteração necessária na rota de checkout ---
 @gateway_bp.route('/checkout/', methods=['POST'])
 def checkout_gateway():
+    span = trace.get_current_span()
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({"error": "Usuário não autenticado"}), 401
+    span.set_attribute("user.id", user_id)
 
     try:
         cart_response = requests.get(CART_API_URL, params={'user_id': user_id}, cookies=request.cookies)
@@ -65,12 +75,15 @@ def checkout_gateway():
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Erro de comunicação com os serviços", "details": str(e)}), 503
 
-# --- Nenhuma alteração necessária na rota de payment ---
+
 @gateway_bp.route('/payment/charge', methods=['POST'])
 def payment_gateway():
+    span = trace.get_current_span()
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({"error": "Usuário não autenticado"}), 401
+    span.set_attribute("user.id", user_id)
+    
     payload = request.json
     payload['user_id'] = user_id
     try:
@@ -79,7 +92,7 @@ def payment_gateway():
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Não foi possível conectar ao serviço de pagamento"}), 503
 
-# --- Nenhuma alteração necessária na rota de delete order ---
+ 
 @gateway_bp.route('/orders/<int:order_id>', methods=['DELETE'])
 def delete_order_gateway(order_id):
     try:
@@ -89,37 +102,51 @@ def delete_order_gateway(order_id):
         return jsonify({"error": "Não foi possível conectar ao serviço de pedidos", "details": str(e)}), 503
 
 
-# --- ALTERAÇÕES APLICADAS AQUI ---
+ 
 @gateway_bp.route('/cart/', methods=['GET', 'POST'])
 def cart_gateway():
-    # A verificação de user_id aqui é importante para um retorno rápido
+
     if 'user_id' not in session:
         return jsonify({"error": "Usuário não autenticado"}), 401
 
     if request.method == 'POST':
         try:
-            # Adicionado: cookies=request.cookies
+
             response = requests.post(CART_API_URL, json=request.json, cookies=request.cookies)
             return response.content, response.status_code, response.headers.items()
         except requests.exceptions.RequestException as e:
             return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
     else: # GET
         try:
-            # Adicionado: cookies=request.cookies
+
             response = requests.get(CART_API_URL, cookies=request.cookies)
             return response.content, response.status_code, response.headers.items()
         except requests.exceptions.RequestException as e:
             return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
 
-# --- E AQUI ---
+
 @gateway_bp.route('/cart/<int:item_id>', methods=['DELETE'])
 def delete_cart_item_gateway(item_id):
     if 'user_id' not in session:
         return jsonify({"error": "Usuário não autenticado"}), 401
 
     try:
-        # Adicionado: cookies=request.cookies
+
         response = requests.delete(f"{CART_API_URL}{item_id}", cookies=request.cookies)
+        return response.content, response.status_code, response.headers.items()
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
+
+
+
+
+@gateway_bp.route('/cart/clear', methods=['POST'])
+def clear_cart_gateway():
+    if 'user_id' not in session:
+        return jsonify({"error": "Usuário não autenticado"}), 401
+
+    try:
+        response = requests.post(f"{CART_API_URL}clear", json=request.json, cookies=request.cookies)
         return response.content, response.status_code, response.headers.items()
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503

@@ -2,12 +2,18 @@ from flask import Blueprint, jsonify, request
 from models import Order, OrderItem
 from database import db
 import requests
+from opentelemetry import trace
+
+tracer = trace.get_tracer(__name__)
 
 orders_bp = Blueprint('orders', __name__, url_prefix='/orders')
 
 # Endpoint de criação permanece o mesmo
 @orders_bp.route('/', methods=['POST'])
 def create_order():
+
+    span = trace.get_current_span()
+
     data = request.json
     user_id = data.get('user_id')
     total = data.get('total')
@@ -15,10 +21,15 @@ def create_order():
 
     if not all([user_id, total, items]):
         return jsonify({'error': 'Dados incompletos para criar o pedido'}), 400
+    
+    span.set_attribute("user.id", user_id)
+    span.set_attribute("total", total)
+    span.set_attribute("number.of.items", len(items))
 
     order = Order(user_id=user_id, total=total)
     db.session.add(order)
     db.session.flush() 
+    span.set_attribute("order.id", order.id)
 
     for item_data in items:
         order_item = OrderItem(
@@ -35,11 +46,16 @@ def create_order():
 # Endpoint de busca modificado
 @orders_bp.route('/', methods=['GET'])
 def get_orders():
+
+    span = trace.get_current_span()
+
     user_id = request.args.get('user_id')
     if not user_id:
         return jsonify({'error': 'user_id é obrigatório'}), 400
+    span.set_attribute("user.id", user_id)
 
     orders = Order.query.filter_by(user_id=user_id).order_by(Order.id.desc()).all()
+    span.set_attribute("number.of.orders", len(orders))
     result = []
 
     for order in orders:
@@ -67,9 +83,12 @@ def get_orders():
 
 @orders_bp.route('/<int:order_id>/confirm_payment', methods=['POST'])
 def confirm_payment(order_id):
+    span = trace.get_current_span()
+
     order = Order.query.get(order_id)
     if not order:
         return jsonify({"error":"Pedido não encontrado"}), 404
+    span.set_attribute("order.id", order.id)
     
     order.status = 'paid'
     db.session.commit()
@@ -78,9 +97,11 @@ def confirm_payment(order_id):
 
 @orders_bp.route('/<int:order_id>', methods=['DELETE'])
 def delete_order(order_id):
+    span = trace.get_current_span()
     order = Order.query.get(order_id)
     if not order:
         return jsonify({"error": "Pedido não encontrado"}), 404
+    span.set_attribute("order.id", order.id)
     
     if order.status != 'pending':
         return jsonify({"error": "Apenas pedidos pendentes podem ser cancelados"}), 400

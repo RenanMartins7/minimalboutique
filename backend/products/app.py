@@ -18,7 +18,7 @@ app.register_blueprint(products_bp)
 init_db(app)
 
 with app.app_context():
-    if db.session.query(Product.id).count() == 0:
+    if db.session.query(Product.id).count() != 0:
         print("Banco de dados de produtos vazio. Tentando popular com dados do JSON...")
         try:
             json_path = os.path.join(app.root_path, 'products.json')

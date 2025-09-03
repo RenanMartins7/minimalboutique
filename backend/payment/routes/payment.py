@@ -8,12 +8,17 @@ CART_API_URL = "http://backend:5000/cart/clear"
 
 @payment_bp.route('/charge', methods=['POST'])
 def charge():
+
+    span = trace.get_current_span()
     data = request.json
     order_id = data.get('order_id')
     user_id = data.get('user_id')
 
     if not order_id or not user_id:
         return jsonify({"error": "order_id e user_id são obrigatórios"}), 400
+    
+    span.set_attribute("order.id", order_id)
+    span.set_attribute("user.id", user_id)
     
     print(f"Pagamento para o pedido {order_id} processado com sucesso.")
 
@@ -29,7 +34,7 @@ def charge():
         return jsonify({"error":"Não foi possível conectar ao serviço do pedido"}), 503
 
     try:
-        clear_cart_response = requests.post(CART_API_URL, json={'user_id':user_id})
+        clear_cart_response = requests.post(CART_API_URL, json={'user_id':user_id}, cookies=request.cookies)
         if clear_cart_response.status_code != 200:
             print(f"AVISO: Não foi possível limpar o carrinho do usuário {user_id}")
     except requests.exceptions.RequestException as e:

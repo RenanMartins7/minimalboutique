@@ -2,6 +2,9 @@ import requests
 from flask import Blueprint, request, jsonify, session
 from models import CartItem
 from database import db
+from opentelemetry import trace
+
+tracer = trace.get_tracer(__name__)
 
 cart_bp = Blueprint('cart', __name__, url_prefix = '/cart')
 
@@ -12,12 +15,16 @@ def add_to_cart():
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'error': 'Usuário não encontrado'}), 401
+    span = trace.get_current_span()
+    span.set_attribute("user.id", user_id)
 
     data = request.json
     product_id = data.get("product_id")
     quantity = data.get("quantity", 1)
 
-    # A reserva de estoque agora é feita independentemente de o item estar ou não no carrinho
+    span.set_attribute("product.id", product_id)
+    span.set_attribute("quantity", quantity)
+
     try:
         reserve_response = requests.post(f"{PRODUCTS_API_URL}/{product_id}/reserve", json={'quantity': quantity})
         if reserve_response.status_code != 200:
@@ -26,7 +33,6 @@ def add_to_cart():
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'Erro de comunicação com o serviço de produtos', 'details': str(e)}), 503
 
-    # A lógica do banco de dados do carrinho permanece a mesma
     item = CartItem.query.filter_by(user_id=user_id, product_id=product_id).first()
 
     if item:
@@ -36,6 +42,7 @@ def add_to_cart():
         db.session.add(item)
     
     db.session.commit()
+    span.set_attribute("stock.itens", item.quantity)
     return jsonify({"message": "Item adicionado ao carrinho"}), 201
 
 
@@ -44,6 +51,8 @@ def remove_from_cart(item_id):
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'error': 'Usuário não autenticado'}), 401
+    span = trace.get_current_span()
+    span.set_attribute("user.id", user_id)
     
     item = CartItem.query.filter_by(id=item_id, user_id=user_id).first()
     if not item:
@@ -53,6 +62,9 @@ def remove_from_cart(item_id):
     quantity_to_release = item.quantity
     db.session.delete(item)
     db.session.commit()
+
+    span.set_attribute("product.id", product_id)
+    span.set_attribute("deleted.quantity", quantity_to_release)
 
     try:
         requests.post(f"{PRODUCTS_API_URL}/{product_id}/release", json={'quantity': quantity_to_release})
@@ -67,6 +79,8 @@ def clear_cart():
     user_id = data.get('user_id')
     if not user_id:
         return jsonify({"error": "user_id é obrigatório"}), 400
+    span = trace.get_current_span()
+    span.set_attribute("user.id", user_id)
     
     try:
         CartItem.query.filter_by(user_id=user_id).delete()
@@ -81,6 +95,8 @@ def get_cart():
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'error': 'Usuário não encontrado'}), 401
+    span = trace.get_current_span()
+    span.set_attribute("user.id", user_id)
 
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
     result = []

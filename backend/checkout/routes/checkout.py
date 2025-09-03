@@ -1,6 +1,10 @@
 from flask import Blueprint, jsonify, request
 import requests
 
+from opentelemetry import trace
+
+tracer = trace.get_tracer(__name__)
+
 checkout_bp = Blueprint('checkout', __name__, url_prefix='/checkout')
 
 PRODUCTS_API_URL = "http://products:5001/products/"
@@ -15,6 +19,9 @@ def process_checkout():
     if not user_id or not cart_items:
         return jsonify({"error": "Dados do usuário ou do carrinho ausentes"}), 400
 
+    span = trace.get_current_span()
+    span.set_attribute("user.id", user_id)
+
     total = 0
     order_items_payload = []
 
@@ -27,6 +34,10 @@ def process_checkout():
             product_data = product_response.json()
             price = product_data.get('price')
             total += price * item['quantity']
+
+            span.set_attribute(f"product.{item['product_id']}.price:", price)
+            span.set_attribute(f"product.{item['product_id']}.quantity", item['quantity'])
+
             order_items_payload.append({
                 "product_id": item['product_id'], "quantity": item['quantity'], "price": price
             })
@@ -35,6 +46,7 @@ def process_checkout():
 
     # 2. Criar o pedido com status 'pending'
     if total > 0:
+        span.set_attribute("total", total)
         order_payload = {"user_id": user_id, "total": total, "items": order_items_payload}
         try:
             order_response = requests.post(ORDERS_API_URL, json=order_payload)

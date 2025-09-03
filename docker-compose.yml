@@ -115,6 +115,16 @@ services:
     depends_on:
       - products
       - collector
+  
+  loadgenerator:
+    build:
+      context: ./loadgenerator
+    # restart: on-failure
+    volumes:
+      - ./loadgenerator:/loadgen
+    depends_on:
+      - backend
+      - frontend
 
 
 volumes:

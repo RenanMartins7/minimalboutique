@@ -4,21 +4,21 @@
         "price": 199.90, 
         "description": "Tênis para corrida", 
         "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7b/Addison_Rae_-_Addison.png",
-        "stock": 100
+        "stock": 100000
     },
     {
         "name": "Camiseta DryFit", 
         "price": 89.90, 
         "description": "Ideal para esportes", 
         "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7b/Addison_Rae_-_Addison.png",
-        "stock": 200
+        "stock": 20000000
     },
     {
         "name": "Relógio de Corrida", 
         "price": 90.92, 
         "description": "Ideal para esportes", 
         "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7b/Addison_Rae_-_Addison.png",
-        "stock": 200
+        "stock": 200000000
 
     },
     {
@@ -26,6 +26,6 @@
         "price": 25.12, 
         "description": "Dieta e nutrição", 
         "image_url": "https://upload.wikimedia.org/wikipedia/en/7/7b/Addison_Rae_-_Addison.png",
-        "stock": 5
+        "stock": 50000000
     }
 ]

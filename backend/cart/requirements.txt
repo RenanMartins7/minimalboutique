@@ -8,3 +8,6 @@ opentelemetry-exporter-otlp-proto-http
 opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 opentelemetry-instrumentation-sqlalchemy
+grpcio
+grpcio-tools
+protobuf
