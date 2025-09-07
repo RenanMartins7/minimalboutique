@@ -18,28 +18,40 @@ app.register_blueprint(products_bp)
 init_db(app)
 
 with app.app_context():
-    if db.session.query(Product.id).count() != 0:
-        print("Banco de dados de produtos vazio. Tentando popular com dados do JSON...")
-        try:
-            json_path = os.path.join(app.root_path, 'products.json')
-            
-            
-            with open(json_path, 'r', encoding='utf-8') as f:
-                products_to_seed = json.load(f)
+    print("Verificando e populando o banco de dados de produtos...")
+    try:
+        json_path = os.path.join(app.root_path, 'products.json')
+        with open(json_path, 'r', encoding='utf-8') as f:
+            products_to_seed = json.load(f)
 
-            products = [Product(**p_data) for p_data in products_to_seed]
-            
-            db.session.bulk_save_objects(products)
-            db.session.commit()
-            print(f"Sucesso! {len(products)} produtos foram carregados no banco de dados.")
-            
-        except FileNotFoundError:
-            print(f"ERRO CRÍTICO: O arquivo 'products.json' não foi encontrado no caminho esperado: {json_path}")
-        except Exception as e:
-            print(f"ERRO CRÍTICO ao carregar dados de produtos: {e}")
-            db.session.rollback()
-    else:
-        print("Banco de dados de produtos já contém dados.")
+        for p_data in products_to_seed:
+            product = Product.query.filter_by(name=p_data['name']).first()
+            if product:
+                # Product exists, check stock
+                if product.stock <= 0:
+                    print(f"Repondo estoque para o produto: {product.name}")
+                    product.stock = p_data['stock']
+                else:
+                    # If you want to *add* to the existing stock instead of replacing it,
+                    # you can change the line above to:
+                    # product.stock += p_data['stock']
+                    print(f"Produto {product.name} já tem estoque, adicionando mais.")
+                    product.stock += p_data['stock'] # This will add to the stock.
+            else:
+                # Product does not exist, create new one
+                print(f"Criando novo produto: {p_data['name']}")
+                new_product = Product(**p_data)
+                db.session.add(new_product)
+
+        db.session.commit()
+        print("Sincronização do banco de dados de produtos concluída.")
+
+    except FileNotFoundError:
+        print(f"ERRO CRÍTICO: O arquivo 'products.json' não foi encontrado no caminho esperado: {json_path}")
+    except Exception as e:
+        print(f"ERRO CRÍTICO ao carregar dados de produtos: {e}")
+        db.session.rollback()
+
 
 configure_telemetry(app, "products")
 

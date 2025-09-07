@@ -1,4 +1,7 @@
 import os
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from flask import Flask
 from opentelemetry import trace
 from opentelemetry.sdk.resources import Resource
@@ -14,7 +17,22 @@ def configure_telemetry(app: Flask, service_name: str):
     trace.set_tracer_provider(TracerProvider(resource=resource))
     tracer_provider = trace.get_tracer_provider()
 
-    exporter = OTLPSpanExporter(endpoint="http://collector:4321/v1/traces")
+    retry_strategy = Retry(
+        total=3,
+        backoff_factor=1,
+        status_forcelist=[500, 502, 503, 504],
+    )
+
+    adapter = HTTPAdapter(max_retries=retry_strategy)
+
+    http_session = requests.Session()
+    http_session.mount("http://", adapter)
+    http_session.mount("https://", adapter)
+
+    exporter = OTLPSpanExporter(
+        endpoint="http://collector:4321/v1/traces",
+        session=http_session
+    )
 
     span_processor = BatchSpanProcessor(exporter)
     tracer_provider.add_span_processor(span_processor)
@@ -29,4 +47,3 @@ def configure_telemetry(app: Flask, service_name: str):
         SQLAlchemyInstrumentor().instrument(engine=db.engine)
 
     print(f"Opentelemetry configurado com sucesso para o serviço: {service_name}")
-

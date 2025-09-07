@@ -1,10 +1,14 @@
 from flask import Blueprint, jsonify, request
 import requests
+from opentelemetry import trace
 
 payment_bp = Blueprint('payment', __name__, url_prefix = '/payment')
 
 ORDERS_API_URL = "http://orders:5002/orders"
 CART_API_URL = "http://backend:5000/cart/clear"
+
+
+tracer =  trace.get_tracer(__name__)
 
 @payment_bp.route('/charge', methods=['POST'])
 def charge():
