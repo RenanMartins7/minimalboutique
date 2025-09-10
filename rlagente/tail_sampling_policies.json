@@ -1,0 +1,51 @@
+[
+    {
+      "name": "errors-policy",
+      "type": "status_code",
+      "status_code": { "status_codes": ["ERROR"] }
+    },
+    {
+      "name": "latency-policy-500ms",
+      "type": "latency",
+      "latency": { "threshold_ms": 500 }
+    },
+    {
+      "name": "latency-policy-1s",
+      "type": "latency",
+      "latency": { "threshold_ms": 1000 }
+    },
+    {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+            "key": "service.name",
+            "values": [ "checkout" ]
+        }
+    },
+    {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+            "key": "service.name",
+            "values": [ "cart" ]
+        }
+    },
+    {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+            "key": "service.name",
+            "values": [ "payment" ]
+        }
+    },
+    {
+      "name": "probability-policy-15",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 15 }
+    },
+    {
+      "name": "probability-policy-50",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 50 }
+    }
+]
