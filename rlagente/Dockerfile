@@ -5,4 +5,4 @@ RUN pip install kubernetes pyyaml "elasticsearch>=8.6.0,<9.0.0"
 WORKDIR /app
 COPY . .
 
-CMD ["python", "manager.py"]
+CMD ["python", "-u", "manager.py"]

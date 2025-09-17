@@ -1,0 +1,494 @@
+[
+  {
+    "hash": "2a64e078",
+    "policies": [
+      {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "cart"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-500ms",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 500
+        }
+      },
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:04:40"
+  },
+  {
+    "hash": "005f48e5",
+    "policies": [
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:05:41"
+  },
+  {
+    "hash": "d2a7f226",
+    "policies": [
+      {
+        "name": "latency-policy-500ms",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 500
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:06:42"
+  },
+  {
+    "hash": "4b11db99",
+    "policies": [
+      {
+        "name": "errors-policy",
+        "type": "status_code",
+        "status_code": {
+          "status_codes": [
+            "ERROR"
+          ]
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "cart"
+          ]
+        }
+      },
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-500ms",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 500
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:07:44"
+  },
+  {
+    "hash": "89a4f581",
+    "policies": [
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:08:45"
+  },
+  {
+    "hash": "e5e2df87",
+    "policies": [
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:09:47"
+  },
+  {
+    "hash": "7553bbf5",
+    "policies": [
+      {
+        "name": "errors-policy",
+        "type": "status_code",
+        "status_code": {
+          "status_codes": [
+            "ERROR"
+          ]
+        }
+      },
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "cart"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-500ms",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 500
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:10:59"
+  },
+  {
+    "hash": "a3694ce8",
+    "policies": [
+      {
+        "name": "probability-policy-15",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 15
+        }
+      },
+      {
+        "name": "checkout-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "checkout"
+          ]
+        }
+      },
+      {
+        "name": "errors-policy",
+        "type": "status_code",
+        "status_code": {
+          "status_codes": [
+            "ERROR"
+          ]
+        }
+      },
+      {
+        "name": "payment-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "payment"
+          ]
+        }
+      },
+      {
+        "name": "latency-policy-500ms",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 500
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "cart"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:12:00"
+  },
+  {
+    "hash": "eba4effa",
+    "policies": [
+      {
+        "name": "latency-policy-1s",
+        "type": "latency",
+        "latency": {
+          "threshold_ms": 1000
+        }
+      },
+      {
+        "name": "probability-policy-50",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 50
+        }
+      },
+      {
+        "name": "cart-service-policy",
+        "type": "string_attribute",
+        "string_attribute": {
+          "key": "service.name",
+          "values": [
+            "cart"
+          ]
+        }
+      },
+      {
+        "name": "default-probabilistic-policy",
+        "type": "probabilistic",
+        "probabilistic": {
+          "sampling_percentage": 100.0
+        }
+      }
+    ],
+    "timestamp": "2025-09-15 19:13:01"
+  }
+]
