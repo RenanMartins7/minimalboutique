@@ -43,7 +43,7 @@ def get_spans_by_hash(config_hash, scroll_size=5000):
         sid = resp["_scroll_id"]
         scroll_size = len(resp["hits"]["hits"])
 
-    print(f"Total de spans encontrados para hash {config_hash}: {len(spans)}")
+    #print(f"Total de spans encontrados para hash {config_hash}: {len(spans)}")
     return spans
 
 def trace_to_string(spans, use_hash=True):
@@ -151,7 +151,7 @@ def group_spans_by_trace(spans):
 
         traces[trace_id] = sorted_trace
 
-    print(f"Total de traces agrupados: {len(traces)}")
+    #print(f"Total de traces agrupados: {len(traces)}")
 
     # 🔹 Calcula e retorna a entropia diretamente
     return traces
@@ -163,4 +163,5 @@ def export_traces_by_hash(config_hash):
     """
     spans = get_spans_by_hash(config_hash)
     traces = group_spans_by_trace(spans)
-    return calcular_entropia(traces)
+
+    return calcular_entropia(traces), len(traces)

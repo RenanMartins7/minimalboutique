@@ -33,6 +33,8 @@ def charge():
         if confirm_response.status_code != 200:
             print(f"ERRO: Falha ao confirmar o pagamento para o pedido {order_id}")
             return jsonify({"error": "Falha ao atualizar o status do pedido"}), 500
+            span.set_attribute("payment.status", "declined")
+        span.set_attribute("payment.status", "paid")
     
     except requests.exceptions.RequestException as e:
         return jsonify({"error":"Não foi possível conectar ao serviço do pedido"}), 503

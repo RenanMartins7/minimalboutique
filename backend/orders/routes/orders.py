@@ -91,6 +91,7 @@ def confirm_payment(order_id):
     span.set_attribute("order.id", order.id)
     
     order.status = 'paid'
+    span.set_attribute("payment.status", "paid")
     db.session.commit()
 
     return jsonify({"message":"Pagamento do pedido confirmado com sucesso"}), 200

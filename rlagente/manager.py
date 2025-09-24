@@ -7,6 +7,11 @@ import yaml
 import os
 from history import *
 from es_utils import *
+
+from agent import ReinforceAgent
+
+
+
 #Configuração inicial
 #######################################################################################################################################
 config.load_incluster_config()#Script roda no próprio cluster, então configuração é incluster
@@ -19,26 +24,7 @@ CONFIGMAP_NAME = "collector-config"
 POLICIES_FILE = "tail_sampling_policies.json"
 #######################################################################################################################################
 #Gera o arquivo de configurações do coletor
-def generate_config():
-    with open(POLICIES_FILE, "r") as f:#Abre o arquivo que contem todas as possíveis regras para serem aplicadas no tailsampling 
-        all_policies = json.load(f)
-
-    num_policies_to_select = random.randint(1, len(all_policies))#Seleciona aleatoriamente um número de políticas a serem adicionadas ao coletor
-    selected_policies = random.sample(all_policies, num_policies_to_select)#Seleciona aleatóriamente o número de políticas acima para ser adicionado no configmap
-
-    
-    selected_policies.append({#coloca uma política default que pega uma porcentagem dos traces para garantir que uma porcentagem é sampleada mesmo que não caia nas regras
-        "name": "default-probabilistic-policy",
-        "type": "probabilistic",
-        "probabilistic": {"sampling_percentage": 10.0}
-    })
-
-    # print(f"Políticas selecionadas para esta iteração: {[p['name'] for p in selected_policies]}")
-
-    policies_str = json.dumps(selected_policies, sort_keys=True)#Gera o arquivo com as políticas selecionadas no formato json
-    config_hash = hashlib.sha256(policies_str.encode()).hexdigest()[:8]#Gera a hash que representa as políticas selecionadas a partir do arquivo gerado com elas 
-
-    
+def generate_config(selected_policies, config_hash):
     config_dict = {# Monta configuração do coletor
         "receivers": {
             "otlp": {
@@ -85,7 +71,7 @@ def generate_config():
         }
     }
 
-    return yaml.dump(config_dict), config_hash, selected_policies#retorna o arquivo yaml de configuração do coletor, o valor de hash para essa configuração, e as políticas selecionadas
+    return yaml.dump(config_dict)#retorna o arquivo yaml de configuração do coletor, o valor de hash para essa configuração, e as políticas selecionadas
 #######################################################################################################################################
 #Cria e substitui o configmap collector-config com a nova configuração
 def update_configmap(config_yaml):
@@ -95,11 +81,11 @@ def update_configmap(config_yaml):
     )
     try:#Tenta substituir um configmap já criado anteriormente
         core_v1.replace_namespaced_config_map(CONFIGMAP_NAME, NAMESPACE, cm_body)
-        print(f"ConfigMap {CONFIGMAP_NAME} updated")
+        #print(f"ConfigMap {CONFIGMAP_NAME} updated")
     except client.exceptions.ApiException as e:#Se não existia nenhum configmap, então cria um novo com a nova configuração
         if e.status == 404:
             core_v1.create_namespaced_config_map(NAMESPACE, cm_body)
-            print(f"ConfigMap {CONFIGMAP_NAME} created")
+            #print(f"ConfigMap {CONFIGMAP_NAME} created")
         else:
             raise
 #######################################################################################################################################
@@ -119,7 +105,7 @@ def rolling_update_deployment(config_yaml, config_hash):
     apps_v1.patch_namespaced_deployment(#Aplicação do patch com a hash gerada para a nova configuração
         name=DEPLOYMENT_NAME, namespace=NAMESPACE, body=patch
     )
-    print(f"Deployment {DEPLOYMENT_NAME} patched with config hash {config_hash}")
+    #print(f"Deployment {DEPLOYMENT_NAME} patched with config hash {config_hash}")
 
 #######################################################################################################################################
 #Função que fica esperando para ver se o rollout está completo e o agente pode seguir com suas atividades
@@ -129,13 +115,27 @@ def wait_for_rollout_ready():
         desired = deployment.spec.replicas#Verifica quantos pods estão especificados para se ter do collector, no caso apenas 1
         available = deployment.status.available_replicas or 0 #Verifica quantas réplicas estão disponíveis atualmente dentro dos deployments
         if available >= desired:#Se o número de réplicas for maior ou igual o desejado, considera-se o rollout completo e sai do loop
-            print("Rollout completo!")
+            #print("Rollout completo!")
             return
-        print(f"Aguardando rollout... {available}/{desired} prontos")#Se ainda continua com menos que o número desejado de pods, aguarda 2 segundos até tentar novamente
+        #print(f"Aguardando rollout... {available}/{desired} prontos")#Se ainda continua com menos que o número desejado de pods, aguarda 2 segundos até tentar novamente
         time.sleep(2)
+#######################################################################################################################################
+#Função de reward para o conjunto de regras definido
+def reward_function(entropy, traces, alpha=1.0, beta=1.0, C = 3000, lambd=3.0):
+    norm_entropy = entropy/10
+
+    trace_penalty = 1 - math.exp(-lambd *(traces/C))
+
+    return alpha * norm_entropy - beta * trace_penalty
 #######################################################################################################################################
 #Função principal
 if __name__ == "__main__":
+
+    with open(POLICIES_FILE, "r") as f:
+        all_policies = json.load(f)
+
+    agent = ReinforceAgent(num_policies = len(all_policies))
+    
     first = True
 
     while True:
@@ -144,18 +144,48 @@ if __name__ == "__main__":
             first = False
         else:
             old_hash = config_hash
-        config_yaml, config_hash, selected_policies = generate_config()#Gera o yaml do novo collector-config, a hash e as políticas selecionadas
+    
+        selected_policies = agent.select_actions(all_policies)
+        selected_policies.append({
+            "name": "default-probabilistic-policy",
+            "type": "probabilistic",
+            "probabilistic": {"sampling_percentage": 1.0}
+        })
+        
+        policies_str = json.dumps(selected_policies, sort_keys = True)
+        config_hash = hashlib.sha256(policies_str.encode()).hexdigest()[:8] 
+        config_yaml = generate_config(selected_policies, config_hash)
 
-        update_configmap(config_yaml)#Atualiza o configmap dentro do cluster
+        update_configmap(config_yaml)
+        rolling_update_deployment(config_yaml, config_hash)
 
-        rolling_update_deployment(config_yaml, config_hash)#faz o rolling update para que o kubernetes troque o antigo coletor por um novo com a nova configuração
+        wait_for_rollout_ready()
 
-        print("Waiting for new pod to be ready...")
-        wait_for_rollout_ready()#espera todo o rollout estar completo
-        print("New pod ready!")
+        entropia, number_of_traces = export_traces_by_hash(old_hash)
 
-        save_history(config_hash, selected_policies)#salva a hash criada assim como o arquivo com as políticas selecionadas em um arquivo para futura análise
-        entropia = export_traces_by_hash(old_hash)#calcula a entropia 
-        print(f"Entropia dos traces: {entropia}")
+        reward = reward_function(entropia, number_of_traces)
+        agent.update(selected_policies, reward)
+        print(f"Hash: {config_hash}, reward: {reward}, Número de traces: {number_of_traces}")
+
+        agent.save_policies()
 
         time.sleep(60)
+
+
+
+
+    #     config_yaml, config_hash, selected_policies = generate_config()#Gera o yaml do novo collector-config, a hash e as políticas selecionadas
+
+    #     update_configmap(config_yaml)#Atualiza o configmap dentro do cluster
+
+    #     rolling_update_deployment(config_yaml, config_hash)#faz o rolling update para que o kubernetes troque o antigo coletor por um novo com a nova configuração
+
+    #     #print("Waiting for new pod to be ready...")
+    #     wait_for_rollout_ready()#espera todo o rollout estar completo
+    #     #print("New pod ready!")
+
+    #     save_history(config_hash, selected_policies)#salva a hash criada assim como o arquivo com as políticas selecionadas em um arquivo para futura análise
+    #     entropia = export_traces_by_hash(old_hash)#calcula a entropia 
+    #     #print(f"Entropia dos traces: {entropia}")
+
+    #     time.sleep(60)

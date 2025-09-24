@@ -10,33 +10,14 @@
       "latency": { "threshold_ms": 500 }
     },
     {
-      "name": "latency-policy-1s",
+      "name": "latency-policy-100ms",
+      "type": "latency",
+      "latency": { "threshold_ms": 100 }
+    },
+    {
+      "name": "latency-policy-1000ms",
       "type": "latency",
       "latency": { "threshold_ms": 1000 }
-    },
-    {
-        "name": "checkout-service-policy",
-        "type": "string_attribute",
-        "string_attribute": {
-            "key": "service.name",
-            "values": [ "checkout" ]
-        }
-    },
-    {
-        "name": "cart-service-policy",
-        "type": "string_attribute",
-        "string_attribute": {
-            "key": "service.name",
-            "values": [ "cart" ]
-        }
-    },
-    {
-        "name": "payment-service-policy",
-        "type": "string_attribute",
-        "string_attribute": {
-            "key": "service.name",
-            "values": [ "payment" ]
-        }
     },
     {
       "name": "probability-policy-15",
@@ -44,8 +25,192 @@
       "probabilistic": { "sampling_percentage": 15 }
     },
     {
-      "name": "probability-policy-50",
-      "type": "probabilistic",
-      "probabilistic": { "sampling_percentage": 50 }
+      "name": "high_price_requests",
+      "type": "numeric_attribute",
+      "numeric_attribute": {
+        "key": "total",
+        "min_value": 500
+      }
+    },
+    {
+      "name": "high_items_requests",
+      "type": "numeric_attribute",
+      "numeric_attribute": {
+        "key": "number.of.products",
+        "min_value": 100
+      }
+    },
+    {
+      "name": "declined_payment",
+      "type": "string_attribute",
+      "string_attribute":{
+        "key": "payment.status",
+        "values": ["declined"]
+      }
+    },
+    {
+      "name": "large_traces",
+      "type": "span_count",
+      "span_count":{
+        "min_spans": 15
+      }
+    },
+    {
+      "name": "change_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "http_data_operations",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.method",
+              "values": ["POST", "PUT", "DELETE"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 15
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "slow-db-queries",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "is-db-span",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "db.system"
+            }
+          },
+          {
+            "name": "db-query-latency",
+            "type": "latency",
+            "latency":{"threshold_ms": 500}
+          }
+        ]
+      }
+    },
+    {
+      "name": "checkout_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "checkout_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/checkout/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "backend_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "backend_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/backend/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "cart_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "cart_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/cart/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "orders_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "orders_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/orders/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "products_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "cproducts_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/products/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
     }
 ]
