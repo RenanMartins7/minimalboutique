@@ -168,6 +168,7 @@ if __name__ == "__main__":
         print(f"Hash: {config_hash}, reward: {reward}, Número de traces: {number_of_traces}")
 
         agent.save_policies()
+        agent.save_history(reward, number_of_traces)
 
         time.sleep(60)
 

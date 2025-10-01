@@ -7,3 +7,4 @@ opentelemetry-exporter-otlp-proto-http
 opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests
 opentelemetry-instrumentation-sqlalchemy
+psycopg2-binary

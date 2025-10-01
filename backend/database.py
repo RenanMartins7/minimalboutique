@@ -1,31 +1,18 @@
-from flask_sqlalchemy import SQLAlchemy 
+from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+import os
 
 db = SQLAlchemy()
 
 def init_db(app: Flask):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+    # Pega a URL do banco do environment (configurada no Deployment)
+    database_url = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/meubanco')
+    
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
     db.init_app(app)
+
+    # Cria as tabelas no PostgreSQL
     with app.app_context():
         db.create_all()
-
-
-
-
-# import sqlite3
-
-
-
-# def get_db_connection():
-#     conn = sqlite3.connect('store.db')
-#     conn.row_factory = sqlite3.Row
-#     return conn
-
-# def init_db():
-#     conn = get_db_connection()
-#     with open('schema.sql') as f:
-#         conn.executescript(f.read())
-#     conn.close()
-
-

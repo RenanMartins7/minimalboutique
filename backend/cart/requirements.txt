@@ -11,3 +11,4 @@ opentelemetry-instrumentation-sqlalchemy
 grpcio
 grpcio-tools
 protobuf
+psycopg2-binary
