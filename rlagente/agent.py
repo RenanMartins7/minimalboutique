@@ -3,7 +3,7 @@ import json
 import os
 
 class ReinforceAgent:
-    def __init__(self,num_policies, lr=0.05, baseline_decay = 0.9, policies_path='policy_probabilities.json'):
+    def __init__(self,num_policies, lr=0.1, baseline_decay = 0.9, policies_path='policy_probabilities.json'):
         self.num_policies = num_policies
         self.policies_path = policies_path
 
@@ -47,18 +47,27 @@ class ReinforceAgent:
         with open(self.policies_path, "w") as f:
             json.dump(self.probs.tolist(), f)
 
-    def save_history(reward, number_of_traces, path='histórico_recompensas.json'):
-        if not os.path.exists(path):
-            with open(path, "w") as f:
-                json.dump([], f)
-            
-        with open(path, "r") as f:
-            historico = json.load(f)
-            
-        historico.append([reward, number_of_traces])
+
+    def save_history(self, reward, number_of_traces, path="historico.json"):
+        historico = []
+
+        if os.path.exists(path):
+            with open(path, "r") as f:
+                try:
+                    content = f.read().strip()
+                    if content:  # só tenta decodificar se tiver algo
+                        historico = json.loads(content)
+                except json.JSONDecodeError:
+                    historico = []  # arquivo corrompido ou inválido
+
+        historico.append({
+            "reward": reward,
+            "number_of_traces": number_of_traces,
+        })
 
         with open(path, "w") as f:
             json.dump(historico, f, indent=2)
+
         
 
 
