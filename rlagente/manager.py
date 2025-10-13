@@ -121,7 +121,7 @@ def wait_for_rollout_ready():
         time.sleep(2)
 #######################################################################################################################################
 #Função de reward para o conjunto de regras definido
-def reward_function(entropy, traces, alpha=1.0, beta=1.0, C = 6000, lambd=3.0):
+def reward_function(entropy, traces, alpha=1.0, beta=1.0, C = 10000, lambd=3.0):
     norm_entropy = entropy/10
 
     trace_penalty = 1 - math.exp(-lambd *(traces/C))

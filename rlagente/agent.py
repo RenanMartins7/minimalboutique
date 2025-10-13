@@ -3,7 +3,7 @@ import json
 import os
 
 class ReinforceAgent:
-    def __init__(self,num_policies, lr=0.1, baseline_decay = 0.9, policies_path='policy_probabilities.json'):
+    def __init__(self,num_policies, lr=0.2, baseline_decay = 0.9, policies_path='policy_probabilities.json'):
         self.num_policies = num_policies
         self.policies_path = policies_path
 

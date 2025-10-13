@@ -13,10 +13,10 @@ def init_db(app: Flask):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        "pool_size": 20,       # conexões fixas no pool
+        "pool_size": 80,       # conexões fixas no pool
         "max_overflow": 40,    # extras além do pool
-        "pool_timeout": 60,    # espera até liberar uma conexão
-        "pool_recycle": 1800   # recicla conexões a cada 30 min
+        "pool_timeout": 120,    # espera até liberar uma conexão
+        "pool_recycle": 180   # recicla conexões a cada 30 min
     }
 
     db.init_app(app)

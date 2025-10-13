@@ -90,29 +90,46 @@ def clear_cart():
         db.session.rollback()
         return jsonify({"error": "Falha ao limpar o carrinho", "details": str(e)}), 500
 
-@cart_bp.route('/', methods = ['GET'])
+@cart_bp.route('/', methods=['GET'])
 def get_cart():
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'error': 'Usuário não encontrado'}), 401
+
     span = trace.get_current_span()
     span.set_attribute("user.id", user_id)
 
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
-    result = []
-    for item in cart_items:
-        try:
-            product_response = requests.get(f'http://products:5001/products/{item.product_id}')
-            if product_response.status_code == 200:
-                product_data = product_response.json()
-                result.append({
-                    "id" : item.id,
-                    "product_id": item.product_id,
-                    "product_name": product_data.get('name'),
-                    "quantity": item.quantity,
-                    "price": product_data.get('price')
-                })
-        except requests.exceptions.RequestException as e:
-            return jsonify({'error': f'Erro ao buscar dados do produto {item.product_id}'}), 503
+    if not cart_items:
+        return jsonify([])
 
-    return jsonify(result)
+    # Extrai os IDs dos produtos do carrinho
+    product_ids = [item.product_id for item in cart_items]
+    span.set_attribute("cart.product.count", len(product_ids))
+
+    try:
+        # Faz uma única requisição para buscar todos os produtos
+        response = requests.post(f"{PRODUCTS_API_URL}/batch", json={"ids": product_ids})
+        if response.status_code != 200:
+            return jsonify({'error': 'Falha ao buscar produtos'}), response.status_code
+
+        products_data = response.json()
+        products_map = {p['id']: p for p in products_data}  # Mapeia por ID
+
+        # Monta o resultado unindo dados do carrinho + produtos
+        result = []
+        for item in cart_items:
+            product = products_map.get(item.product_id)
+            if product:  # Ignora produtos inexistentes
+                result.append({
+                    "id": item.id,
+                    "product_id": item.product_id,
+                    "product_name": product.get('name'),
+                    "quantity": item.quantity,
+                    "price": product.get('price')
+                })
+
+        return jsonify(result)
+    
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Erro ao comunicar com o serviço de produtos', 'details': str(e)}), 503

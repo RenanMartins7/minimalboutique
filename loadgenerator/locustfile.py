@@ -11,8 +11,13 @@ class UserBehavior(TaskSet):
     token = None
 
     def on_start(self):
-        self.register_and_login()
-        self.fetch_product_ids()
+        try:
+            self.register_and_login()
+            self.fetch_product_ids()
+        except Exception as e:
+            logging.error(f"[FATAL] Erro ao iniciar usuário: {e}")
+            self.interrupt(reschedule=True)
+
 
     def check_response(self, response, expected_status=200):
         if response.status_code != expected_status:
@@ -23,6 +28,8 @@ class UserBehavior(TaskSet):
             )
             logging.error(error_msg)
             response.failure(error_msg)
+            if response.status_code >= 500:
+                self.interrupt(reschedule=True)
             return False
         else:
             response.success()
@@ -60,8 +67,18 @@ class UserBehavior(TaskSet):
                         response.failure("Nenhum produto encontrado")
         except Exception as e:
             logging.error(f"Exceção ao buscar produtos: {e}")
+    
+    def safe_task(fn):
+        def wrapper(self, *args, **kwargs):
+            try:
+                fn(self, *args, **kwargs)
+            except Exception as e:
+                logging.error(f"[EXCEPTION] {fn.__name__}: {e}")
+                self.interrupt(reschedule=True)
+        return wrapper
 
     @task(10)
+    @safe_task
     def browse_products(self):
         with self.client.get("/products/", name="/products", catch_response=True) as response:
             self.check_response(response, expected_status=200)
@@ -71,6 +88,7 @@ class UserBehavior(TaskSet):
                 self.check_response(response, expected_status=200)
 
     @task(5)
+    @safe_task
     def add_to_cart(self):
         if not self.product_ids:
             return
@@ -80,11 +98,13 @@ class UserBehavior(TaskSet):
             self.check_response(response, expected_status=201)
 
     @task(3)
+    @safe_task
     def view_cart(self):
         with self.client.get("/cart/", name="/cart", catch_response=True) as response:
             self.check_response(response, expected_status=200)
 
     @task(2)
+    @safe_task
     def checkout_and_pay(self):
         if not self.product_ids:
             return
@@ -106,6 +126,7 @@ class UserBehavior(TaskSet):
                 self.check_response(response, expected_status=200)
 
     @task(1)
+    @safe_task
     def view_orders(self):
         with self.client.get("/orders/", name="/orders", catch_response=True) as response:
             self.check_response(response, expected_status=200)

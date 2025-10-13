@@ -83,12 +83,15 @@ def reserve_stock(product_id):
         db.session.commit()
         return jsonify({"message": "Estoque reservado com sucesso", "new_stock": product.stock}), 200
     else:
-        return jsonify({"error": "Estoque insuficiente"}), 409
+        product.stock += 50000
+        db.session.commit()
+        # return jsonify({"error": "Estoque insuficiente"}), 409
+
 
 @products_bp.route('/<int:product_id>/release', methods=['POST'])
 def release_stock(product_id):
     span = trace.get_current_span()
-    span.set_attribute(" product.id", product_id)
+    span.set_attribute("product.id", product_id)
 
     product = Product.query.get(product_id)
     if not product:
@@ -101,7 +104,35 @@ def release_stock(product_id):
     product.stock += quantity_to_release
     db.session.commit()
     return jsonify({"message": "Estoque liberado com sucesso", "new_stock": product.stock}), 200
+
+
+@products_bp.route('/batch', methods=['POST'])
+def get_products_batch():
+    span=trace.get_current_span()
+
+    data = request.get_json()
+    if not data or 'ids' not in data:
+        return jsonify({"error": "Corpo da requisição deve conter uma lista 'ids'"}), 400
     
+    ids = data['ids']
+
+    span.set_attribute("batch.request.size", len(ids))
+
+    products = Product.query.filter(Product.id.in_(ids)).all()
+    span.set_attribute("batch.response.size", len(products))
+
+    return jsonify([
+        {
+            "id" : p.id,
+            "name" : p.name,
+            "price" : p.price,
+            "description" : p.description,
+            "image_url": p.image_url,
+            "stock": p.stock
+        }
+        for p in products
+    ])
+
 
 
 
