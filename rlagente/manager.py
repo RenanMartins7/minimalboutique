@@ -36,8 +36,8 @@ def generate_config(selected_policies, config_hash):
         "processors": {
             "tail_sampling": {
                 "decision_wait": "10s",
-                "num_traces": 2000,
-                "expected_new_traces_per_sec": 100,
+                "num_traces": 10000,
+                "expected_new_traces_per_sec": 500,
                 "policies": selected_policies
             },
             
@@ -149,7 +149,7 @@ if __name__ == "__main__":
         selected_policies.append({
             "name": "default-probabilistic-policy",
             "type": "probabilistic",
-            "probabilistic": {"sampling_percentage": 1.0}
+            "probabilistic": {"sampling_percentage": 0.1}
         })
         
         policies_str = json.dumps(selected_policies, sort_keys = True)

@@ -4,6 +4,6 @@ WORKDIR /loadgen
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY locustfile.py .
+COPY . .
 
-ENTRYPOINT ["locust", "--host", "http://backend:5000", "--headless", "-u", "500", "-r", "10"]
+ENTRYPOINT ["locust", "--host", "http://backend:5000", "--headless", "-u", "1000", "-r", "20"]
