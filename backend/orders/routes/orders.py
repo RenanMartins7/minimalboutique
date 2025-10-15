@@ -46,7 +46,6 @@ def create_order():
 # Endpoint de busca modificado
 @orders_bp.route('/', methods=['GET'])
 def get_orders():
-
     span = trace.get_current_span()
 
     user_id = request.args.get('user_id')
@@ -54,30 +53,52 @@ def get_orders():
         return jsonify({'error': 'user_id é obrigatório'}), 400
     span.set_attribute("user.id", user_id)
 
+    # Busca os pedidos do usuário
     orders = Order.query.filter_by(user_id=user_id).order_by(Order.id.desc()).all()
     span.set_attribute("number.of.orders", len(orders))
-    result = []
 
+    # Extrai todos os IDs de produtos dos itens dos pedidos
+    product_ids = list({item.product_id for order in orders for item in order.items})
+    products_map = {}
+
+    if product_ids:
+        try:
+            # Faz uma única requisição batch para buscar todos os produtos
+            response = requests.post(
+                "http://products:5001/products/batch",
+                json={"ids": product_ids},
+                timeout=5
+            )
+            if response.status_code == 200:
+                products = response.json()
+                products_map = {p["id"]: p for p in products}
+                span.set_attribute("batch.products.returned", len(products))
+            else:
+                print(f"[WARN] Falha ao buscar produtos em batch: {response.status_code}")
+        except requests.exceptions.RequestException as e:
+            print(f"[ERRO] Falha na requisição batch para produtos: {e}")
+
+    # Monta o resultado final
+    result = []
     for order in orders:
         items_data = []
         for item in order.items:
-            try:
-                product_response = requests.get(f'http://products:5001/products/{item.product_id}')
-                product_name = "Produto Desconhecido"
-                if product_response.status_code == 200:
-                    product_data = product_response.json()
-                    product_name = product_data.get('name', 'Nome não encontrado')
-
-                items_data.append({
-                    'product_name': product_name,
-                    'quantity': item.quantity,
-                    'price': item.price
-                })
-            except requests.exceptions.RequestException as e:
-                print(f"ERRO ao buscar produto {item.product_id} para o pedido #{order.id}: {e}")
-                items_data.append({'product_name': 'Erro ao carregar produto', 'quantity': item.quantity, 'price': item.price})
-                
-        result.append({'id': order.id, 'total': order.total, 'status':order.status, 'items': items_data})
+            product_data = products_map.get(item.product_id)
+            if product_data:
+                product_name = product_data.get('name', 'Nome não encontrado')
+            else:
+                product_name = 'Produto não encontrado ou erro no serviço'
+            items_data.append({
+                'product_name': product_name,
+                'quantity': item.quantity,
+                'price': item.price
+            })
+        result.append({
+            'id': order.id,
+            'total': order.total,
+            'status': order.status,
+            'items': items_data
+        })
 
     return jsonify(result)
 

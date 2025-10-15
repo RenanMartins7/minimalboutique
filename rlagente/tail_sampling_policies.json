@@ -1,8 +1,23 @@
 [
     {
-      "name": "errors-policy",
-      "type": "status_code",
-      "status_code": { "status_codes": ["ERROR"] }
+      "name": "errors_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "errors_policy",
+            "type": "status_code",
+            "status_code": {"status_codes": ["ERROR"]}
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1.0
+            }
+          }
+        ]
+      }
     },
     {
       "name": "latency-policy-500ms",
@@ -10,20 +25,17 @@
       "latency": { "threshold_ms": 500 }
     },
     {
-      "name": "latency-policy-100ms",
+      "name": "latency-policy-500ms",
       "type": "latency",
-      "latency": { "threshold_ms": 100 }
+      "latency": { "upper_threshold_ms": 0.1 }
     },
     {
-      "name": "latency-policy-1000ms",
-      "type": "latency",
-      "latency": { "threshold_ms": 1000 }
-    },
-    {
-      "name": "probability-policy-15",
-      "type": "probabilistic",
-      "probabilistic": { "sampling_percentage": 15 }
-    },
+      "name": "large_traces",
+      "type": "span_count",
+      "span_count":{
+        "min_spans": 40
+      }
+    },    
     {
       "name": "high_price_requests",
       "type": "numeric_attribute",
@@ -33,27 +45,61 @@
       }
     },
     {
-      "name": "high_items_requests",
+      "name": "high_volume_itens",
       "type": "numeric_attribute",
       "numeric_attribute": {
-        "key": "number.of.products",
-        "min_value": 100
+        "key": "stock.itens",
+        "min_value": 10
       }
     },
     {
-      "name": "declined_payment",
-      "type": "string_attribute",
-      "string_attribute":{
-        "key": "payment.status",
-        "values": ["declined"]
+      "name": "high_number_orders",
+      "type": "numeric_attribute",
+      "numeric_attribute": {
+        "key": "number.of.orders",
+        "min_value": 4
       }
     },
     {
-      "name": "large_traces",
-      "type": "span_count",
-      "span_count":{
-        "min_spans": 15
+      "name": "declined_payment_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "declined_payment",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "payment.status",
+              "values": ["declined"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 10.0
+            }
+          }
+        ]
       }
+    },
+    {
+      "name": "batch_size",
+      "type": "numeric_attribute",
+      "numeric_attribute": {
+        "key": "batch.request.size",
+        "min_value": 3
+      }
+    },
+    {
+      "name": "probability-policy-15",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 10 }
+    },
+    {
+      "name": "probability-policy-15",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 20 }
     },
     {
       "name": "change_percent",
@@ -72,13 +118,13 @@
             "name": "sample_percent",
             "type": "probabilistic",
             "probabilistic":{
-              "sampling_percentage": 15
+              "sampling_percentage": 1
             }
           }
         ]
       }
     },
-    {
+        {
       "name": "slow-db-queries",
       "type": "and",
       "and":{
@@ -98,99 +144,7 @@
         ]
       }
     },
-    {
-      "name": "checkout_percent",
-      "type": "and",
-      "and":{
-        "and_sub_policy": [
-          {
-            "name": "checkout_service",
-            "type": "string_attribute",
-            "string_attribute":{
-              "key": "http.route",
-              "values": ["/checkout/"]
-            }
-          },
-          {
-            "name": "sample_percent",
-            "type": "probabilistic",
-            "probabilistic":{
-              "sampling_percentage": 1
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "backend_percent",
-      "type": "and",
-      "and":{
-        "and_sub_policy": [
-          {
-            "name": "backend_service",
-            "type": "string_attribute",
-            "string_attribute":{
-              "key": "http.route",
-              "values": ["/backend/"]
-            }
-          },
-          {
-            "name": "sample_percent",
-            "type": "probabilistic",
-            "probabilistic":{
-              "sampling_percentage": 1
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "cart_percent",
-      "type": "and",
-      "and":{
-        "and_sub_policy": [
-          {
-            "name": "cart_service",
-            "type": "string_attribute",
-            "string_attribute":{
-              "key": "http.route",
-              "values": ["/cart/"]
-            }
-          },
-          {
-            "name": "sample_percent",
-            "type": "probabilistic",
-            "probabilistic":{
-              "sampling_percentage": 1
-            }
-          }
-        ]
-      }
-    },
-    {
-      "name": "orders_percent",
-      "type": "and",
-      "and":{
-        "and_sub_policy": [
-          {
-            "name": "orders_service",
-            "type": "string_attribute",
-            "string_attribute":{
-              "key": "http.route",
-              "values": ["/orders/"]
-            }
-          },
-          {
-            "name": "sample_percent",
-            "type": "probabilistic",
-            "probabilistic":{
-              "sampling_percentage": 1
-            }
-          }
-        ]
-      }
-    },
-    {
+        {
       "name": "products_percent",
       "type": "and",
       "and":{

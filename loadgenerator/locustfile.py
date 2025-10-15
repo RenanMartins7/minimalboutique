@@ -23,7 +23,7 @@ class UserBehavior(TaskSet):
         if response.status_code != expected_status:
             error_msg = (
                 f"[FAIL] {response.request.method} {response.request.path_url} | "
-                f"expected={expected_status}, got={response.status_code} "
+                f"expected={expected_status}, got={response.status_code} |"
                 # f"response={response.text}"
             )
             logging.error(error_msg)
