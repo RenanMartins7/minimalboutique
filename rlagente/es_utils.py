@@ -46,31 +46,126 @@ def get_spans_by_hash(config_hash, scroll_size=5000):
     #print(f"Total de spans encontrados para hash {config_hash}: {len(spans)}")
     return spans
 
-def trace_to_string(spans, use_hash=True):
+
+
+
+def trace_to_string(spans, use_hash=True, tag_blacklist=None):
     """
-    Constrói uma representação determinística de um trace a partir de sua lista de spans.
-    Se use_hash=True, retorna um hash SHA256 curto.
+    Constrói uma string determinística representando a hierarquia de um trace.
+    - Cada span é um bloco: "Serviço:Operação|tag1=valor1|tag2=valor2|..."
+    - A hierarquia é respeitada: pai → filhos (em ordem de startTime)
+    - Tags que estão na 'tag_blacklist' são ignoradas.
+    - Se use_hash=True, retorna o hash SHA256 da string final.
     """
-    spans_repr = []
-    for span in sorted(spans, key=lambda s: (s.get("startTime", 0), s.get("spanID", ""))):
-        span_repr = {
-            "operationName": span.get("operationName"),
-            "serviceName": span.get("process", {}).get("serviceName"),
-            "tags": {
-                tag["key"]: str(tag["value"])
-                for tag in sorted(span.get("tags", []), key=lambda t: t["key"])
-            }
+
+    if tag_blacklist is None:
+        tag_blacklist = {
+            "otel.status_code",
+            "span.kind",
+            "thread.id",
+            "thread.name",
+            "http.status_code",
+            "peer.ipv4",
+            "peer.ipv6",
+            "peer.port",
+            "peer.service",
+            "pid",
+            "telemetry.sdk.language",
+            "telemetry.sdk.name",
+            "telemetry.sdk.version",
+            "net.peer.port",
+            "user.id",
+            "order.id"
+
         }
-        spans_repr.append(span_repr)
 
-    # String JSON determinística
-    canonical = json.dumps(spans_repr, sort_keys=True, separators=(",", ":"))
+    # Mapeia spans por ID e constrói estrutura pai → filhos
+    spans_by_id = {s['spanID']: s for s in spans}
+    children_map = {s['spanID']: [] for s in spans}
+    root_spans = []
 
+    for span in spans:
+        parent_id = None
+        references = span.get("references", [])
+        for ref in references:
+            if ref.get("refType") == "CHILD_OF":
+                parent_id = ref.get("spanID")
+                break
+
+        if parent_id and parent_id in spans_by_id:
+            children_map[parent_id].append(span)
+        else:
+            root_spans.append(span)
+
+    # Ordena spans raiz
+    root_spans.sort(key=lambda s: s.get("startTime", 0))
+
+    def build_span_block(span, level=0):
+        """
+        Constrói recursivamente um bloco de texto para um span e seus filhos.
+        """
+        indent = "  " * level  # Apenas para facilitar visualização e manter determinismo
+        service = span.get("process", {}).get("serviceName", "unknown")
+        operation = span.get("operationName", "unknown")
+
+        # Filtra e ordena tags
+        tags = []
+        for tag in sorted(span.get("tags", []), key=lambda t: t["key"]):
+            k = tag["key"]
+            if k not in tag_blacklist:
+                v = str(tag["value"])
+                tags.append(f"{k}={v}")
+
+        # Monta o bloco do span
+        span_str = f"{indent}{service}:{operation}"
+        if tags:
+            span_str += "|" + "|".join(tags)
+
+        # Concatena recursivamente os filhos
+        children = sorted(children_map.get(span["spanID"], []), key=lambda s: s.get("startTime", 0))
+        for child in children:
+            span_str += "\n" + build_span_block(child, level + 1)
+
+        return span_str
+
+    # Constrói a string completa (ordem determinística dos spans raiz)
+    full_str_parts = []
+    for root in root_spans:
+        full_str_parts.append(build_span_block(root))
+
+    canonical_str = "\n".join(full_str_parts)
+
+    # Retorna o hash se desejado
     if use_hash:
-        # Retorna só o hash SHA256 (mais compacto e eficiente p/ entropia)
-        return hashlib.sha256(canonical.encode()).hexdigest()
+        return hashlib.sha256(canonical_str.encode()).hexdigest()
     else:
-        return canonical
+        return canonical_str
+
+# def trace_to_string(spans, use_hash=True):
+#     """
+#     Constrói uma representação determinística de um trace a partir de sua lista de spans.
+#     Se use_hash=True, retorna um hash SHA256 curto.
+#     """
+#     spans_repr = []
+#     for span in sorted(spans, key=lambda s: (s.get("startTime", 0), s.get("spanID", ""))):
+#         span_repr = {
+#             "operationName": span.get("operationName"),
+#             "serviceName": span.get("process", {}).get("serviceName"),
+#             "tags": {
+#                 tag["key"]: str(tag["value"])
+#                 for tag in sorted(span.get("tags", []), key=lambda t: t["key"])
+#             }
+#         }
+#         spans_repr.append(span_repr)
+
+#     # String JSON determinística
+#     canonical = json.dumps(spans_repr, sort_keys=True, separators=(",", ":"))
+
+#     if use_hash:
+#         # Retorna só o hash SHA256 (mais compacto e eficiente p/ entropia)
+#         return hashlib.sha256(canonical.encode()).hexdigest()
+#     else:
+#         return canonical
 
 
 def calcular_entropia(traces):

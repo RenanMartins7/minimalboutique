@@ -1,0 +1,2302 @@
+[
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.7524679804258305,
+    "number_of_traces": 413
+  },
+  {
+    "reward": 0.7569744252455974,
+    "number_of_traces": 661
+  },
+  {
+    "reward": 0.5011320254228527,
+    "number_of_traces": 3936
+  },
+  {
+    "reward": 0.5254108672434987,
+    "number_of_traces": 3529
+  },
+  {
+    "reward": 0.38468776474852395,
+    "number_of_traces": 8315
+  },
+  {
+    "reward": 0.3833314192067333,
+    "number_of_traces": 8508
+  },
+  {
+    "reward": 0.5180902765577562,
+    "number_of_traces": 3647
+  },
+  {
+    "reward": 0.3926172326011995,
+    "number_of_traces": 7504
+  },
+  {
+    "reward": 0.6958373362284355,
+    "number_of_traces": 1467
+  },
+  {
+    "reward": 0.42465667969876986,
+    "number_of_traces": 5838
+  },
+  {
+    "reward": 0.6466864830209367,
+    "number_of_traces": 1986
+  },
+  {
+    "reward": 0.7325054344084101,
+    "number_of_traces": 1061
+  },
+  {
+    "reward": 0.7494562631024991,
+    "number_of_traces": 827
+  },
+  {
+    "reward": 0.6875588739806441,
+    "number_of_traces": 1554
+  },
+  {
+    "reward": 0.46398778729879386,
+    "number_of_traces": 4700
+  },
+  {
+    "reward": 0.60189459638421,
+    "number_of_traces": 2491
+  },
+  {
+    "reward": 0.7275514075105347,
+    "number_of_traces": 1120
+  },
+  {
+    "reward": 0.47131148890324437,
+    "number_of_traces": 4533
+  },
+  {
+    "reward": 0.6845054529403937,
+    "number_of_traces": 1586
+  },
+  {
+    "reward": 0.4732691221392409,
+    "number_of_traces": 4490
+  },
+  {
+    "reward": 0.5108038202339387,
+    "number_of_traces": 3769
+  },
+  {
+    "reward": 0.7405252549611658,
+    "number_of_traces": 959
+  },
+  {
+    "reward": 0.6979216703544258,
+    "number_of_traces": 1445
+  },
+  {
+    "reward": 0.63384633251303,
+    "number_of_traces": 2126
+  },
+  {
+    "reward": 0.6300519043438184,
+    "number_of_traces": 2168
+  },
+  {
+    "reward": 0.4934869486375426,
+    "number_of_traces": 4080
+  },
+  {
+    "reward": 0.6922272035321976,
+    "number_of_traces": 1505
+  },
+  {
+    "reward": 0.7390166128918924,
+    "number_of_traces": 979
+  },
+  {
+    "reward": 0.6167413432271905,
+    "number_of_traces": 2318
+  },
+  {
+    "reward": 0.5540000787678503,
+    "number_of_traces": 3105
+  },
+  {
+    "reward": 0.6869865550325298,
+    "number_of_traces": 1560
+  },
+  {
+    "reward": 0.7417065396737388,
+    "number_of_traces": 943
+  },
+  {
+    "reward": 0.6070651999644481,
+    "number_of_traces": 2430
+  },
+  {
+    "reward": 0.6454825799583014,
+    "number_of_traces": 1999
+  },
+  {
+    "reward": 0.59771009626301,
+    "number_of_traces": 2541
+  },
+  {
+    "reward": 0.6542353146776447,
+    "number_of_traces": 1905
+  },
+  {
+    "reward": 0.7098240866211942,
+    "number_of_traces": 1318
+  },
+  {
+    "reward": 0.7404506517998917,
+    "number_of_traces": 960
+  },
+  {
+    "reward": 0.7581089622441479,
+    "number_of_traces": 604
+  },
+  {
+    "reward": 0.5753535495339659,
+    "number_of_traces": 2819
+  },
+  {
+    "reward": 0.584252654339253,
+    "number_of_traces": 2706
+  },
+  {
+    "reward": 0.620693530826624,
+    "number_of_traces": 2273
+  },
+  {
+    "reward": 0.6594974596510563,
+    "number_of_traces": 1849
+  },
+  {
+    "reward": 0.6643157367925072,
+    "number_of_traces": 1798
+  },
+  {
+    "reward": 0.5837736027223015,
+    "number_of_traces": 2712
+  },
+  {
+    "reward": 0.5582675571782256,
+    "number_of_traces": 3046
+  },
+  {
+    "reward": 0.7217129984396572,
+    "number_of_traces": 1187
+  },
+  {
+    "reward": 0.5742691642169123,
+    "number_of_traces": 2833
+  },
+  {
+    "reward": 0.6705807252300603,
+    "number_of_traces": 1732
+  },
+  {
+    "reward": 0.7389972602587204,
+    "number_of_traces": 311
+  },
+  {
+    "reward": 0.5790233195226022,
+    "number_of_traces": 2772
+  },
+  {
+    "reward": 0.554287143072867,
+    "number_of_traces": 3101
+  },
+  {
+    "reward": 0.6702953567454508,
+    "number_of_traces": 1735
+  },
+  {
+    "reward": 0.7108408895071743,
+    "number_of_traces": 1307
+  },
+  {
+    "reward": 0.6346630528191124,
+    "number_of_traces": 2117
+  },
+  {
+    "reward": 0.5765198449093134,
+    "number_of_traces": 2804
+  },
+  {
+    "reward": 0.734460626026499,
+    "number_of_traces": 1037
+  },
+  {
+    "reward": 0.7342882323416703,
+    "number_of_traces": 1031
+  },
+  {
+    "reward": 0.6341184324083872,
+    "number_of_traces": 2123
+  },
+  {
+    "reward": 0.7413595133704157,
+    "number_of_traces": 324
+  },
+  {
+    "reward": 0.5961328305803222,
+    "number_of_traces": 2560
+  },
+  {
+    "reward": 0.6210465739303452,
+    "number_of_traces": 2269
+  },
+  {
+    "reward": 0.622195898629094,
+    "number_of_traces": 2256
+  },
+  {
+    "reward": 0.6665904915552159,
+    "number_of_traces": 1774
+  },
+  {
+    "reward": 0.7095462993355707,
+    "number_of_traces": 1321
+  },
+  {
+    "reward": 0.5532838523367818,
+    "number_of_traces": 3115
+  },
+  {
+    "reward": 0.7177795185866297,
+    "number_of_traces": 1231
+  },
+  {
+    "reward": 0.6284344436813529,
+    "number_of_traces": 2186
+  },
+  {
+    "reward": 0.6628017164182398,
+    "number_of_traces": 1814
+  },
+  {
+    "reward": 0.7135990023752613,
+    "number_of_traces": 1277
+  },
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.7255701477511046,
+    "number_of_traces": 1143
+  },
+  {
+    "reward": 0.5481173758895849,
+    "number_of_traces": 3188
+  },
+  {
+    "reward": 0.4935926948562177,
+    "number_of_traces": 4078
+  },
+  {
+    "reward": 0.7051700946097723,
+    "number_of_traces": 1368
+  },
+  {
+    "reward": 0.757818086112114,
+    "number_of_traces": 624
+  },
+  {
+    "reward": 0.5344512612251527,
+    "number_of_traces": 3389
+  },
+  {
+    "reward": 0.7148779630291303,
+    "number_of_traces": 1263
+  },
+  {
+    "reward": 0.7250491597115384,
+    "number_of_traces": 1149
+  },
+  {
+    "reward": 0.6199882893976608,
+    "number_of_traces": 2281
+  },
+  {
+    "reward": 0.5205414941041173,
+    "number_of_traces": 3607
+  },
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.6719130742878677,
+    "number_of_traces": 1718
+  },
+  {
+    "reward": 0.7458427800681107,
+    "number_of_traces": 884
+  },
+  {
+    "reward": 0.5447794821900966,
+    "number_of_traces": 3236
+  },
+  {
+    "reward": 0.7088045676890633,
+    "number_of_traces": 1329
+  },
+  {
+    "reward": 0.6002987414920784,
+    "number_of_traces": 2510
+  },
+  {
+    "reward": 0.5328738285793333,
+    "number_of_traces": 3413
+  },
+  {
+    "reward": 0.66308543581287,
+    "number_of_traces": 1811
+  },
+  {
+    "reward": 0.514471253408024,
+    "number_of_traces": 3707
+  },
+  {
+    "reward": 0.544365539946995,
+    "number_of_traces": 3242
+  },
+  {
+    "reward": 0.7066646884320172,
+    "number_of_traces": 1352
+  },
+  {
+    "reward": 0.5315680772460079,
+    "number_of_traces": 3433
+  },
+  {
+    "reward": 0.7192178958417781,
+    "number_of_traces": 1215
+  },
+  {
+    "reward": 0.7147867920514612,
+    "number_of_traces": 1264
+  },
+  {
+    "reward": 0.5435398477760573,
+    "number_of_traces": 3254
+  },
+  {
+    "reward": 0.4895725967060627,
+    "number_of_traces": 4155
+  },
+  {
+    "reward": 0.5927535785222723,
+    "number_of_traces": 2601
+  },
+  {
+    "reward": 0.7500454985159921,
+    "number_of_traces": 817
+  },
+  {
+    "reward": 0.5301409403110992,
+    "number_of_traces": 3455
+  },
+  {
+    "reward": 0.7149691051805731,
+    "number_of_traces": 1262
+  },
+  {
+    "reward": 0.7193075010264453,
+    "number_of_traces": 1214
+  },
+  {
+    "reward": 0.5291090543949377,
+    "number_of_traces": 3471
+  },
+  {
+    "reward": 0.48956410739284983,
+    "number_of_traces": 4146
+  },
+  {
+    "reward": 0.5109795979961586,
+    "number_of_traces": 3766
+  },
+  {
+    "reward": 0.5254108672434987,
+    "number_of_traces": 3529
+  },
+  {
+    "reward": 0.5305292061720843,
+    "number_of_traces": 3449
+  },
+  {
+    "reward": 0.712222797951035,
+    "number_of_traces": 1292
+  },
+  {
+    "reward": 0.5193733052081858,
+    "number_of_traces": 3626
+  },
+  {
+    "reward": 0.7422182884218318,
+    "number_of_traces": 933
+  },
+  {
+    "reward": 0.5068128413328499,
+    "number_of_traces": 3837
+  },
+  {
+    "reward": 0.6720082799463923,
+    "number_of_traces": 1717
+  },
+  {
+    "reward": 0.7554789440135072,
+    "number_of_traces": 706
+  },
+  {
+    "reward": 0.5188223923606705,
+    "number_of_traces": 3635
+  },
+  {
+    "reward": 0.5432652662126313,
+    "number_of_traces": 3258
+  },
+  {
+    "reward": 0.5151895353595284,
+    "number_of_traces": 3695
+  },
+  {
+    "reward": 0.5614227876138551,
+    "number_of_traces": 3003
+  },
+  {
+    "reward": 0.6242892759965101,
+    "number_of_traces": 2229
+  },
+  {
+    "reward": 0.7156971895870256,
+    "number_of_traces": 1254
+  },
+  {
+    "reward": 0.7181399267973452,
+    "number_of_traces": 1227
+  },
+  {
+    "reward": 0.6301419186028767,
+    "number_of_traces": 2167
+  },
+  {
+    "reward": 0.7285746019215429,
+    "number_of_traces": 1108
+  },
+  {
+    "reward": 0.5651394617356487,
+    "number_of_traces": 2953
+  },
+  {
+    "reward": 0.711209934293708,
+    "number_of_traces": 1303
+  },
+  {
+    "reward": 0.7573853712261736,
+    "number_of_traces": 645
+  },
+  {
+    "reward": 0.7115785935759357,
+    "number_of_traces": 1299
+  },
+  {
+    "reward": 0.7542116679691339,
+    "number_of_traces": 436
+  },
+  {
+    "reward": 0.663274623561677,
+    "number_of_traces": 1809
+  },
+  {
+    "reward": 0.7258300156143912,
+    "number_of_traces": 1140
+  },
+  {
+    "reward": 0.6653578000297808,
+    "number_of_traces": 1787
+  },
+  {
+    "reward": 0.5219028894373083,
+    "number_of_traces": 3585
+  },
+  {
+    "reward": 0.6278964757138966,
+    "number_of_traces": 2192
+  },
+  {
+    "reward": 0.5057798770471948,
+    "number_of_traces": 3856
+  },
+  {
+    "reward": 0.7111177089578995,
+    "number_of_traces": 1304
+  },
+  {
+    "reward": 0.6615731489372462,
+    "number_of_traces": 1827
+  },
+  {
+    "reward": 0.6301419186028767,
+    "number_of_traces": 2167
+  },
+  {
+    "reward": 0.7176893337052054,
+    "number_of_traces": 1232
+  },
+  {
+    "reward": 0.7135074407587281,
+    "number_of_traces": 1278
+  },
+  {
+    "reward": 0.7202907925693564,
+    "number_of_traces": 1203
+  },
+  {
+    "reward": 0.5049279728577554,
+    "number_of_traces": 3871
+  },
+  {
+    "reward": 0.7481736328290584,
+    "number_of_traces": 848
+  },
+  {
+    "reward": 0.7156971895870256,
+    "number_of_traces": 1254
+  },
+  {
+    "reward": 0.5196186584159797,
+    "number_of_traces": 3622
+  },
+  {
+    "reward": 0.704046206432457,
+    "number_of_traces": 1380
+  },
+  {
+    "reward": 0.7156284497215243,
+    "number_of_traces": 1253
+  },
+  {
+    "reward": 0.5046449328374132,
+    "number_of_traces": 3876
+  },
+  {
+    "reward": 0.51542957481888,
+    "number_of_traces": 3691
+  },
+  {
+    "reward": 0.7006611071714575,
+    "number_of_traces": 1416
+  },
+  {
+    "reward": 0.5484823263885519,
+    "number_of_traces": 3181
+  },
+  {
+    "reward": 0.533989988188924,
+    "number_of_traces": 3396
+  },
+  {
+    "reward": 0.4963671813036671,
+    "number_of_traces": 4026
+  },
+  {
+    "reward": 0.619548087478509,
+    "number_of_traces": 2286
+  },
+  {
+    "reward": 0.7225967996745339,
+    "number_of_traces": 1177
+  },
+  {
+    "reward": 0.5132802259138791,
+    "number_of_traces": 3727
+  },
+  {
+    "reward": 0.516151532480782,
+    "number_of_traces": 3679
+  },
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.5174823020519687,
+    "number_of_traces": 3657
+  },
+  {
+    "reward": 0.4977183585355336,
+    "number_of_traces": 4001
+  },
+  {
+    "reward": 0.48475568081277154,
+    "number_of_traces": 4250
+  },
+  {
+    "reward": 0.4110140259231675,
+    "number_of_traces": 6399
+  },
+  {
+    "reward": 0.7071307737411303,
+    "number_of_traces": 1347
+  },
+  {
+    "reward": 0.5089973921380876,
+    "number_of_traces": 3800
+  },
+  {
+    "reward": 0.627180115332906,
+    "number_of_traces": 2200
+  },
+  {
+    "reward": 0.755323658655687,
+    "number_of_traces": 710
+  },
+  {
+    "reward": 0.5332671085638274,
+    "number_of_traces": 3407
+  },
+  {
+    "reward": 0.6889891266305631,
+    "number_of_traces": 1539
+  },
+  {
+    "reward": 0.5132802259138791,
+    "number_of_traces": 3727
+  },
+  {
+    "reward": 0.4889041740865865,
+    "number_of_traces": 4168
+  },
+  {
+    "reward": 0.7564014648010747,
+    "number_of_traces": 680
+  },
+  {
+    "reward": 0.5179685274449886,
+    "number_of_traces": 3649
+  },
+  {
+    "reward": 0.530658786914367,
+    "number_of_traces": 3447
+  },
+  {
+    "reward": 0.5623841770227515,
+    "number_of_traces": 2990
+  },
+  {
+    "reward": 0.523405193738296,
+    "number_of_traces": 3560
+  },
+  {
+    "reward": 0.7085260643939542,
+    "number_of_traces": 1332
+  },
+  {
+    "reward": 0.7566229109816841,
+    "number_of_traces": 673
+  },
+  {
+    "reward": 0.7239147793014857,
+    "number_of_traces": 1162
+  },
+  {
+    "reward": 0.38328702999643494,
+    "number_of_traces": 8467
+  },
+  {
+    "reward": 0.6936535698097765,
+    "number_of_traces": 1490
+  },
+  {
+    "reward": 0.619548087478509,
+    "number_of_traces": 2286
+  },
+  {
+    "reward": 0.5026206945386368,
+    "number_of_traces": 3912
+  },
+  {
+    "reward": 0.7320108718830515,
+    "number_of_traces": 1067
+  },
+  {
+    "reward": 0.5755087894601629,
+    "number_of_traces": 2817
+  },
+  {
+    "reward": 0.484257703011022,
+    "number_of_traces": 4260
+  },
+  {
+    "reward": 0.512865166411814,
+    "number_of_traces": 3734
+  },
+  {
+    "reward": 0.49842543459753186,
+    "number_of_traces": 3988
+  },
+  {
+    "reward": 0.5006203096973765,
+    "number_of_traces": 3948
+  },
+  {
+    "reward": 0.7135074407587281,
+    "number_of_traces": 1278
+  },
+  {
+    "reward": 0.7064781210742435,
+    "number_of_traces": 1354
+  },
+  {
+    "reward": 0.5366390471419775,
+    "number_of_traces": 3356
+  },
+  {
+    "reward": 0.5272582819203651,
+    "number_of_traces": 3499
+  },
+  {
+    "reward": 0.5824997021088609,
+    "number_of_traces": 2728
+  },
+  {
+    "reward": 0.6328498405375377,
+    "number_of_traces": 2137
+  },
+  {
+    "reward": 0.7533044248081898,
+    "number_of_traces": 756
+  },
+  {
+    "reward": 0.5221492465313969,
+    "number_of_traces": 3578
+  },
+  {
+    "reward": 0.6170036954185749,
+    "number_of_traces": 2315
+  },
+  {
+    "reward": 0.7563029620454403,
+    "number_of_traces": 683
+  },
+  {
+    "reward": 0.6337556638106723,
+    "number_of_traces": 2127
+  },
+  {
+    "reward": 0.5159707842303096,
+    "number_of_traces": 3682
+  },
+  {
+    "reward": 0.722861149327628,
+    "number_of_traces": 1174
+  },
+  {
+    "reward": 0.5264244358320544,
+    "number_of_traces": 3513
+  },
+  {
+    "reward": 0.7085260643939542,
+    "number_of_traces": 1332
+  },
+  {
+    "reward": 0.6402310719301261,
+    "number_of_traces": 2056
+  },
+  {
+    "reward": 0.730764900776095,
+    "number_of_traces": 1082
+  },
+  {
+    "reward": 0.756714160088377,
+    "number_of_traces": 670
+  },
+  {
+    "reward": 0.5204798359621137,
+    "number_of_traces": 3608
+  },
+  {
+    "reward": 0.5207883208095098,
+    "number_of_traces": 3603
+  },
+  {
+    "reward": 0.4862095348402773,
+    "number_of_traces": 4221
+  },
+  {
+    "reward": 0.6865095417371452,
+    "number_of_traces": 1565
+  },
+  {
+    "reward": 0.7277224556217592,
+    "number_of_traces": 1118
+  },
+  {
+    "reward": 0.50853415283703,
+    "number_of_traces": 3808
+  },
+  {
+    "reward": 0.7067579437587599,
+    "number_of_traces": 1351
+  },
+  {
+    "reward": 0.7550940308097422,
+    "number_of_traces": 450
+  },
+  {
+    "reward": 0.7547956500218245,
+    "number_of_traces": 723
+  },
+  {
+    "reward": 0.7483604980421075,
+    "number_of_traces": 845
+  },
+  {
+    "reward": 0.7127739861145762,
+    "number_of_traces": 1286
+  },
+  {
+    "reward": 0.7087117543923197,
+    "number_of_traces": 1330
+  },
+  {
+    "reward": 0.7095462993355707,
+    "number_of_traces": 1321
+  },
+  {
+    "reward": 0.5457481918890057,
+    "number_of_traces": 3222
+  },
+  {
+    "reward": 0.4921187154817731,
+    "number_of_traces": 4106
+  },
+  {
+    "reward": 0.48376143757583023,
+    "number_of_traces": 4270
+  },
+  {
+    "reward": 0.5032927821290802,
+    "number_of_traces": 3900
+  },
+  {
+    "reward": 0.49529836825530205,
+    "number_of_traces": 4045
+  },
+  {
+    "reward": 0.7538707234367285,
+    "number_of_traces": 744
+  },
+  {
+    "reward": 0.6276277156842607,
+    "number_of_traces": 2195
+  },
+  {
+    "reward": 0.7300109889816072,
+    "number_of_traces": 1091
+  },
+  {
+    "reward": 0.7436444316517594,
+    "number_of_traces": 916
+  },
+  {
+    "reward": 0.7563360334208683,
+    "number_of_traces": 682
+  },
+  {
+    "reward": 0.5493108029889762,
+    "number_of_traces": 3171
+  },
+  {
+    "reward": 0.5511474579179794,
+    "number_of_traces": 3145
+  },
+  {
+    "reward": 0.6531120633003261,
+    "number_of_traces": 1917
+  },
+  {
+    "reward": 0.49222353851485,
+    "number_of_traces": 4104
+  },
+  {
+    "reward": 0.4879835383713399,
+    "number_of_traces": 4186
+  },
+  {
+    "reward": 0.7221554007049753,
+    "number_of_traces": 1182
+  },
+  {
+    "reward": 0.5361731472350124,
+    "number_of_traces": 3363
+  },
+  {
+    "reward": 0.5016731059701871,
+    "number_of_traces": 3929
+  },
+  {
+    "reward": 0.5351119228704957,
+    "number_of_traces": 3379
+  },
+  {
+    "reward": 0.4993546979315273,
+    "number_of_traces": 3971
+  },
+  {
+    "reward": 0.4974472205539595,
+    "number_of_traces": 4006
+  },
+  {
+    "reward": 0.7530114473025868,
+    "number_of_traces": 762
+  },
+  {
+    "reward": 0.5167552743987001,
+    "number_of_traces": 3669
+  },
+  {
+    "reward": 0.618756841555074,
+    "number_of_traces": 2295
+  },
+  {
+    "reward": 0.7272944555964637,
+    "number_of_traces": 1123
+  },
+  {
+    "reward": 0.5439523286019858,
+    "number_of_traces": 3248
+  },
+  {
+    "reward": 0.6624235414270825,
+    "number_of_traces": 1818
+  },
+  {
+    "reward": 0.4995741116758454,
+    "number_of_traces": 3967
+  },
+  {
+    "reward": 0.5034001777269266,
+    "number_of_traces": 3895
+  },
+  {
+    "reward": 0.5361871489635681,
+    "number_of_traces": 3361
+  },
+  {
+    "reward": 0.5310480057934741,
+    "number_of_traces": 3441
+  },
+  {
+    "reward": 0.4726741256063617,
+    "number_of_traces": 4503
+  },
+  {
+    "reward": 0.5138152445096318,
+    "number_of_traces": 3718
+  },
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.7496936735487372,
+    "number_of_traces": 823
+  },
+  {
+    "reward": 0.7577073085334607,
+    "number_of_traces": 630
+  },
+  {
+    "reward": 0.7397752519045817,
+    "number_of_traces": 969
+  },
+  {
+    "reward": 0.4758636766235418,
+    "number_of_traces": 4434
+  },
+  {
+    "reward": 0.5473482987843946,
+    "number_of_traces": 3199
+  },
+  {
+    "reward": 0.7497427235512577,
+    "number_of_traces": 818
+  },
+  {
+    "reward": 0.6331214221858028,
+    "number_of_traces": 2134
+  },
+  {
+    "reward": 0.7225086010816121,
+    "number_of_traces": 1178
+  },
+  {
+    "reward": 0.7270370524287527,
+    "number_of_traces": 1126
+  },
+  {
+    "reward": 0.6310429529557212,
+    "number_of_traces": 2157
+  },
+  {
+    "reward": 0.7093609970248634,
+    "number_of_traces": 1323
+  },
+  {
+    "reward": 0.7186795300726445,
+    "number_of_traces": 1221
+  },
+  {
+    "reward": 0.7230371757372795,
+    "number_of_traces": 1172
+  },
+  {
+    "reward": 0.5538566695743491,
+    "number_of_traces": 3107
+  },
+  {
+    "reward": 0.6238809619270633,
+    "number_of_traces": 2237
+  },
+  {
+    "reward": 0.7093609970248634,
+    "number_of_traces": 1323
+  },
+  {
+    "reward": 0.6214882724033309,
+    "number_of_traces": 2264
+  },
+  {
+    "reward": 0.6899421170481016,
+    "number_of_traces": 1529
+  },
+  {
+    "reward": 0.730764900776095,
+    "number_of_traces": 1082
+  },
+  {
+    "reward": 0.6199002136280861,
+    "number_of_traces": 2282
+  },
+  {
+    "reward": 0.5122738400106299,
+    "number_of_traces": 3744
+  },
+  {
+    "reward": 0.5057798770471948,
+    "number_of_traces": 3856
+  },
+  {
+    "reward": 0.6036665727302137,
+    "number_of_traces": 2470
+  },
+  {
+    "reward": 0.7123147266848918,
+    "number_of_traces": 1291
+  },
+  {
+    "reward": 0.6655473645878298,
+    "number_of_traces": 1785
+  },
+  {
+    "reward": 0.6597802451718364,
+    "number_of_traces": 1846
+  },
+  {
+    "reward": 0.7034833739466673,
+    "number_of_traces": 1386
+  },
+  {
+    "reward": 0.5635721963600413,
+    "number_of_traces": 2974
+  },
+  {
+    "reward": 0.7209142076100667,
+    "number_of_traces": 1196
+  },
+  {
+    "reward": 0.6821188500562881,
+    "number_of_traces": 1611
+  },
+  {
+    "reward": 0.5374299079646598,
+    "number_of_traces": 3339
+  },
+  {
+    "reward": 0.6103220317627819,
+    "number_of_traces": 2392
+  },
+  {
+    "reward": 0.7419253791896051,
+    "number_of_traces": 940
+  },
+  {
+    "reward": 0.7468332752384964,
+    "number_of_traces": 869
+  },
+  {
+    "reward": 0.5693631722953174,
+    "number_of_traces": 2897
+  },
+  {
+    "reward": 0.7093609970248634,
+    "number_of_traces": 1323
+  },
+  {
+    "reward": 0.512865166411814,
+    "number_of_traces": 3734
+  },
+  {
+    "reward": 0.7124985076534246,
+    "number_of_traces": 1289
+  },
+  {
+    "reward": 0.5264244358320544,
+    "number_of_traces": 3513
+  },
+  {
+    "reward": 0.4826756624593329,
+    "number_of_traces": 4292
+  },
+  {
+    "reward": 0.5138747862973976,
+    "number_of_traces": 3717
+  },
+  {
+    "reward": 0.6313135781164191,
+    "number_of_traces": 2154
+  },
+  {
+    "reward": 0.7458427800681107,
+    "number_of_traces": 884
+  },
+  {
+    "reward": 0.5195572910735244,
+    "number_of_traces": 3623
+  },
+  {
+    "reward": 0.6141267976689975,
+    "number_of_traces": 2348
+  },
+  {
+    "reward": 0.6244143790132877,
+    "number_of_traces": 2231
+  },
+  {
+    "reward": 0.5054954445285227,
+    "number_of_traces": 3861
+  },
+  {
+    "reward": 0.5089394214864364,
+    "number_of_traces": 3801
+  },
+  {
+    "reward": 0.7140564013619776,
+    "number_of_traces": 1272
+  },
+  {
+    "reward": 0.7531587404841434,
+    "number_of_traces": 759
+  },
+  {
+    "reward": 0.629332377221886,
+    "number_of_traces": 2176
+  },
+  {
+    "reward": 0.6918465867293858,
+    "number_of_traces": 1509
+  },
+  {
+    "reward": 0.7581089622441479,
+    "number_of_traces": 604
+  },
+  {
+    "reward": 0.7144218223642052,
+    "number_of_traces": 1268
+  },
+  {
+    "reward": 0.5618660739957725,
+    "number_of_traces": 2997
+  },
+  {
+    "reward": 0.5294954171913725,
+    "number_of_traces": 3465
+  },
+  {
+    "reward": 0.5123328871899238,
+    "number_of_traces": 3743
+  },
+  {
+    "reward": 0.6242365047851862,
+    "number_of_traces": 2233
+  },
+  {
+    "reward": 0.5028444289454272,
+    "number_of_traces": 3908
+  },
+  {
+    "reward": 0.7043274043212467,
+    "number_of_traces": 1377
+  },
+  {
+    "reward": 0.7104714663572941,
+    "number_of_traces": 1311
+  },
+  {
+    "reward": 0.6095482210079199,
+    "number_of_traces": 2401
+  },
+  {
+    "reward": 0.530399704837849,
+    "number_of_traces": 3451
+  },
+  {
+    "reward": 0.7076894337582128,
+    "number_of_traces": 1341
+  },
+  {
+    "reward": 0.7209142076100667,
+    "number_of_traces": 1196
+  },
+  {
+    "reward": 0.5392632416035723,
+    "number_of_traces": 3302
+  },
+  {
+    "reward": 0.7435739621698921,
+    "number_of_traces": 917
+  },
+  {
+    "reward": 0.7213675523727596,
+    "number_of_traces": 1189
+  },
+  {
+    "reward": 0.7451679169621119,
+    "number_of_traces": 894
+  },
+  {
+    "reward": 0.6503111996554537,
+    "number_of_traces": 1947
+  },
+  {
+    "reward": 0.6856507572401849,
+    "number_of_traces": 1574
+  },
+  {
+    "reward": 0.7284896224880018,
+    "number_of_traces": 1109
+  },
+  {
+    "reward": 0.6688692850387984,
+    "number_of_traces": 1750
+  },
+  {
+    "reward": 0.504531846576683,
+    "number_of_traces": 3878
+  },
+  {
+    "reward": 0.650218021836572,
+    "number_of_traces": 1948
+  },
+  {
+    "reward": 0.6138662462818394,
+    "number_of_traces": 2351
+  },
+  {
+    "reward": 0.4974472205539595,
+    "number_of_traces": 4006
+  },
+  {
+    "reward": 0.6140399288667775,
+    "number_of_traces": 2349
+  },
+  {
+    "reward": 0.6577084998849022,
+    "number_of_traces": 1868
+  },
+  {
+    "reward": 0.7131409255642727,
+    "number_of_traces": 1282
+  },
+  {
+    "reward": 0.7468983500896107,
+    "number_of_traces": 868
+  },
+  {
+    "reward": 0.5283384660772533,
+    "number_of_traces": 3483
+  },
+  {
+    "reward": 0.4900370847318376,
+    "number_of_traces": 4146
+  },
+  {
+    "reward": 0.5126875690140004,
+    "number_of_traces": 3737
+  },
+  {
+    "reward": 0.7133242366682967,
+    "number_of_traces": 1280
+  },
+  {
+    "reward": 0.6139530784014082,
+    "number_of_traces": 2350
+  },
+  {
+    "reward": 0.6907993979316789,
+    "number_of_traces": 1520
+  },
+  {
+    "reward": 0.7047021028061702,
+    "number_of_traces": 1373
+  },
+  {
+    "reward": 0.5211591436089503,
+    "number_of_traces": 3597
+  },
+  {
+    "reward": 0.7083402905503937,
+    "number_of_traces": 1334
+  },
+  {
+    "reward": 0.49065861422539925,
+    "number_of_traces": 4134
+  },
+  {
+    "reward": 0.7501036290018,
+    "number_of_traces": 816
+  },
+  {
+    "reward": 0.7127739861145762,
+    "number_of_traces": 1286
+  },
+  {
+    "reward": 0.753590897297703,
+    "number_of_traces": 750
+  },
+  {
+    "reward": 0.7490353958342362,
+    "number_of_traces": 834
+  },
+  {
+    "reward": 0.5215926548020628,
+    "number_of_traces": 3590
+  },
+  {
+    "reward": 0.7583031658829276,
+    "number_of_traces": 572
+  },
+  {
+    "reward": 0.7469633028223094,
+    "number_of_traces": 867
+  },
+  {
+    "reward": 0.514590775921357,
+    "number_of_traces": 3705
+  },
+  {
+    "reward": 0.6532265990342623,
+    "number_of_traces": 1912
+  },
+  {
+    "reward": 0.638856748014028,
+    "number_of_traces": 2071
+  },
+  {
+    "reward": 0.5211284286280933,
+    "number_of_traces": 3593
+  },
+  {
+    "reward": 0.747202668823364,
+    "number_of_traces": 363
+  },
+  {
+    "reward": 0.7220669998928485,
+    "number_of_traces": 1183
+  },
+  {
+    "reward": 0.46735375640250776,
+    "number_of_traces": 4622
+  },
+  {
+    "reward": 0.6484499790054121,
+    "number_of_traces": 1967
+  },
+  {
+    "reward": 0.6107525814343081,
+    "number_of_traces": 2387
+  },
+  {
+    "reward": 0.7082473724461571,
+    "number_of_traces": 1335
+  },
+  {
+    "reward": 0.6199002136280861,
+    "number_of_traces": 2282
+  },
+  {
+    "reward": 0.497881258339566,
+    "number_of_traces": 3998
+  },
+  {
+    "reward": 0.6584613157561915,
+    "number_of_traces": 1860
+  },
+  {
+    "reward": 0.702073859376343,
+    "number_of_traces": 1401
+  },
+  {
+    "reward": 0.7209142076100667,
+    "number_of_traces": 1196
+  },
+  {
+    "reward": 0.7564338230225924,
+    "number_of_traces": 679
+  },
+  {
+    "reward": 0.5432652662126313,
+    "number_of_traces": 3258
+  },
+  {
+    "reward": 0.4930119712251143,
+    "number_of_traces": 4089
+  },
+  {
+    "reward": 0.7415601740509201,
+    "number_of_traces": 945
+  },
+  {
+    "reward": 0.5824202559103062,
+    "number_of_traces": 2729
+  },
+  {
+    "reward": 0.5116844115368062,
+    "number_of_traces": 3754
+  },
+  {
+    "reward": 0.713782044151055,
+    "number_of_traces": 1275
+  },
+  {
+    "reward": 0.5377076562939043,
+    "number_of_traces": 3340
+  },
+  {
+    "reward": 0.7117627764007168,
+    "number_of_traces": 1297
+  },
+  {
+    "reward": 0.500730819211699,
+    "number_of_traces": 3946
+  },
+  {
+    "reward": 0.6207817652523218,
+    "number_of_traces": 2272
+  },
+  {
+    "reward": 0.5440211464186642,
+    "number_of_traces": 3247
+  },
+  {
+    "reward": 0.4942817826136926,
+    "number_of_traces": 4065
+  },
+  {
+    "reward": 0.7576149984107688,
+    "number_of_traces": 512
+  },
+  {
+    "reward": 0.544503439465341,
+    "number_of_traces": 3240
+  },
+  {
+    "reward": 0.6137794325169887,
+    "number_of_traces": 2352
+  },
+  {
+    "reward": 0.5840928893884114,
+    "number_of_traces": 2708
+  },
+  {
+    "reward": 0.5479073829965939,
+    "number_of_traces": 3191
+  },
+  {
+    "reward": 0.712984919324023,
+    "number_of_traces": 1282
+  },
+  {
+    "reward": 0.6163044506739674,
+    "number_of_traces": 2323
+  },
+  {
+    "reward": 0.5321546794731735,
+    "number_of_traces": 3424
+  },
+  {
+    "reward": 0.703107836705186,
+    "number_of_traces": 1390
+  },
+  {
+    "reward": 0.7210919864985457,
+    "number_of_traces": 1194
+  },
+  {
+    "reward": 0.6156935614247802,
+    "number_of_traces": 2330
+  },
+  {
+    "reward": 0.7573460619307464,
+    "number_of_traces": 502
+  },
+  {
+    "reward": 0.5010074130455675,
+    "number_of_traces": 3941
+  },
+  {
+    "reward": 0.48111103215049356,
+    "number_of_traces": 4324
+  },
+  {
+    "reward": 0.47999713821280077,
+    "number_of_traces": 4347
+  },
+  {
+    "reward": 0.7131409255642727,
+    "number_of_traces": 1282
+  },
+  {
+    "reward": 0.5148300502456189,
+    "number_of_traces": 3701
+  },
+  {
+    "reward": 0.6038357760338393,
+    "number_of_traces": 2468
+  },
+  {
+    "reward": 0.5071046123732403,
+    "number_of_traces": 3831
+  },
+  {
+    "reward": 0.616042532225322,
+    "number_of_traces": 2326
+  },
+  {
+    "reward": 0.616042532225322,
+    "number_of_traces": 2326
+  },
+  {
+    "reward": 0.5182121028258082,
+    "number_of_traces": 3645
+  },
+  {
+    "reward": 0.5111555459179544,
+    "number_of_traces": 3763
+  },
+  {
+    "reward": 0.742720377871992,
+    "number_of_traces": 929
+  },
+  {
+    "reward": 0.7430778055127798,
+    "number_of_traces": 924
+  },
+  {
+    "reward": 0.7489747187498643,
+    "number_of_traces": 835
+  },
+  {
+    "reward": 0.7577265005887864,
+    "number_of_traces": 629
+  },
+  {
+    "reward": 0.7295901680402965,
+    "number_of_traces": 1096
+  },
+  {
+    "reward": 0.5166343723535445,
+    "number_of_traces": 3671
+  },
+  {
+    "reward": 0.48465594808101065,
+    "number_of_traces": 4252
+  },
+  {
+    "reward": 0.5105697144219847,
+    "number_of_traces": 3773
+  },
+  {
+    "reward": 0.704046206432457,
+    "number_of_traces": 1380
+  },
+  {
+    "reward": 0.6639370378776348,
+    "number_of_traces": 1802
+  },
+  {
+    "reward": 0.7147867920514612,
+    "number_of_traces": 1264
+  },
+  {
+    "reward": 0.5343853050970766,
+    "number_of_traces": 3390
+  },
+  {
+    "reward": 0.47633240237414376,
+    "number_of_traces": 4424
+  },
+  {
+    "reward": 0.7234765090038202,
+    "number_of_traces": 1167
+  },
+  {
+    "reward": 0.7293370100017013,
+    "number_of_traces": 1099
+  },
+  {
+    "reward": 0.7235642487514041,
+    "number_of_traces": 1166
+  },
+  {
+    "reward": 0.6659265822805243,
+    "number_of_traces": 1781
+  },
+  {
+    "reward": 0.6968801026370719,
+    "number_of_traces": 1456
+  },
+  {
+    "reward": 0.7542332352673641,
+    "number_of_traces": 736
+  },
+  {
+    "reward": 0.5083607478262042,
+    "number_of_traces": 3811
+  },
+  {
+    "reward": 0.47893998748019995,
+    "number_of_traces": 4369
+  },
+  {
+    "reward": 0.5246539904789267,
+    "number_of_traces": 3541
+  },
+  {
+    "reward": 0.7530607227298769,
+    "number_of_traces": 761
+  },
+  {
+    "reward": 0.7231251264556692,
+    "number_of_traces": 1171
+  },
+  {
+    "reward": 0.5592906697466455,
+    "number_of_traces": 3032
+  },
+  {
+    "reward": 0.6600631152239069,
+    "number_of_traces": 1843
+  },
+  {
+    "reward": 0.702073859376343,
+    "number_of_traces": 1401
+  },
+  {
+    "reward": 0.71243142681653,
+    "number_of_traces": 1284
+  },
+  {
+    "reward": 0.7563360334208683,
+    "number_of_traces": 682
+  },
+  {
+    "reward": 0.5390506585230246,
+    "number_of_traces": 3320
+  },
+  {
+    "reward": 0.7029199755770722,
+    "number_of_traces": 1392
+  },
+  {
+    "reward": 0.6237921191157239,
+    "number_of_traces": 2238
+  },
+  {
+    "reward": 0.39891120246943124,
+    "number_of_traces": 7054
+  },
+  {
+    "reward": 0.46744131474236017,
+    "number_of_traces": 4620
+  },
+  {
+    "reward": 0.7583021301043955,
+    "number_of_traces": 568
+  },
+  {
+    "reward": 0.7161512726665207,
+    "number_of_traces": 1249
+  },
+  {
+    "reward": 0.5012844644472435,
+    "number_of_traces": 3936
+  },
+  {
+    "reward": 0.7000007964982027,
+    "number_of_traces": 1423
+  },
+  {
+    "reward": 0.5083029836714044,
+    "number_of_traces": 3812
+  },
+  {
+    "reward": 0.4701422475747623,
+    "number_of_traces": 4559
+  },
+  {
+    "reward": 0.7110254596404337,
+    "number_of_traces": 1305
+  },
+  {
+    "reward": 0.7117627764007168,
+    "number_of_traces": 1297
+  },
+  {
+    "reward": 0.5580488426047451,
+    "number_of_traces": 3049
+  },
+  {
+    "reward": 0.5072664322007805,
+    "number_of_traces": 3830
+  },
+  {
+    "reward": 0.5156215363390031,
+    "number_of_traces": 3686
+  },
+  {
+    "reward": 0.50853415283703,
+    "number_of_traces": 3808
+  },
+  {
+    "reward": 0.5041930322801915,
+    "number_of_traces": 3884
+  },
+  {
+    "reward": 0.6068092438927128,
+    "number_of_traces": 2433
+  },
+  {
+    "reward": 0.5239626667280545,
+    "number_of_traces": 3552
+  },
+  {
+    "reward": 0.7466373221638496,
+    "number_of_traces": 872
+  },
+  {
+    "reward": 0.6591205451936023,
+    "number_of_traces": 1853
+  },
+  {
+    "reward": 0.7359738975501894,
+    "number_of_traces": 296
+  },
+  {
+    "reward": 0.5109795979961586,
+    "number_of_traces": 3766
+  },
+  {
+    "reward": 0.5341216805340755,
+    "number_of_traces": 3394
+  },
+  {
+    "reward": 0.5073813051699887,
+    "number_of_traces": 3828
+  },
+  {
+    "reward": 0.5305939866159823,
+    "number_of_traces": 3448
+  },
+  {
+    "reward": 0.7253966694428451,
+    "number_of_traces": 1145
+  },
+  {
+    "reward": 0.5052114766100905,
+    "number_of_traces": 3866
+  },
+  {
+    "reward": 0.7046084533243121,
+    "number_of_traces": 1374
+  },
+  {
+    "reward": 0.618756841555074,
+    "number_of_traces": 2295
+  },
+  {
+    "reward": 0.5053250080532141,
+    "number_of_traces": 3864
+  },
+  {
+    "reward": 0.4921711181455768,
+    "number_of_traces": 4105
+  },
+  {
+    "reward": 0.721447083554139,
+    "number_of_traces": 1190
+  },
+  {
+    "reward": 0.6314940752573358,
+    "number_of_traces": 2152
+  },
+  {
+    "reward": 0.6555477853756644,
+    "number_of_traces": 1891
+  },
+  {
+    "reward": 0.49238090589210026,
+    "number_of_traces": 4101
+  },
+  {
+    "reward": 0.6200438918980394,
+    "number_of_traces": 2278
+  },
+  {
+    "reward": 0.7138735240693759,
+    "number_of_traces": 1274
+  },
+  {
+    "reward": 0.5151895353595284,
+    "number_of_traces": 3695
+  },
+  {
+    "reward": 0.709082879512932,
+    "number_of_traces": 1326
+  },
+  {
+    "reward": 0.7357424516921149,
+    "number_of_traces": 1021
+  },
+  {
+    "reward": 0.709082879512932,
+    "number_of_traces": 1326
+  },
+  {
+    "reward": 0.5318937683301077,
+    "number_of_traces": 3428
+  },
+  {
+    "reward": 0.699812022390079,
+    "number_of_traces": 1425
+  },
+  {
+    "reward": 0.4736535829378463,
+    "number_of_traces": 4476
+  },
+  {
+    "reward": 0.5194346144726758,
+    "number_of_traces": 3625
+  },
+  {
+    "reward": 0.5940683432070191,
+    "number_of_traces": 2585
+  },
+  {
+    "reward": 0.5257884800563963,
+    "number_of_traces": 3520
+  },
+  {
+    "reward": 0.7502771411513711,
+    "number_of_traces": 813
+  },
+  {
+    "reward": 0.519134381921615,
+    "number_of_traces": 3629
+  },
+  {
+    "reward": 0.6539543506582823,
+    "number_of_traces": 1908
+  },
+  {
+    "reward": 0.5751208432375556,
+    "number_of_traces": 2822
+  },
+  {
+    "reward": 0.5128059482715213,
+    "number_of_traces": 3735
+  },
+  {
+    "reward": 0.5176644920552701,
+    "number_of_traces": 3654
+  },
+  {
+    "reward": 0.703295636401419,
+    "number_of_traces": 1388
+  },
+  {
+    "reward": 0.7082473724461571,
+    "number_of_traces": 1335
+  },
+  {
+    "reward": 0.5287234042136736,
+    "number_of_traces": 3477
+  },
+  {
+    "reward": 0.6457602058935876,
+    "number_of_traces": 1996
+  },
+  {
+    "reward": 0.4861385555643204,
+    "number_of_traces": 4210
+  },
+  {
+    "reward": 0.7010381411496361,
+    "number_of_traces": 1412
+  },
+  {
+    "reward": 0.7164233562741787,
+    "number_of_traces": 1246
+  },
+  {
+    "reward": 0.5125101426360185,
+    "number_of_traces": 3740
+  },
+  {
+    "reward": 0.758255795042705,
+    "number_of_traces": 587
+  },
+  {
+    "reward": 0.48998540478964614,
+    "number_of_traces": 4147
+  },
+  {
+    "reward": 0.7410449574330656,
+    "number_of_traces": 952
+  },
+  {
+    "reward": 0.5231550794540263,
+    "number_of_traces": 3564
+  },
+  {
+    "reward": 0.48844315004037187,
+    "number_of_traces": 4177
+  },
+  {
+    "reward": 0.48262650487627545,
+    "number_of_traces": 4293
+  },
+  {
+    "reward": 0.6136058600868011,
+    "number_of_traces": 2354
+  },
+  {
+    "reward": 0.47144709959694453,
+    "number_of_traces": 4530
+  },
+  {
+    "reward": 0.7118548307119956,
+    "number_of_traces": 1296
+  },
+  {
+    "reward": 0.5114491708302062,
+    "number_of_traces": 3758
+  },
+  {
+    "reward": 0.7260030257508976,
+    "number_of_traces": 1138
+  },
+  {
+    "reward": 0.7485461734088283,
+    "number_of_traces": 842
+  },
+  {
+    "reward": 0.5664148433316565,
+    "number_of_traces": 2936
+  },
+  {
+    "reward": 0.0,
+    "number_of_traces": 0
+  },
+  {
+    "reward": 0.7483604980421075,
+    "number_of_traces": 845
+  },
+  {
+    "reward": 0.7213583672583096,
+    "number_of_traces": 1191
+  },
+  {
+    "reward": 0.6758200233946259,
+    "number_of_traces": 1677
+  },
+  {
+    "reward": 0.6136058600868011,
+    "number_of_traces": 2354
+  },
+  {
+    "reward": 0.5119788887381223,
+    "number_of_traces": 3749
+  },
+  {
+    "reward": 0.6095482210079199,
+    "number_of_traces": 2401
+  },
+  {
+    "reward": 0.6152577566620104,
+    "number_of_traces": 2335
+  },
+  {
+    "reward": 0.5520709674761802,
+    "number_of_traces": 3132
+  },
+  {
+    "reward": 0.7513992208744278,
+    "number_of_traces": 793
+  },
+  {
+    "reward": 0.6268223357315442,
+    "number_of_traces": 2204
+  },
+  {
+    "reward": 0.6056170467538802,
+    "number_of_traces": 2447
+  },
+  {
+    "reward": 0.7102866151072554,
+    "number_of_traces": 1313
+  },
+  {
+    "reward": 0.5361066703619028,
+    "number_of_traces": 3364
+  },
+  {
+    "reward": 0.6177917239728891,
+    "number_of_traces": 2306
+  },
+  {
+    "reward": 0.5048147012260764,
+    "number_of_traces": 3873
+  },
+  {
+    "reward": 0.46119597021073044,
+    "number_of_traces": 4763
+  },
+  {
+    "reward": 0.6043438474411482,
+    "number_of_traces": 2462
+  },
+  {
+    "reward": 0.5036860596153354,
+    "number_of_traces": 3893
+  },
+  {
+    "reward": 0.7150602183807594,
+    "number_of_traces": 1261
+  },
+  {
+    "reward": 0.7070375951430251,
+    "number_of_traces": 1348
+  },
+  {
+    "reward": 0.7266070578119553,
+    "number_of_traces": 1131
+  },
+  {
+    "reward": 0.5550062387188347,
+    "number_of_traces": 3091
+  },
+  {
+    "reward": 0.5041415389743213,
+    "number_of_traces": 3884
+  },
+  {
+    "reward": 0.4994095240657084,
+    "number_of_traces": 3970
+  },
+  {
+    "reward": 0.716966683051642,
+    "number_of_traces": 1240
+  },
+  {
+    "reward": 0.5250951585517685,
+    "number_of_traces": 3534
+  },
+  {
+    "reward": 0.6982055128175142,
+    "number_of_traces": 1442
+  },
+  {
+    "reward": 0.7475423120911219,
+    "number_of_traces": 858
+  },
+  {
+    "reward": 0.589895330138515,
+    "number_of_traces": 2636
+  },
+  {
+    "reward": 0.5433338811875528,
+    "number_of_traces": 3257
+  },
+  {
+    "reward": 0.4896343169913535,
+    "number_of_traces": 4151
+  },
+  {
+    "reward": 0.6177917239728891,
+    "number_of_traces": 2306
+  },
+  {
+    "reward": 0.7582804050338601,
+    "number_of_traces": 582
+  },
+  {
+    "reward": 0.6081763146966107,
+    "number_of_traces": 2417
+  },
+  {
+    "reward": 0.6254830574246006,
+    "number_of_traces": 2219
+  },
+  {
+    "reward": 0.5113904079947875,
+    "number_of_traces": 3759
+  },
+  {
+    "reward": 0.5214686971986879,
+    "number_of_traces": 3592
+  },
+  {
+    "reward": 0.6155191849651525,
+    "number_of_traces": 2332
+  },
+  {
+    "reward": 0.7488529544668301,
+    "number_of_traces": 837
+  },
+  {
+    "reward": 0.7171475390997755,
+    "number_of_traces": 1238
+  },
+  {
+    "reward": 0.49647486081795256,
+    "number_of_traces": 4024
+  },
+  {
+    "reward": 0.7030139137753197,
+    "number_of_traces": 1391
+  },
+  {
+    "reward": 0.5443619984136965,
+    "number_of_traces": 3236
+  },
+  {
+    "reward": 0.49815312001884593,
+    "number_of_traces": 3993
+  },
+  {
+    "reward": 0.6196360924553623,
+    "number_of_traces": 2285
+  },
+  {
+    "reward": 0.7061981297524978,
+    "number_of_traces": 1357
+  },
+  {
+    "reward": 0.7263484754267554,
+    "number_of_traces": 1134
+  },
+  {
+    "reward": 0.5451941557043034,
+    "number_of_traces": 3230
+  },
+  {
+    "reward": 0.6083475391627943,
+    "number_of_traces": 2415
+  },
+  {
+    "reward": 0.7317627591189874,
+    "number_of_traces": 1070
+  },
+  {
+    "reward": 0.5598771136517088,
+    "number_of_traces": 3024
+  },
+  {
+    "reward": 0.3922618017241827,
+    "number_of_traces": 7533
+  },
+  {
+    "reward": 0.5215306662712332,
+    "number_of_traces": 3591
+  },
+  {
+    "reward": 0.5541435699314189,
+    "number_of_traces": 3103
+  },
+  {
+    "reward": 0.7077824742248491,
+    "number_of_traces": 1340
+  },
+  {
+    "reward": 0.546164573117399,
+    "number_of_traces": 3216
+  },
+  {
+    "reward": 0.7123147266848918,
+    "number_of_traces": 1291
+  },
+  {
+    "reward": 0.5287876297809219,
+    "number_of_traces": 3476
+  },
+  {
+    "reward": 0.61118359756809,
+    "number_of_traces": 2382
+  },
+  {
+    "reward": 0.716966683051642,
+    "number_of_traces": 1240
+  },
+  {
+    "reward": 0.7188591243228942,
+    "number_of_traces": 1219
+  },
+  {
+    "reward": 0.6211348785867938,
+    "number_of_traces": 2268
+  },
+  {
+    "reward": 0.6975430635636884,
+    "number_of_traces": 1449
+  },
+  {
+    "reward": 0.6286138986546452,
+    "number_of_traces": 2184
+  },
+  {
+    "reward": 0.7104714663572941,
+    "number_of_traces": 1311
+  },
+  {
+    "reward": 0.7098240866211942,
+    "number_of_traces": 1318
+  },
+  {
+    "reward": 0.3880437823700875,
+    "number_of_traces": 7905
+  },
+  {
+    "reward": 0.46522816915257914,
+    "number_of_traces": 4671
+  }
+]

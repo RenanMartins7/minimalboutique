@@ -25,7 +25,7 @@
       "latency": { "threshold_ms": 500 }
     },
     {
-      "name": "latency-policy-500ms",
+      "name": "latency-policy-1ms",
       "type": "latency",
       "latency": { "upper_threshold_ms": 0.1 }
     },
@@ -97,7 +97,7 @@
       "probabilistic": { "sampling_percentage": 10 }
     },
     {
-      "name": "probability-policy-15",
+      "name": "probability-policy-20",
       "type": "probabilistic",
       "probabilistic": { "sampling_percentage": 20 }
     },

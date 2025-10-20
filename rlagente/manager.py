@@ -120,11 +120,16 @@ def wait_for_rollout_ready():
         #print(f"Aguardando rollout... {available}/{desired} prontos")#Se ainda continua com menos que o número desejado de pods, aguarda 2 segundos até tentar novamente
         time.sleep(2)
 #######################################################################################################################################
+def trace_penalty_function(traces, C, k=25, midpoint=0.20):
+    x = traces / C
+    return 1 / (1 + math.exp(-k * (x - midpoint)))
+
+    
 #Função de reward para o conjunto de regras definido
-def reward_function(entropy, traces, alpha=1.9, beta=1.0, C = 8000, lambd=3.0):
+def reward_function(entropy, traces, alpha=1.0, beta=1.2, C = 8000, lambd=3.0):
     norm_entropy = entropy/10
 
-    trace_penalty = 1 - math.exp(-lambd *(traces/C))
+    trace_penalty = trace_penalty_function(traces, C)
 
     return alpha * norm_entropy - beta * trace_penalty
 #######################################################################################################################################
@@ -153,7 +158,9 @@ if __name__ == "__main__":
         })
         
         policies_str = json.dumps(selected_policies, sort_keys = True)
-        config_hash = hashlib.sha256(policies_str.encode()).hexdigest()[:8] 
+        timestamp = str(time.time())
+        hash_input = policies_str + timestamp
+        config_hash = hashlib.sha256(hash_input.encode()).hexdigest()[:8] 
         config_yaml = generate_config(selected_policies, config_hash)
 
         update_configmap(config_yaml)
@@ -165,7 +172,7 @@ if __name__ == "__main__":
 
         reward = reward_function(entropia, number_of_traces)
         agent.update(selected_policies, reward)
-        print(f"Hash: {config_hash}, reward: {reward}, Número de traces: {number_of_traces}")
+        print(f"Hash: {config_hash}, reward: {reward}, Entropia: {entropia}, Número de traces: {number_of_traces}")
 
         agent.save_policies()
         agent.save_history(reward, number_of_traces)
