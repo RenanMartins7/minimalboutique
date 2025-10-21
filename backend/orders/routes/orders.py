@@ -102,15 +102,23 @@ def get_orders():
         return jsonify({'error': 'user_id é obrigatório'}), 400
     span.set_attribute("user.id", user_id)
 
-    # orders = Order.query.filter_by(user_id=user_id).order_by(Order.id.desc()).all()
+    # Parâmetros opcionais de paginação (default: últimos 20)
+    limit = int(request.args.get('limit', 20))
+    offset = int(request.args.get('offset', 0))
+
     orders = (
-    Order.query
-    .options(joinedload(Order.items))
-    .filter_by(user_id=user_id)
-    .order_by(Order.id.desc())
-    .all()
-)
+        Order.query
+        .options(joinedload(Order.items))
+        .filter_by(user_id=user_id)
+        .order_by(Order.id.desc())
+        .limit(limit)
+        .offset(offset)
+        .all()
+    )
+
     span.set_attribute("number.of.orders", len(orders))
+    span.set_attribute("pagination.limit", limit)
+    span.set_attribute("pagination.offset", offset)
 
     result = []
     cache_hits = 0

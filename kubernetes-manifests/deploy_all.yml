@@ -4,7 +4,7 @@ metadata:
   name: products
   namespace: rmalves
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: products
