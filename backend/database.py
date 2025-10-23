@@ -1,25 +1,33 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask import Flask
 import os
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-db = SQLAlchemy()
+Base = declarative_base()
 
-def init_db(app: Flask):
-    # Pega a URL do banco do environment (configurada no Deployment)
-    database_url = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/meubanco')
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+asyncpg://postgres:postgres@localhost:5432/meubanco"
+)
 
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        "pool_size": 80,       # conexões fixas no pool
-        "max_overflow": 40,    # extras além do pool
-        "pool_timeout": 120,    # espera até liberar uma conexão
-        "pool_recycle": 180   # recicla conexões a cada 30 min
-    }
+# Cria engine assíncrona - removendo parâmetros de pool síncronos
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=False,
+    future=True,  # opcional, bom para SQLAlchemy 2.x
+    pool_size=5,
+    max_overflow=155,
+    connect_args={"timeout":120}
+)
 
-    db.init_app(app)
+# Session assíncrona
+async_session = sessionmaker(
+    engine, expire_on_commit=False, class_=AsyncSession
+)
 
-    # Cria as tabelas no PostgreSQL
-    with app.app_context():
-        db.create_all()
+async def get_async_session() -> AsyncSession:
+    async with async_session() as session:
+        yield session
+
+async def init_db():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)

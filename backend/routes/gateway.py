@@ -1,8 +1,9 @@
-from flask import Blueprint, jsonify, session, request
-import requests
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import JSONResponse
+import httpx
 from opentelemetry import trace
 
-gateway_bp = Blueprint('gateway', __name__)
+gateway_router = APIRouter()
 
 ORDERS_API_URL = "http://orders:5002/orders/"
 PRODUCTS_API_URL = "http://products:5001/products/"
@@ -10,143 +11,125 @@ CHECKOUT_API_URL = "http://checkout:5003/checkout/"
 PAYMENT_API_URL = "http://payment:5004/payment/"
 CART_API_URL = "http://cart:5005/cart/"
 
-
 tracer = trace.get_tracer(__name__)
 
-@gateway_bp.route('/orders/', methods=['GET'])
-def get_user_orders():
-    #Inicialização da telemetria
-    span = trace.get_current_span()
-
-    #Verificação de autenticação do usuário
-    user_id = session.get('user_id')
+# Dependência para autenticação
+async def get_current_user(user_id: str | None = None):
     if not user_id:
-        return jsonify({"error": "Usuário não autenticado"}), 401
+        raise HTTPException(status_code=401, detail="Usuário não autenticado")
+    return user_id
+
+
+@gateway_router.get("/orders/")
+async def get_user_orders(user_id: str = Depends(get_current_user), request: Request = None):
+    span = trace.get_current_span()
     span.set_attribute("user.id", user_id)
 
-    try:
-        # Repassando os cookies para o serviço de pedidos
-        response = requests.get(ORDERS_API_URL, params={'user_id': user_id}, cookies=request.cookies)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de pedidos", "details": str(e)}), 503
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.get(ORDERS_API_URL, params={"user_id": user_id}, cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de pedidos: {e}")
 
-@gateway_bp.route('/products/', methods=['GET'])
-def get_all_products():
-    try:
-        response = requests.get(PRODUCTS_API_URL)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de produtos", "details": str(e)}), 503
 
-@gateway_bp.route('/products/<int:product_id>', methods=['GET'])
-def get_product_by_id(product_id):
-    try:
-        response = requests.get(f"{PRODUCTS_API_URL}{product_id}")
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de produtos", "details": str(e)}), 503
+@gateway_router.get("/products/")
+async def get_all_products():
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.get(PRODUCTS_API_URL)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de produtos: {e}")
 
-@gateway_bp.route('/checkout/', methods=['POST'])
-def checkout_gateway():
+
+@gateway_router.get("/products/{product_id}")
+async def get_product_by_id(product_id: int):
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.get(f"{PRODUCTS_API_URL}{product_id}")
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de produtos: {e}")
+
+
+@gateway_router.post("/checkout/")
+async def checkout_gateway(user_id: str = Depends(get_current_user), request: Request = None):
     span = trace.get_current_span()
-    user_id = session.get('user_id')
-    if not user_id:
-        return jsonify({"error": "Usuário não autenticado"}), 401
     span.set_attribute("user.id", user_id)
 
-    try:
-        cart_response = requests.get(CART_API_URL, params={'user_id': user_id}, cookies=request.cookies)
-        if cart_response.status_code != 200:
-            return jsonify({"error": "Não foi possível buscar os itens do carrinho"}), cart_response.status_code
-        
-        cart_items = cart_response.json()
-        if not cart_items:
-            return jsonify({"error": "Carrinho vazio"}), 400
+    async with httpx.AsyncClient() as client:
+        try:
+            cart_response = await client.get(CART_API_URL, params={"user_id": user_id}, cookies=request.cookies)
+            if cart_response.status_code != 200:
+                raise HTTPException(status_code=cart_response.status_code, detail="Não foi possível buscar os itens do carrinho")
 
-        payload = {
-            "user_id": user_id,
-            "cart_items": cart_items
-        }
+            cart_items = cart_response.json()
+            if not cart_items:
+                raise HTTPException(status_code=400, detail="Carrinho vazio")
 
-        checkout_response = requests.post(CHECKOUT_API_URL, json=payload, cookies=request.cookies)
-        return checkout_response.content, checkout_response.status_code, checkout_response.headers.items()
+            payload = {"user_id": user_id, "cart_items": cart_items}
+            checkout_response = await client.post(CHECKOUT_API_URL, json=payload, cookies=request.cookies)
+            return JSONResponse(content=checkout_response.json(), status_code=checkout_response.status_code)
 
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Erro de comunicação com os serviços", "details": str(e)}), 503
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Erro de comunicação com os serviços: {e}")
 
 
-@gateway_bp.route('/payment/charge', methods=['POST'])
-def payment_gateway():
+@gateway_router.post("/payment/charge")
+async def payment_gateway(payload: dict, user_id: str = Depends(get_current_user), request: Request = None):
     span = trace.get_current_span()
-    user_id = session.get('user_id')
-    if not user_id:
-        return jsonify({"error": "Usuário não autenticado"}), 401
     span.set_attribute("user.id", user_id)
-    
-    payload = request.json
     payload['user_id'] = user_id
-    try:
-        response = requests.post(f"{PAYMENT_API_URL}charge", json=payload, cookies=request.cookies)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de pagamento"}), 503
 
- 
-@gateway_bp.route('/orders/<int:order_id>', methods=['DELETE'])
-def delete_order_gateway(order_id):
-    try:
-        response = requests.delete(f"{ORDERS_API_URL}{order_id}", cookies=request.cookies)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de pedidos", "details": str(e)}), 503
-
-
- 
-@gateway_bp.route('/cart/', methods=['GET', 'POST'])
-def cart_gateway():
-
-    if 'user_id' not in session:
-        return jsonify({"error": "Usuário não autenticado"}), 401
-
-    if request.method == 'POST':
+    async with httpx.AsyncClient() as client:
         try:
+            response = await client.post(f"{PAYMENT_API_URL}charge", json=payload, cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de pagamento: {e}")
 
-            response = requests.post(CART_API_URL, json=request.json, cookies=request.cookies)
-            return response.content, response.status_code, response.headers.items()
-        except requests.exceptions.RequestException as e:
-            return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
-    else: # GET
+
+@gateway_router.delete("/orders/{order_id}")
+async def delete_order_gateway(order_id: int, request: Request = None):
+    async with httpx.AsyncClient() as client:
         try:
-
-            response = requests.get(CART_API_URL, cookies=request.cookies)
-            return response.content, response.status_code, response.headers.items()
-        except requests.exceptions.RequestException as e:
-            return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
-
-
-@gateway_bp.route('/cart/<int:item_id>', methods=['DELETE'])
-def delete_cart_item_gateway(item_id):
-    if 'user_id' not in session:
-        return jsonify({"error": "Usuário não autenticado"}), 401
-
-    try:
-
-        response = requests.delete(f"{CART_API_URL}{item_id}", cookies=request.cookies)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
+            response = await client.delete(f"{ORDERS_API_URL}{order_id}", cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de pedidos: {e}")
 
 
+@gateway_router.api_route("/cart/", methods=["GET", "POST"])
+async def cart_gateway(request: Request, user_id: str = Depends(get_current_user)):
+    async with httpx.AsyncClient() as client:
+        try:
+            if request.method == "POST":
+                payload = await request.json()
+                response = await client.post(CART_API_URL, json=payload, cookies=request.cookies)
+            else:  # GET
+                response = await client.get(CART_API_URL, cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de carrinho: {e}")
 
 
-@gateway_bp.route('/cart/clear', methods=['POST'])
-def clear_cart_gateway():
-    if 'user_id' not in session:
-        return jsonify({"error": "Usuário não autenticado"}), 401
+@gateway_router.delete("/cart/{item_id}")
+async def delete_cart_item_gateway(item_id: int, request: Request, user_id: str = Depends(get_current_user)):
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.delete(f"{CART_API_URL}{item_id}", cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de carrinho: {e}")
 
-    try:
-        response = requests.post(f"{CART_API_URL}clear", json=request.json, cookies=request.cookies)
-        return response.content, response.status_code, response.headers.items()
-    except requests.exceptions.RequestException as e:
-        return jsonify({"error": "Não foi possível conectar ao serviço de carrinho", "details": str(e)}), 503
+
+@gateway_router.post("/cart/clear")
+async def clear_cart_gateway(request: Request, user_id: str = Depends(get_current_user)):
+    async with httpx.AsyncClient() as client:
+        try:
+            payload = await request.json()
+            response = await client.post(f"{CART_API_URL}clear", json=payload, cookies=request.cookies)
+            return JSONResponse(content=response.json(), status_code=response.status_code)
+        except httpx.RequestError as e:
+            raise HTTPException(status_code=503, detail=f"Não foi possível conectar ao serviço de carrinho: {e}")

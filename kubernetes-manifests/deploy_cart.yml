@@ -20,7 +20,7 @@ spec:
             - containerPort: 5005
           env:
             - name: DATABASE_URL
-              value: postgresql://postgres:postgres@localhost:5432/meubanco
+              value: postgresql+asyncpg://postgres:postgres@localhost:5432/meubanco
         - name: postgres
           image: postgres:16
           ports:

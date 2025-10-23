@@ -1,18 +1,53 @@
-from flask import Flask 
-from routes.checkout import checkout_bp
-from flask_cors import CORS 
-from telemetry import configure_telemetry
+import os
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 
-app = Flask(__name__)
+# Importar o router (que vamos migrar a seguir)
+from routes.checkout import checkout_router 
+from telemetry import configure_telemetry # Assumindo que telemetry.py existe
 
-app.secret_key = 'secret_key_checkout'
+# Nome do serviço para OpenTelemetry
+SERVICE_NAME = os.getenv("SERVICE_NAME", "checkout-service")
 
-CORS(app, supports_credentials = True)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Contexto de 'lifespan' para rodar código no startup e shutdown.
+    
+    Nota: Este serviço não tem 'init_db()' pois não possui banco próprio.
+    """
+    # Código de Startup
+    print("INFO:     Iniciando o serviço de Checkout...")
+    
+    # Configurar OpenTelemetry
+    configure_telemetry(app, SERVICE_NAME) 
+    print(f"INFO:     OpenTelemetry configurado para o serviço: {SERVICE_NAME}")
+    
+    yield
+    
+    # Código de Shutdown (se necessário)
+    print("INFO:     Desligando o serviço de Checkout...")
 
-app.register_blueprint(checkout_bp)
+# Criar a aplicação FastAPI
+app = FastAPI(lifespan=lifespan)
 
-configure_telemetry(app, "checkout")
+# Configurar CORS (Middleware)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas as origens (ajuste para produção)
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos
+    allow_headers=["*"],  # Permite todos os cabeçalhos
+)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5003, debug=True)
+# Incluir o roteador das rotas do checkout
+# (O arquivo 'routes/checkout.py' será nosso próximo passo)
+app.include_router(checkout_router)
 
+@app.get("/health")
+def health_check():
+    """
+    Endpoint simples de verificação de saúde.
+    """
+    return {"status": "healthy"}

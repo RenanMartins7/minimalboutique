@@ -1,71 +1,83 @@
-from flask import Blueprint, request, jsonify, session
-from models import db, User
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import JSONResponse
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from database import get_async_session
+from models import User
 from opentelemetry import trace
 
 tracer = trace.get_tracer(__name__)
 
-auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
+auth_router = APIRouter(prefix="/auth")
 
 
-@auth_bp.route('/register', methods=['POST'])
-def register():
-    data = request.json
+# Dependência para obter usuário autenticado (simula session)
+async def get_current_user(request: Request):
+    user_id = request.headers.get("X-User-Id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Usuário não autenticado")
+    return int(user_id)
 
-    email = data.get('email')
-    password = data.get('password')
 
+@auth_router.post("/register")
+async def register(data: dict, db: AsyncSession = Depends(get_async_session)):
+    email = data.get("email")
+    password = data.get("password")
     span = trace.get_current_span()
 
     if not email or not password:
-        return jsonify({"error": "Email e senha são obrigatórios"}), 400
+        raise HTTPException(status_code=400, detail="Email e senha são obrigatórios")
+
     span.set_attribute("email", email)
     span.set_attribute("password", password)
 
-    if User.query.filter_by(username=data['email']).first():
-        return jsonify({"error": "Usuário já existe"}), 400
+    # Verifica se usuário já existe
+    result = await db.execute(select(User).where(User.username == email))
+    existing_user = result.scalars().first()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Usuário já existe")
 
+    # Cria novo usuário
     user = User(username=email, password=password)
-    db.session.add(user)
-    db.session.commit()
+    db.add(user)
+    await db.commit()
+    await db.refresh(user)
 
-    return jsonify({'message': 'Usuário Criado com sucesso'}), 201
+    return JSONResponse(content={"message": "Usuário criado com sucesso"}, status_code=201)
 
-@auth_bp.route('/login', methods=['POST'])
-def login():
 
+@auth_router.post("/login")
+async def login(data: dict, db: AsyncSession = Depends(get_async_session)):
     span = trace.get_current_span()
-    data = request.json
-    user = User.query.filter_by(username=data['email'], password = data['password']).first()
-    
+    result = await db.execute(
+        select(User).where(User.username == data.get("email"), User.password == data.get("password"))
+    )
+    user = result.scalars().first()
+
     if not user:
-        return jsonify({'error': 'Credenciais inválidas'}), 401
-    
+        raise HTTPException(status_code=401, detail="Credenciais inválidas")
+
     span.set_attribute("user.id", user.id)
-    span.set_attribute("email", data['email'])
-    session['user_id'] = user.id
+    span.set_attribute("email", data["email"])
 
-    return jsonify({'message': 'Login realizado com sucesso'})
+    # No lugar de session, retornamos user_id no header ou token (simples aqui)
+    response = JSONResponse(content={"message": "Login realizado com sucesso"})
+    response.headers["X-User-Id"] = str(user.id)
+    return response
 
-@auth_bp.route('/logout', methods=['POST'])
-def logout():
+
+@auth_router.post("/logout")
+async def logout(user_id: int = Depends(get_current_user)):
     span = trace.get_current_span()
-    span.set_attribute("user.id", session['user_id'])
-    
-    session.pop('user_id', None)
-    
-    return jsonify({'message':'Logout realizado com sucesso'})
+    span.set_attribute("user.id", user_id)
+    # No FastAPI, logout pode ser feito no frontend removendo o token/header
+    return JSONResponse(content={"message": "Logout realizado com sucesso"})
 
 
-@auth_bp.route('/user', methods=['GET'])
-def get_user():
-    user_id = session.get('user_id')
-
-    if not user_id:
-        return jsonify(None)
-    
-    user = User.query.get(user_id)
-
-    if not user: return jsonify(None)
-
-    return jsonify({'email': user.username})
-    
+@auth_router.get("/user")
+async def get_user(user_id: int = Depends(get_current_user), db: AsyncSession = Depends(get_async_session)):
+    result = await db.execute(select(User).where(User.id == user_id))
+    user = result.scalars().first()
+    if not user:
+        return JSONResponse(content=None)
+    return JSONResponse(content={"email": user.username})

@@ -1,26 +1,45 @@
-from flask_sqlalchemy import SQLAlchemy 
-from flask import Flask
 import os
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import DeclarativeBase
 
-db = SQLAlchemy()
+class Base(DeclarativeBase):
+    pass
 
+# Lê a URL do banco de dados do ambiente
+# Garanta que esta variável de ambiente inclua '+asyncpg'
+# O nome do banco (ex: meubanco_products) deve ser o correto para este serviço.
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+asyncpg://postgres:postgres@localhost:5432/meubanco" 
+)
 
-def init_db(app: Flask):
-    # Pega a URL do banco do environment (configurada no Deployment)
-    database_url = os.getenv('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/meubanco')
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Cria engine assíncrona
+engine = create_async_engine(
+    DATABASE_URL,
+    echo=False,
+    future=True,
+    pool_size=5,        # Mínimo de conexões no pool
+    max_overflow=144,    # Conexões extras permitidas
+    connect_args={"timeout": 120}  # Timeout para conexão individual
+)
 
-    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        "pool_size": 80,       # conexões fixas no pool
-        "max_overflow": 40,    # extras além do pool
-        "pool_timeout": 120,    # espera até liberar uma conexão
-        "pool_recycle": 180   # recicla conexões a cada 30 min
-    }
+# Session assíncrona
+async_session = sessionmaker(
+    engine, expire_on_commit=False, class_=AsyncSession
+)
 
-    db.init_app(app)
+async def get_async_session() -> AsyncSession:
+    """
+    Dependência do FastAPI para injetar uma sessão de DB em rotas.
+    """
+    async with async_session() as session:
+        yield session
 
-    # Cria as tabelas no PostgreSQL
-    with app.app_context():
-        db.create_all()
+async def init_db():
+    """
+    Inicializa o banco de dados, criando todas as tabelas
+    definidas nos modelos que herdam de 'Base'.
+    """
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)

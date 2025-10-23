@@ -1,34 +1,60 @@
-from database import db
+# 1. Imports corrigidos: Tipos vêm de 'sqlalchemy'
+from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey
+
+# 'relationship' vem de 'sqlalchemy.orm'
+from sqlalchemy.orm import relationship
+
+# Sua Base declarativa
+from database import Base
 
 
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(80), nullable = False)
-    price = db.Column(db.Float, nullable = False)
-    description = db.Column(db.Text, nullable = True)
-    image_url = db.Column(db.Text, nullable = True)
+class Product(Base):
+    # 2. Nome da tabela definido
+    __tablename__ = 'product'
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(80), unique = True, nullable = False)
-    password = db.Column(db.String(120), nullable = False)
-
-
-class OrderItem(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('order.id'), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
-    quantity = db.Column(db.Integer, nullable = False)
-    price = db.Column(db.Float, nullable=False)
-    product = db.relationship('Product')
+    # 1. Colunas corrigidas (sem "Base.")
+    id = Column(Integer, primary_key=True)
+    name = Column(String(80), nullable=False)
+    price = Column(Float, nullable=False)
+    description = Column(Text, nullable=True)
+    image_url = Column(Text, nullable=True)
 
 
-class Order(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
-    total = db.Column(db.Float, nullable = False)
-    user = db.relationship('User')
-    items = db.relationship('OrderItem', backref = 'order', lazy=True)
+class User(Base):
+    __tablename__ = 'user'
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String(80), unique=True, nullable=False)
+    password = Column(String(120), nullable=False)
+
+    # 3. Relacionamento bidirecional corrigido para async
+    orders = relationship('Order', back_populates='user', lazy='selectin')
+
+
+class OrderItem(Base):
+    __tablename__ = 'order_item' # Nome de tabela presumido
+
+    id = Column(Integer, primary_key=True)
+    order_id = Column(Integer, ForeignKey('order.id'), nullable=False)
+    product_id = Column(Integer, ForeignKey('product.id'), nullable=False)
+    quantity = Column(Integer, nullable=False)
+    price = Column(Float, nullable=False)
+
+    # 3. Relacionamentos corrigidos para async
+    product = relationship('Product', lazy='selectin')
+    order = relationship('Order', back_populates='items', lazy='selectin')
+
+
+class Order(Base):
+    __tablename__ = 'order'
+
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    total = Column(Float, nullable=False)
+
+    # 3. Relacionamentos bidirecionais corrigidos para async
+    user = relationship('User', back_populates='orders', lazy='selectin')
+    items = relationship('OrderItem', back_populates='order', lazy='selectin')
 
 
 

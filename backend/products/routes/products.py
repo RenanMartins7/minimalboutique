@@ -1,158 +1,216 @@
-from flask import Blueprint, jsonify, request
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+
+# Importa o modelo (do Canvas) e a sessão (do database.py)
 from models import Product
-from database import db
+from database import get_async_session
+
 from opentelemetry import trace
+
+# ===============================================================
+# Configuração
+# ===============================================================
 
 tracer = trace.get_tracer(__name__)
 
+# 1. Substituir Blueprint por APIRouter
+products_router = APIRouter(
+    prefix="/products",
+    tags=["Products"]
+)
 
-products_bp = Blueprint('products', __name__, url_prefix = '/products')
-#Rotas de dados de produtos
-@products_bp.route('/', methods=['GET'])
-def list_products():
+# ===============================================================
+# Modelos Pydantic (Validação de Entrada/Saída)
+# ===============================================================
+
+# Modelo base para o produto (campos comuns)
+class ProductBase(BaseModel):
+    name: str
+    price: float
+    description: str | None = None
+    image_url: str | None = None
+    stock: int = 0
+
+# Modelo para criar um novo produto
+class ProductCreate(ProductBase):
+    pass
+
+# Modelo para a resposta (inclui o ID)
+class ProductResponse(ProductBase):
+    id: int
+
+    # Permite que o Pydantic leia o modelo SQLAlchemy
+    class Config:
+        orm_mode = True 
+
+# Modelo para atualizar estoque (reservar/liberar)
+class StockPayload(BaseModel):
+    quantity: int
+
+# Modelo para requisição em lote
+class BatchPayload(BaseModel):
+    ids: List[int]
+
+# ===============================================================
+# ROTAS MIGRADAS
+# ===============================================================
+
+@products_router.get("/", response_model=List[ProductResponse])
+async def list_products(db: AsyncSession = Depends(get_async_session)):
+    """
+    Lista todos os produtos que têm estoque (stock > 0).
+    """
     span = trace.get_current_span()
-    products = Product.query.filter(Product.stock>0).all()
+    
+    # 2. Query assíncrona
+    statement = select(Product).where(Product.stock > 0)
+    result = await db.execute(statement)
+    products = result.scalars().all()
+    
     span.set_attribute("number.of.products", len(products))
-    return jsonify([{
-        "id": p.id,
-        "name": p.name,
-        "price": p.price,
-        "description": p.description,
-        "image_url": p.image_url,
-        "stock": p.stock
-        } for p in products])
+    return products
 
-@products_bp.route('/<int:product_id>', methods=['GET'])
-def get_product(product_id):
+@products_router.get("/{product_id}", response_model=ProductResponse)
+async def get_product(product_id: int, db: AsyncSession = Depends(get_async_session)):
+    """
+    Busca um produto específico pelo ID.
+    """
     span = trace.get_current_span()
-    product = Product.query.get(product_id)
+    
+    # 3. db.get() é a forma assíncrona de .query.get()
+    product = await db.get(Product, product_id)
+    
     if product is None:
-        return jsonify({'error': 'Produto não encontrado'}), 404
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+    
     span.set_attribute("product.id", product.id)
-    return jsonify({
-        "id": product.id,
-        "name": product.name,
-        "price": product.price,
-        "description": product.description,
-        "image_url": product.image_url,
-        "stock": product.stock
-    })
+    return product
 
-#Rotas para excluir e adicionar diretamente
-@products_bp.route('/<int:product_id>', methods=['DELETE'])
-def delete_product(product_id):
+@products_router.delete("/{product_id}")
+async def delete_product(product_id: int, db: AsyncSession = Depends(get_async_session)):
+    """
+    Deleta um produto pelo ID.
+    """
     span = trace.get_current_span()
-    product = Product.query.get(product_id)
+    product = await db.get(Product, product_id)
+    
     if product is None:
-        return jsonify({'error': 'Producto não encontrado'}), 404
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+    
     span.set_attribute("product.id", product_id)
-    db.session.delete(product)
-    db.session.commit()
-    return jsonify({'message':'Producto removido com sucesso'}), 200
+    
+    # 4. Deletar e commitar
+    await db.delete(product)
+    await db.commit()
+    
+    return {"message": "Produto removido com sucesso"}
 
-@products_bp.route('/', methods=['POST'])
-def add_product():
-    data = request.json
-    product = Product(
-        name=data['name'], 
-        price=data['price'],
-        description=data.get('description'),
-        image_url=data.get('image_url'),
-        stock=data.get('stock', 0)
-        )
-    db.session.add(product)
-    db.session.commit()
-    return jsonify({"id": product.id}), 201
+@products_router.post("/", response_model=ProductResponse, status_code=201)
+async def add_product(
+    payload: ProductCreate, # 5. Validação Pydantic
+    db: AsyncSession = Depends(get_async_session)
+):
+    """
+    Adiciona um novo produto ao banco de dados.
+    """
+    # 6. Cria o objeto do modelo SQLAlchemy a partir do Pydantic
+    product = Product(**payload.model_dump())
+    
+    db.add(product)
+    await db.commit()
+    await db.refresh(product) # Recarrega o 'product' para obter o ID
+    
+    return product
 
-#Rotas para reserva e liberação de produto
+# ===============================================================
+# Rotas de Estoque (Reservar/Liberar)
+# ===============================================================
 
-@products_bp.route('/<int:product_id>/reserve', methods=['POST'])
-def reserve_stock(product_id):
+@products_router.post("/{product_id}/reserve")
+async def reserve_stock(
+    product_id: int, 
+    payload: StockPayload, # 5. Validação Pydantic
+    db: AsyncSession = Depends(get_async_session)
+):
+    """
+    Reserva uma quantidade do estoque de um produto.
+    """
     span = trace.get_current_span()
-    span.set_attribute(" product.id", product_id)
-    product = Product.query.get(product_id)
+    span.set_attribute("product.id", product_id)
+
+    product = await db.get(Product, product_id)
     if not product:
-        return jsonify({"error": "Produto não encontrado"}), 404
-    
-    quantity_to_reserve = request.json.get('quantity', 0)
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+
+    quantity_to_reserve = payload.quantity
     if quantity_to_reserve <= 0:
-        return jsonify({"error":"Quantidade inválida"}), 400
-    
+        raise HTTPException(status_code=400, detail="Quantidade inválida")
+
     if product.stock >= quantity_to_reserve:
         product.stock -= quantity_to_reserve
-        db.session.commit()
-        return jsonify({"message": "Estoque reservado com sucesso", "new_stock": product.stock}), 200
+        db.add(product) # Adiciona a instância modificada à sessão
+        await db.commit()
+        return {"message": "Estoque reservado com sucesso", "new_stock": product.stock}
     else:
-        product.stock += 50000
-        db.session.commit()
-        # return jsonify({"error": "Estoque insuficiente"}), 409
+        # Replicando a lógica do seu código Flask
+        product.stock += 50000 
+        db.add(product)
+        await db.commit()
+        # Nota: O original comentou o erro 409. Mantendo a lógica de adição.
+        # Se você quiser que falhe, descomente a linha abaixo e remova as 2 acima.
+        # raise HTTPException(status_code=409, detail="Estoque insuficiente")
+        return {"message": "Estoque insuficiente, adicionado 50k", "new_stock": product.stock}
 
 
-@products_bp.route('/<int:product_id>/release', methods=['POST'])
-def release_stock(product_id):
+@products_router.post("/{product_id}/release")
+async def release_stock(
+    product_id: int, 
+    payload: StockPayload, # 5. Validação Pydantic
+    db: AsyncSession = Depends(get_async_session)
+):
+    """
+    Libera (devolve) uma quantidade ao estoque de um produto.
+    """
     span = trace.get_current_span()
     span.set_attribute("product.id", product_id)
 
-    product = Product.query.get(product_id)
+    product = await db.get(Product, product_id)
     if not product:
-        return jsonify({"error": "Produto não encontrado"}), 404
-    
-    quantity_to_release = request.json.get('quantity', 0)
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+
+    quantity_to_release = payload.quantity
     if quantity_to_release <= 0:
-        return jsonify({"error": "Quantidade inválida"}), 400
+        raise HTTPException(status_code=400, detail="Quantidade inválida")
 
     product.stock += quantity_to_release
-    db.session.commit()
-    return jsonify({"message": "Estoque liberado com sucesso", "new_stock": product.stock}), 200
-
-
-@products_bp.route('/batch', methods=['POST'])
-def get_products_batch():
-    span=trace.get_current_span()
-
-    data = request.get_json()
-    if not data or 'ids' not in data:
-        return jsonify({"error": "Corpo da requisição deve conter uma lista 'ids'"}), 400
+    db.add(product) # Adiciona a instância modificada à sessão
+    await db.commit()
     
-    ids = data['ids']
+    return {"message": "Estoque liberado com sucesso", "new_stock": product.stock}
 
-    span.set_attribute("batch.request.size", len(ids))
+@products_router.post("/batch", response_model=List[ProductResponse])
+async def get_products_batch(
+    payload: BatchPayload, # 5. Validação Pydantic
+    db: AsyncSession = Depends(get_async_session)
+):
+    """
+    Busca uma lista de produtos com base em uma lista de IDs.
+    """
+    span = trace.get_current_span()
+    
+    if not payload.ids:
+        return []
 
-    products = Product.query.filter(Product.id.in_(ids)).all()
+    span.set_attribute("batch.request.size", len(payload.ids))
+
+    # 7. Query assíncrona com 'in_'
+    statement = select(Product).where(Product.id.in_(payload.ids))
+    result = await db.execute(statement)
+    products = result.scalars().all()
+    
     span.set_attribute("batch.response.size", len(products))
-
-    return jsonify([
-        {
-            "id" : p.id,
-            "name" : p.name,
-            "price" : p.price,
-            "description" : p.description,
-            "image_url": p.image_url,
-            "stock": p.stock
-        }
-        for p in products
-    ])
-
-
-
-
-
-
-
-
-
-
-
-# from flask import Blueprint, jsonify
-# from database import get_db_connection
-
-
-# products_bp = Blueprint('products', __name__, url_prefix='/products')
-
-# @products_bp.route('/', methods=['GET'])
-# def list_products():
-#     conn = get_db_connection()
-#     products = conn.execute('SELECT * FROM products').fetchall()
-#     conn.close()
-#     return jsonify([dict(row) for row in products])
-
+    
+    return products

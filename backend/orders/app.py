@@ -1,19 +1,56 @@
-from flask import Flask
-from routes.orders import orders_bp
-from database import init_db
-from flask_cors import CORS 
-from telemetry import configure_telemetry
+import os
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
 
-app = Flask(__name__)
-app.secret_key = 'secret_key_orders'
+# Importar o router (que vamos migrar a seguir)
+from routes.orders import orders_router
+from telemetry import configure_telemetry # Assumindo que telemetry.py existe
+from database import init_db, engine # Importa a função de inicialização do DB
 
-CORS(app, supports_credentials=True)
+# Nome do serviço para OpenTelemetry
+SERVICE_NAME = os.getenv("SERVICE_NAME", "orders-service")
 
-app.register_blueprint(orders_bp)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Contexto de 'lifespan' para rodar código no startup e shutdown.
+    """
+    # Código de Startup
+    print("INFO:     Iniciando o serviço de Pedidos...")
+    
+    # Configurar OpenTelemetry
+    configure_telemetry(app, SERVICE_NAME, engine)
+    print(f"INFO:     OpenTelemetry configurado para o serviço: {SERVICE_NAME}")
+    
+    # Inicializar o banco de dados (criar tabelas se não existirem)
+    await init_db()
+    print("INFO:     Banco de dados inicializado.")
+    
+    yield
+    
+    # Código de Shutdown (se necessário)
+    print("INFO:     Desligando o serviço de Pedidos...")
 
-init_db(app)
+# Criar a aplicação FastAPI
+app = FastAPI(lifespan=lifespan)
 
-configure_telemetry(app, "orders")
+# Configurar CORS (Middleware)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas as origens (ajuste para produção)
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos os métodos
+    allow_headers=["*"],  # Permite todos os cabeçalhos
+)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port = 5002, debug=True)
+# Incluir o roteador das rotas de pedidos
+# (O arquivo 'routes/orders.py' será nosso próximo passo)
+app.include_router(orders_router)
+
+@app.get("/health")
+def health_check():
+    """
+    Endpoint simples de verificação de saúde.
+    """
+    return {"status": "healthy"}

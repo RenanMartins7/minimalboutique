@@ -1,16 +1,47 @@
-from flask import Blueprint, jsonify, request
-from models import Order, OrderItem
-from database import db
-import requests
-from opentelemetry import trace
+import os
+import httpx
 import datetime
-from sqlalchemy.orm import joinedload
+import asyncio
+import logging
+from typing import List
+
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+
+# Importa os modelos (já migrados)
+from models import Order, OrderItem
+# Importa a sessão e o 'get_db' (já migrados)
+from database import get_async_session
+
+from opentelemetry import trace
+
+# Configurar logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# ===============================================================
+# Configuração
+# ===============================================================
+
+# 1. Substituir Blueprint por APIRouter
+orders_router = APIRouter(
+    prefix="/orders",
+    tags=["Orders"]
+)
 
 tracer = trace.get_tracer(__name__)
 
-orders_bp = Blueprint('orders', __name__, url_prefix='/orders')
+# URL do serviço de produtos (lida do ambiente)
+PRODUCTS_API_URL = os.getenv("PRODUCTS_API_URL", "http://products:5001/products")
 
-# Cache simples em memória
+# 2. Cliente HTTP assíncrono global
+client = httpx.AsyncClient(timeout=3.0)
+
+# ===============================================================
+# Cache (Lógica de cache mantida, agora usada por httpx)
+# ===============================================================
 product_cache = {}
 CACHE_TTL_SECONDS = 300  # 5 minutos
 
@@ -19,188 +50,233 @@ def get_product_from_cache(product_id):
     entry = product_cache.get(product_id)
     if not entry:
         return None
-
-    # Verifica expiração
     if (datetime.datetime.now() - entry["timestamp"]).total_seconds() > CACHE_TTL_SECONDS:
         del product_cache[product_id]
         return None
-
     return entry["data"]
 
-def fetch_product(product_id):
-    """Busca o produto no cache ou via requisição HTTP"""
-    # 1️⃣ Tenta cache
+async def fetch_product(product_id: int):
+    """
+    Busca o produto no cache ou via requisição HTTP assíncrona.
+    Retorna (product_data, was_cached)
+    """
     cached = get_product_from_cache(product_id)
     if cached:
-        return cached, True  # True indica que veio do cache
+        return cached, True
 
-    # 2️⃣ Se não está no cache, busca no serviço products
     try:
-        response = requests.get(f"http://products:5001/products/{product_id}", timeout=3)
+        # 3. Substituir requests.get por client.get
+        response = await client.get(f"{PRODUCTS_API_URL}/{product_id}")
+        
         if response.status_code == 200:
             product_data = response.json()
-            # Atualiza cache
             product_cache[product_id] = {
                 "data": product_data,
                 "timestamp": datetime.datetime.now()
             }
             return product_data, False
         else:
-            print(f"[WARN] Falha ao buscar produto {product_id}: {response.status_code}")
+            logger.warning(f"[WARN] Falha ao buscar produto {product_id}: {response.status_code}")
             return None, False
-    except requests.exceptions.RequestException as e:
-        print(f"[ERRO] Requisição ao serviço de produtos falhou: {e}")
+    except httpx.RequestError as e:
+        logger.error(f"[ERRO] Requisição ao serviço de produtos falhou: {e}")
         return None, False
 
+# ===============================================================
+# Modelos Pydantic (Validação de Entrada/Saída)
+# ===============================================================
+
+class OrderItemCreate(BaseModel):
+    product_id: int
+    quantity: float
+    price: float
+
+class OrderCreate(BaseModel):
+    user_id: int
+    total: float
+    items: List[OrderItemCreate]
+
+class OrderItemResponse(BaseModel):
+    product_name: str
+    quantity: float
+    price: float
+
+class OrderResponse(BaseModel):
+    id: int
+    total: float
+    status: str
+    items: List[OrderItemResponse]
 
 # ===============================================================
 # CREATE ORDER
 # ===============================================================
-@orders_bp.route('/', methods=['POST'])
-def create_order():
+@orders_router.post('/', status_code=201)
+async def create_order(
+    payload: OrderCreate,  # 4. Validação Pydantic
+    db: AsyncSession = Depends(get_async_session) # 5. Injeção de sessão Async
+):
     span = trace.get_current_span()
+    span.set_attribute("user.id", payload.user_id)
+    span.set_attribute("total", payload.total)
+    span.set_attribute("number.of.items", len(payload.items))
 
-    data = request.json
-    user_id = data.get('user_id')
-    total = data.get('total')
-    items = data.get('items')
-
-    if not all([user_id, total, items]):
-        return jsonify({'error': 'Dados incompletos para criar o pedido'}), 400
+    # 6. Criar objetos SQLAlchemy (não mais db.Model)
+    order = Order(user_id=payload.user_id, total=payload.total, status='pending')
     
-    span.set_attribute("user.id", user_id)
-    span.set_attribute("total", total)
-    span.set_attribute("number.of.items", len(items))
-
-    order = Order(user_id=user_id, total=total)
-    db.session.add(order)
-    db.session.flush() 
+    # 7. Usar 'await' para operações de DB
+    db.add(order)
+    await db.flush()  # Precisamos do ID do pedido (order.id) para os itens
     span.set_attribute("order.id", order.id)
 
-    for item_data in items:
-        order_item = OrderItem(
-            order_id=order.id,
-            product_id=item_data['product_id'],
-            quantity=item_data['quantity'],
-            price=item_data['price']
+    order_items = []
+    for item_data in payload.items:
+        order_items.append(
+            OrderItem(
+                order_id=order.id,
+                product_id=item_data.product_id,
+                quantity=item_data.quantity,
+                price=item_data.price
+            )
         )
-        db.session.add(order_item)
-
-    db.session.commit()
-    return jsonify({'message': 'Pedido criado com sucesso', 'order_id': order.id}), 201
-
+    
+    db.add_all(order_items)
+    await db.commit()
+    
+    return {'message': 'Pedido criado com sucesso', 'order_id': order.id}
 
 # ===============================================================
-# GET ORDERS (agora com cache item a item)
+# GET ORDERS (Otimizado para chamadas de rede paralelas)
 # ===============================================================
-@orders_bp.route('/', methods=['GET'])
-def get_orders():
+@orders_router.get('/', response_model=List[OrderResponse])
+async def get_orders(
+    user_id: int,  # 8. Parâmetro de query tipado
+    db: AsyncSession = Depends(get_async_session)
+):
     span = trace.get_current_span()
-
-    user_id = request.args.get('user_id')
-    if not user_id:
-        return jsonify({'error': 'user_id é obrigatório'}), 400
     span.set_attribute("user.id", user_id)
 
-    # Parâmetros opcionais de paginação (default: últimos 20)
-    limit = int(request.args.get('limit', 20))
-    offset = int(request.args.get('offset', 0))
-
-    orders = (
-        Order.query
-        .options(joinedload(Order.items))
-        .filter_by(user_id=user_id)
-        .order_by(Order.id.desc())
-        .limit(limit)
-        .offset(offset)
-        .all()
-    )
-
+    # 9. Query assíncrona
+    # O 'lazy="selectin"' no models.py garante que os 'items' sejam carregados
+    # de forma eficiente (uma query extra para todos os itens).
+    statement = select(Order).where(Order.user_id == user_id).order_by(Order.id.desc())
+    result = await db.execute(statement)
+    orders = result.scalars().all()
     span.set_attribute("number.of.orders", len(orders))
-    span.set_attribute("pagination.limit", limit)
-    span.set_attribute("pagination.offset", offset)
 
-    result = []
-    cache_hits = 0
-    cache_misses = 0
+    if not orders:
+        return []
 
+    # 10. Otimização N+1: Buscar todos os produtos em paralelo
+    all_product_ids = {item.product_id for order in orders for item in order.items}
+    tasks = [fetch_product(pid) for pid in all_product_ids]
+    product_results = await asyncio.gather(*tasks)
+
+    # Criar um mapa de ID -> (product_data, was_cached)
+    product_map = dict(zip(all_product_ids, product_results))
+    
+    cache_hits = sum(1 for _, was_cached in product_map.values() if was_cached)
+    cache_misses = len(all_product_ids) - cache_hits
+
+    # Montar a resposta
+    response_list = []
     for order in orders:
         items_data = []
         for item in order.items:
-            product_data, from_cache = fetch_product(item.product_id)
-            if from_cache:
-                cache_hits += 1
-            else:
-                cache_misses += 1
-
+            product_data, _ = product_map.get(item.product_id, (None, False))
+            
+            product_name = "Produto não encontrado"
             if product_data:
                 product_name = product_data.get('name', 'Nome não encontrado')
-            else:
-                product_name = 'Produto não encontrado ou erro no serviço'
 
-            items_data.append({
-                'product_name': product_name,
-                'quantity': item.quantity,
-                'price': item.price
-            })
+            items_data.append(
+                OrderItemResponse(
+                    product_name=product_name,
+                    quantity=item.quantity,
+                    price=item.price
+                )
+            )
 
-        result.append({
-            'id': order.id,
-            'total': order.total,
-            'status': order.status,
-            'items': items_data
-        })
+        response_list.append(
+            OrderResponse(
+                id=order.id,
+                total=order.total,
+                status=order.status,
+                items=items_data
+            )
+        )
 
     span.set_attribute("cache.hits", cache_hits)
     span.set_attribute("cache.misses", cache_misses)
 
-    return jsonify(result)
-
+    return response_list
 
 # ===============================================================
 # CONFIRM PAYMENT
 # ===============================================================
-@orders_bp.route('/<int:order_id>/confirm_payment', methods=['POST'])
-def confirm_payment(order_id):
+@orders_router.post('/{order_id}/confirm_payment')
+async def confirm_payment(
+    order_id: int,  # 11. Parâmetro de rota tipado
+    db: AsyncSession = Depends(get_async_session)
+):
     span = trace.get_current_span()
 
-    order = Order.query.get(order_id)
+    # 12. db.get() é a forma assíncrona de .query.get()
+    order = await db.get(Order, order_id)
     if not order:
-        return jsonify({"error": "Pedido não encontrado"}), 404
+        raise HTTPException(status_code=404, detail="Pedido não encontrado")
+    
     span.set_attribute("order.id", order.id)
     
     order.status = 'paid'
     span.set_attribute("payment.status", "paid")
-    db.session.commit()
+    
+    db.add(order) # Adiciona a instância modificada à sessão
+    await db.commit()
 
-    return jsonify({"message": "Pagamento do pedido confirmado com sucesso"}), 200
-
+    return {"message": "Pagamento do pedido confirmado com sucesso"}
 
 # ===============================================================
-# DELETE ORDER
+# DELETE ORDER (Otimizado para chamadas de rede paralelas)
 # ===============================================================
-@orders_bp.route('/<int:order_id>', methods=['DELETE'])
-def delete_order(order_id):
+@orders_router.delete('/{order_id}')
+async def delete_order(
+    order_id: int,
+    db: AsyncSession = Depends(get_async_session)
+):
     span = trace.get_current_span()
-    order = Order.query.get(order_id)
+
+    # 13. Precisamos dos 'items' para liberar o estoque,
+    # então usamos 'select' (que ativará o 'selectin' do modelo).
+    statement = select(Order).where(Order.id == order_id)
+    result = await db.execute(statement)
+    order = result.scalar_one_or_none()
+    
     if not order:
-        return jsonify({"error": "Pedido não encontrado"}), 404
+        raise HTTPException(status_code=404, detail="Pedido não encontrado")
+    
     span.set_attribute("order.id", order.id)
     
     if order.status != 'pending':
-        return jsonify({"error": "Apenas pedidos pendentes podem ser cancelados"}), 400
+        raise HTTPException(status_code=400, detail="Apenas pedidos pendentes podem ser cancelados")
     
+    # 14. Otimização N+1: Liberar estoque em paralelo
+    tasks = []
     for item in order.items:
-        try:
-            requests.post(
-                f"http://products:5001/products/{item.product_id}/release",
-                json={'quantity': item.quantity},
-                timeout=3
-            )
-        except requests.exceptions.RequestException as e:
-            print(f"ERRO CRÍTICO: Falha ao liberar estoque para product_id {item.product_id}. Detalhes: {e}")
+        release_url = f"{PRODUCTS_API_URL}/{item.product_id}/release"
+        tasks.append(client.post(release_url, json={'quantity': item.quantity}))
     
-    db.session.delete(order)
-    db.session.commit()
+    try:
+        release_results = await asyncio.gather(*tasks, return_exceptions=True)
+        for res in release_results:
+            if isinstance(res, Exception):
+                logger.error(f"ERRO CRÍTICO: Falha ao liberar estoque (durante delete): {res}")
+            elif res.status_code != 200:
+                 logger.error(f"ERRO CRÍTICO: Falha ao liberar estoque (status {res.status_code}): {res.text}")
+    except Exception as e:
+         logger.error(f"ERRO CRÍTICO: Exceção ao liberar estoque: {e}")
+    
+    # 15. Deletar e commitar
+    await db.delete(order)
+    await db.commit()
 
-    return jsonify({"message": "Pedido cancelado com sucesso"}), 200
+    return {"message": "Pedido cancelado com sucesso"}

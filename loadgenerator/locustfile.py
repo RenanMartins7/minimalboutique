@@ -135,3 +135,7 @@ class UserBehavior(TaskSet):
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
     wait_time = between(1, 5)
+
+    # def on_start(self):
+    #     self.client._pool_connections = 200
+    #     self.client._pool_conections = 200
