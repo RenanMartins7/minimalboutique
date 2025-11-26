@@ -13,6 +13,7 @@ class ReinforceAgent:
         self.lr = lr
         self.baseline = 0.0
         self.baseline_decay = baseline_decay
+        self.first = True
 
     
     def select_actions(self, all_policies):
@@ -31,10 +32,16 @@ class ReinforceAgent:
             selected = [all_policies[idx]]
             actions[idx] = 1
         
-        self.last_actions = np.array(actions)
-        return selected
+        # self.last_actions = np.array(actions)
+        return selected, actions
 
-    def update(self, selected_policies, reward):
+    def update(self, selected_policies, reward, selected_actions):
+
+        if self.first == True:
+            self.last_actions = np.array(selected_actions)
+            self.first = False
+            return
+            
         self.baseline = (self.baseline_decay * self.baseline +(1-self.baseline_decay)*reward)
 
         advantage = reward - self.baseline
@@ -42,9 +49,11 @@ class ReinforceAgent:
         grad = self.last_actions - self.probs
         self.probs += self.lr * advantage * grad
         self.probs = np.clip(self.probs, 0.01, 0.99)
+        self.last_actions = np.array(selected_actions)
+        
 
-    def save_policies(self):
-        with open(self.policies_path, "w") as f:
+    def save_policies(self, current_test):
+        with open("policies_probs_" + str(current_test) + ".json", "w") as f:
             json.dump(self.probs.tolist(), f)
 
 

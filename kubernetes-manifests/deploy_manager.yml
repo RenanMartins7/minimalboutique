@@ -15,6 +15,7 @@ spec:
       labels:
         app: collector-manager
     spec:
+      # nodeName: petshopboys
       serviceAccountName: default
       containers:
         - name: manager

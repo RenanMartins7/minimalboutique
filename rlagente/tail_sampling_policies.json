@@ -1,63 +1,24 @@
 [
-    {
-      "name": "errors_percent",
-      "type": "and",
-      "and":{
-        "and_sub_policy": [
-          {
-            "name": "errors_policy",
-            "type": "status_code",
-            "status_code": {"status_codes": ["ERROR"]}
-          },
-          {
-            "name": "sample_percent",
-            "type": "probabilistic",
-            "probabilistic":{
-              "sampling_percentage": 1.0
-            }
-          }
-        ]
-      }
-    },
+
     {
       "name": "latency-policy-500ms",
       "type": "latency",
       "latency": { "threshold_ms": 500 }
     },
     {
-      "name": "latency-policy-1ms",
-      "type": "latency",
-      "latency": { "upper_threshold_ms": 0.1 }
-    },
-    {
       "name": "large_traces",
       "type": "span_count",
       "span_count":{
-        "min_spans": 40
+        "min_spans": 20
       }
     },    
     {
       "name": "high_price_requests",
-      "type": "numeric_attribute",
-      "numeric_attribute": {
-        "key": "total",
-        "min_value": 500
-      }
-    },
-    {
-      "name": "high_volume_itens",
-      "type": "numeric_attribute",
-      "numeric_attribute": {
-        "key": "stock.itens",
-        "min_value": 10
-      }
-    },
-    {
-      "name": "high_number_orders",
-      "type": "numeric_attribute",
-      "numeric_attribute": {
-        "key": "number.of.orders",
-        "min_value": 4
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"total\"] >= 500 and attributes[\"total\"] <= 10000000000) or (resource.attributes[\"total\"] >= 500 and resource.attributes[\"total\"] <= 10000000000)"
+        ]
       }
     },
     {
@@ -84,14 +45,6 @@
       }
     },
     {
-      "name": "batch_size",
-      "type": "numeric_attribute",
-      "numeric_attribute": {
-        "key": "batch.request.size",
-        "min_value": 3
-      }
-    },
-    {
       "name": "probability-policy-15",
       "type": "probabilistic",
       "probabilistic": { "sampling_percentage": 10 }
@@ -101,7 +54,7 @@
       "type": "probabilistic",
       "probabilistic": { "sampling_percentage": 20 }
     },
-    {
+        {
       "name": "change_percent",
       "type": "and",
       "and":{
@@ -125,6 +78,15 @@
       }
     },
         {
+      "name": "high_volume_itens",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"stock.itens\"] >= 10) or (resource.attributes[\"stock.itens\"] >= 10)"
+        ]
+      }
+    },
+            {
       "name": "slow-db-queries",
       "type": "and",
       "and":{
@@ -144,7 +106,7 @@
         ]
       }
     },
-        {
+            {
       "name": "products_percent",
       "type": "and",
       "and":{
@@ -162,6 +124,35 @@
             "type": "probabilistic",
             "probabilistic":{
               "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+        {
+      "name": "high_number_orders",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"number.of.orders\"] >= 4) or (resource.attributes[\"number.of.orders\"] >= 4)"
+        ]
+      }
+    },
+        {
+      "name": "errors_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "errors_policy",
+            "type": "status_code",
+            "status_code": {"status_codes": ["ERROR"]}
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 100.0
             }
           }
         ]

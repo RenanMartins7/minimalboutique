@@ -4,7 +4,7 @@ metadata:
   name: loadgenerator
   namespace: rmalves
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: loadgenerator
@@ -13,6 +13,7 @@ spec:
       labels:
         app: loadgenerator
     spec:
+      # nodeName: petshopboys
       containers:
         - name: loadgenerator
           image: momosuke07/loadgenerator:latest

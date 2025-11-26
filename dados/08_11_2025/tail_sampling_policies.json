@@ -1,0 +1,169 @@
+[
+    {
+      "name": "errors_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "errors_policy",
+            "type": "status_code",
+            "status_code": {"status_codes": ["ERROR"]}
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "latency-policy-500ms",
+      "type": "latency",
+      "latency": { "threshold_ms": 500 }
+    },
+    {
+      "name": "large_traces",
+      "type": "span_count",
+      "span_count":{
+        "min_spans": 20
+      }
+    },    
+    {
+      "name": "high_price_requests",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"total\"] >= 500 and attributes[\"total\"] <= 10000000000) or (resource.attributes[\"total\"] >= 500 and resource.attributes[\"total\"] <= 10000000000)"
+        ]
+      }
+    },
+    {
+      "name": "high_volume_itens",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"stock.itens\"] >= 10) or (resource.attributes[\"stock.itens\"] >= 10)"
+        ]
+      }
+    },
+    {
+      "name": "high_number_orders",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"number.of.orders\"] >= 4) or (resource.attributes[\"number.of.orders\"] >= 4)"
+        ]
+      }
+    },
+    {
+      "name": "declined_payment_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "declined_payment",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "payment.status",
+              "values": ["declined"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 10.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "batch_size",
+      "type": "ottl_condition",
+      "ottl_condition": {
+        "span": [
+          "(attributes[\"batch.request.size\"] >= 3) or (resource.attributes[\"batch.request.size\"] >= 3)"
+        ]
+      }
+    },
+    {
+      "name": "probability-policy-15",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 10 }
+    },
+    {
+      "name": "probability-policy-20",
+      "type": "probabilistic",
+      "probabilistic": { "sampling_percentage": 20 }
+    },
+    {
+      "name": "change_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "http_data_operations",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.method",
+              "values": ["POST", "PUT", "DELETE"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    },
+        {
+      "name": "slow-db-queries",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "is-db-span",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "db.system"
+            }
+          },
+          {
+            "name": "db-query-latency",
+            "type": "latency",
+            "latency":{"threshold_ms": 500}
+          }
+        ]
+      }
+    },
+        {
+      "name": "products_percent",
+      "type": "and",
+      "and":{
+        "and_sub_policy": [
+          {
+            "name": "cproducts_service",
+            "type": "string_attribute",
+            "string_attribute":{
+              "key": "http.route",
+              "values": ["/products/"]
+            }
+          },
+          {
+            "name": "sample_percent",
+            "type": "probabilistic",
+            "probabilistic":{
+              "sampling_percentage": 1
+            }
+          }
+        ]
+      }
+    }
+]

@@ -13,6 +13,7 @@ spec:
       labels:
         app: checkout
     spec:
+      # nodeName: petshopboys
       containers:
         - name: checkout
           image: momosuke07/checkout:latest

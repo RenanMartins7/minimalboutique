@@ -1,0 +1,44 @@
+Experimento 1:
+- latência acima de 500ms
+- probabilidade de 10%
+- compra acima de 500 reais
+
+Experimento 2:
+- latência acima de 500ms
+- traces com mais de 20 spans
+
+- probabilidade de 10%
+- probabilidade de 20%
+
+- compra acima de 500 reais
+- pagamentos recusados
+
+Experimento 3:
+- latência acima de 500ms
+- traces com mais de 20 spans
+- consultas ao banco de dados lentas
+
+- probabilidade de 10%
+- probabilidade de 20%
+- 1% de todos as alterações de sistema
+
+- compra acima de 500 reais
+- pagamentos recusados
+- quantidade de itens
+
+Experimento 3:
+- latência acima de 500ms
+- traces com mais de 20 spans
+- consultas ao banco de dados lentas
+- Erros
+
+
+- probabilidade de 10%
+- probabilidade de 20%
+- 1% de todos as alterações de sistema
+- 1% de todas as operações no serviço de produtos
+
+- compra acima de 500 reais
+- pagamentos recusados
+- quantidade de itens
+- quantidade de pedidos maior que 4

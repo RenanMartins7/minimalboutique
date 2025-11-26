@@ -13,6 +13,7 @@ spec:
       labels:
         app: orders
     spec:
+      # nodeName: petshopboys
       containers:
         - name: orders
           image: momosuke07/orders:latest

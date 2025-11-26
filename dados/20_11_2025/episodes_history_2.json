@@ -1,0 +1,1262 @@
+[
+  {
+    "episode": 1,
+    "hash": "jausj",
+    "entropy": 0.0,
+    "reward": -0.0066928509242848554,
+    "number_of_traces": 0
+  },
+  {
+    "episode": 2,
+    "hash": "2340ed53",
+    "entropy": 6.1324432327977005,
+    "reward": 0.5849804536682272,
+    "number_of_traces": 585
+  },
+  {
+    "episode": 3,
+    "hash": "62b88412",
+    "entropy": 6.084365740011142,
+    "reward": 0.519565686570326,
+    "number_of_traces": 1069
+  },
+  {
+    "episode": 4,
+    "hash": "0a5ac170",
+    "entropy": 5.289512005656737,
+    "reward": 0.4638807110376486,
+    "number_of_traces": 934
+  },
+  {
+    "episode": 5,
+    "hash": "b895ba4a",
+    "entropy": 7.67679178931914,
+    "reward": 0.7565280415333455,
+    "number_of_traces": 206
+  },
+  {
+    "episode": 6,
+    "hash": "a40292dc",
+    "entropy": 6.189650264775194,
+    "reward": 0.5843252938275096,
+    "number_of_traces": 669
+  },
+  {
+    "episode": 7,
+    "hash": "421362e9",
+    "entropy": 0.0,
+    "reward": -0.0066928509242848554,
+    "number_of_traces": 0
+  },
+  {
+    "episode": 8,
+    "hash": "8ed632aa",
+    "entropy": 5.734696443655833,
+    "reward": 0.4776880162692556,
+    "number_of_traces": 1102
+  },
+  {
+    "episode": 9,
+    "hash": "53d57d7e",
+    "entropy": 7.098032082960526,
+    "reward": 0.7004022665549986,
+    "number_of_traces": 137
+  },
+  {
+    "episode": 10,
+    "hash": "1d498932",
+    "entropy": 5.943242206468139,
+    "reward": 0.4849841751229711,
+    "number_of_traces": 1161
+  },
+  {
+    "episode": 11,
+    "hash": "5d43a7ee",
+    "entropy": 6.27516686979636,
+    "reward": 0.5964482028199686,
+    "number_of_traces": 624
+  },
+  {
+    "episode": 12,
+    "hash": "7ae30a1e",
+    "entropy": 5.3029149250656955,
+    "reward": 0.4661276161013957,
+    "number_of_traces": 928
+  },
+  {
+    "episode": 13,
+    "hash": "5c41983d",
+    "entropy": 7.491853096329675,
+    "reward": 0.7387286034010494,
+    "number_of_traces": 180
+  },
+  {
+    "episode": 14,
+    "hash": "99bcc81b",
+    "entropy": 5.021081361872378,
+    "reward": 0.4797400934347077,
+    "number_of_traces": 489
+  },
+  {
+    "episode": 15,
+    "hash": "85fbcde6",
+    "entropy": 7.531381460516312,
+    "reward": 0.742551303125791,
+    "number_of_traces": 185
+  },
+  {
+    "episode": 16,
+    "hash": "3da60f56",
+    "entropy": 5.317200446792785,
+    "reward": 0.4697714600207748,
+    "number_of_traces": 913
+  },
+  {
+    "episode": 17,
+    "hash": "cae42de6",
+    "entropy": 6.345852790974638,
+    "reward": 0.6026008816079306,
+    "number_of_traces": 636
+  },
+  {
+    "episode": 18,
+    "hash": "00684fb5",
+    "entropy": 7.60733031374961,
+    "reward": 0.7498810896430484,
+    "number_of_traces": 195
+  },
+  {
+    "episode": 19,
+    "hash": "5811d08a",
+    "entropy": 0.0,
+    "reward": -0.0066928509242848554,
+    "number_of_traces": 0
+  },
+  {
+    "episode": 20,
+    "hash": "79a9c892",
+    "entropy": 7.149747119504682,
+    "reward": 0.70545664642378,
+    "number_of_traces": 142
+  },
+  {
+    "episode": 21,
+    "hash": "fddd7043",
+    "entropy": 7.2443159472678165,
+    "reward": 0.7146507457928091,
+    "number_of_traces": 153
+  },
+  {
+    "episode": 22,
+    "hash": "d387c4c6",
+    "entropy": 6.0826026461390015,
+    "reward": 0.5282715220874667,
+    "number_of_traces": 1023
+  },
+  {
+    "episode": 23,
+    "hash": "cc1f6606",
+    "entropy": 6.291176190272865,
+    "reward": 0.5494960573534127,
+    "number_of_traces": 1021
+  },
+  {
+    "episode": 24,
+    "hash": "6ec30ed4",
+    "entropy": 6.363581436011554,
+    "reward": 0.6050630894089303,
+    "number_of_traces": 627
+  },
+  {
+    "episode": 25,
+    "hash": "f8a37c73",
+    "entropy": 6.422201965595748,
+    "reward": 0.6047132250359546,
+    "number_of_traces": 702
+  },
+  {
+    "episode": 26,
+    "hash": "db42a785",
+    "entropy": 7.721099188707186,
+    "reward": 0.7608201009862422,
+    "number_of_traces": 211
+  },
+  {
+    "episode": 27,
+    "hash": "98c7ae1f",
+    "entropy": 7.483815777264257,
+    "reward": 0.7379507082693182,
+    "number_of_traces": 179
+  },
+  {
+    "episode": 28,
+    "hash": "5a5975cb",
+    "entropy": 7.577428828035749,
+    "reward": 0.7469977594524009,
+    "number_of_traces": 191
+  },
+  {
+    "episode": 29,
+    "hash": "ee544b53",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 30,
+    "hash": "caf54aea",
+    "entropy": 7.599912842187128,
+    "reward": 0.7491661451394082,
+    "number_of_traces": 194
+  },
+  {
+    "episode": 31,
+    "hash": "b05b6667",
+    "entropy": 7.523561956057012,
+    "reward": 0.7417955075690781,
+    "number_of_traces": 184
+  },
+  {
+    "episode": 32,
+    "hash": "c279931c",
+    "entropy": 5.9185424632832255,
+    "reward": 0.5125983251986455,
+    "number_of_traces": 1019
+  },
+  {
+    "episode": 33,
+    "hash": "079982a6",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 34,
+    "hash": "a5642e2c",
+    "entropy": 7.383704292474052,
+    "reward": 0.7282447170295039,
+    "number_of_traces": 167
+  },
+  {
+    "episode": 35,
+    "hash": "79f74775",
+    "entropy": 6.221747606236894,
+    "reward": 0.5915546626225732,
+    "number_of_traces": 618
+  },
+  {
+    "episode": 36,
+    "hash": "0231a94b",
+    "entropy": 7.39231742277876,
+    "reward": 0.7290809413918833,
+    "number_of_traces": 168
+  },
+  {
+    "episode": 37,
+    "hash": "4812bbda",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 38,
+    "hash": "4bd318a5",
+    "entropy": 7.491853096329675,
+    "reward": 0.7387286034010494,
+    "number_of_traces": 180
+  },
+  {
+    "episode": 39,
+    "hash": "54e6939c",
+    "entropy": 7.442943495848728,
+    "reward": 0.7339917195126773,
+    "number_of_traces": 174
+  },
+  {
+    "episode": 40,
+    "hash": "500e0257",
+    "entropy": 0.0,
+    "reward": -0.0066928509242848554,
+    "number_of_traces": 0
+  },
+  {
+    "episode": 41,
+    "hash": "058a2c5d",
+    "entropy": 6.156936036928898,
+    "reward": 0.5229006505757329,
+    "number_of_traces": 1088
+  },
+  {
+    "episode": 42,
+    "hash": "8b6abfef",
+    "entropy": 6.127578230030016,
+    "reward": 0.5079584435901773,
+    "number_of_traces": 1142
+  },
+  {
+    "episode": 43,
+    "hash": "e54916da",
+    "entropy": 7.651051691178929,
+    "reward": 0.7540910276757252,
+    "number_of_traces": 201
+  },
+  {
+    "episode": 44,
+    "hash": "3578d3a9",
+    "entropy": 0.0,
+    "reward": -0.0066928509242848554,
+    "number_of_traces": 0
+  },
+  {
+    "episode": 45,
+    "hash": "c409f0a8",
+    "entropy": 7.2384047393250786,
+    "reward": 0.7141079324114407,
+    "number_of_traces": 151
+  },
+  {
+    "episode": 46,
+    "hash": "91052781",
+    "entropy": 7.6220518194563756,
+    "reward": 0.7512994378537508,
+    "number_of_traces": 197
+  },
+  {
+    "episode": 47,
+    "hash": "8df832c7",
+    "entropy": 6.021973223795059,
+    "reward": 0.5231236455096657,
+    "number_of_traces": 1018
+  },
+  {
+    "episode": 48,
+    "hash": "bf249d3c",
+    "entropy": 7.442943495848728,
+    "reward": 0.7339917195126773,
+    "number_of_traces": 174
+  },
+  {
+    "episode": 49,
+    "hash": "1559251a",
+    "entropy": 7.700439718141093,
+    "reward": 0.7588375654922663,
+    "number_of_traces": 208
+  },
+  {
+    "episode": 50,
+    "hash": "a94ba45a",
+    "entropy": 6.188591076999695,
+    "reward": 0.49071849945521595,
+    "number_of_traces": 1233
+  },
+  {
+    "episode": 51,
+    "hash": "9a9a7455",
+    "entropy": 5.973047731087628,
+    "reward": 0.48796472758492004,
+    "number_of_traces": 1161
+  },
+  {
+    "episode": 52,
+    "hash": "65ff50ba",
+    "entropy": 7.219168520462161,
+    "reward": 0.7122323816821639,
+    "number_of_traces": 149
+  },
+  {
+    "episode": 53,
+    "hash": "26baf4f2",
+    "entropy": 7.60733031374961,
+    "reward": 0.7498810896430484,
+    "number_of_traces": 195
+  },
+  {
+    "episode": 54,
+    "hash": "bb41ebb0",
+    "entropy": 6.76126792848064,
+    "reward": 0.6419851711662875,
+    "number_of_traces": 663
+  },
+  {
+    "episode": 55,
+    "hash": "a7717916",
+    "entropy": 6.592216584825903,
+    "reward": 0.6269261937841398,
+    "number_of_traces": 640
+  },
+  {
+    "episode": 56,
+    "hash": "67618707",
+    "entropy": 7.499845887083205,
+    "reward": 0.7395019823830328,
+    "number_of_traces": 181
+  },
+  {
+    "episode": 57,
+    "hash": "7c61d237",
+    "entropy": 6.187896382814392,
+    "reward": 0.5092058928751392,
+    "number_of_traces": 1162
+  },
+  {
+    "episode": 58,
+    "hash": "3f0dd3ce",
+    "entropy": 6.114990576323517,
+    "reward": 0.5821156105567559,
+    "number_of_traces": 601
+  },
+  {
+    "episode": 59,
+    "hash": "b18bbe29",
+    "entropy": 7.339850002884625,
+    "reward": 0.7239838137024474,
+    "number_of_traces": 162
+  },
+  {
+    "episode": 60,
+    "hash": "c201c4bc",
+    "entropy": 7.658211482751795,
+    "reward": 0.7547797414409084,
+    "number_of_traces": 202
+  },
+  {
+    "episode": 61,
+    "hash": "f4594114",
+    "entropy": 7.139551352398794,
+    "reward": 0.7044606095161988,
+    "number_of_traces": 141
+  },
+  {
+    "episode": 62,
+    "hash": "53298756",
+    "entropy": 6.52577361335826,
+    "reward": 0.6205154697259938,
+    "number_of_traces": 637
+  },
+  {
+    "episode": 63,
+    "hash": "ec77c307",
+    "entropy": 7.3219280948873635,
+    "reward": 0.722241007621832,
+    "number_of_traces": 160
+  },
+  {
+    "episode": 64,
+    "hash": "8799ec03",
+    "entropy": 7.507794640198697,
+    "reward": 0.7402708941308398,
+    "number_of_traces": 182
+  },
+  {
+    "episode": 65,
+    "hash": "268e89f1",
+    "entropy": 7.658211482751795,
+    "reward": 0.7547797414409084,
+    "number_of_traces": 202
+  },
+  {
+    "episode": 66,
+    "hash": "ceee133d",
+    "entropy": 7.467605550082998,
+    "reward": 0.736381169750657,
+    "number_of_traces": 177
+  },
+  {
+    "episode": 67,
+    "hash": "7934b543",
+    "entropy": 6.640974527783922,
+    "reward": 0.6318019880799418,
+    "number_of_traces": 640
+  },
+  {
+    "episode": 68,
+    "hash": "a0970331",
+    "entropy": 7.451211111832328,
+    "reward": 0.7347929586639276,
+    "number_of_traces": 175
+  },
+  {
+    "episode": 69,
+    "hash": "1d47bd28",
+    "entropy": 7.679480099505446,
+    "reward": 0.7568244058624004,
+    "number_of_traces": 205
+  },
+  {
+    "episode": 70,
+    "hash": "dc60285e",
+    "entropy": 7.507794640198697,
+    "reward": 0.7402708941308398,
+    "number_of_traces": 182
+  },
+  {
+    "episode": 71,
+    "hash": "92645d15",
+    "entropy": 6.485498172630728,
+    "reward": 0.613149759640401,
+    "number_of_traces": 678
+  },
+  {
+    "episode": 72,
+    "hash": "67083058",
+    "entropy": 7.599912842187128,
+    "reward": 0.7491661451394082,
+    "number_of_traces": 194
+  },
+  {
+    "episode": 73,
+    "hash": "88f2f5db",
+    "entropy": 6.402338862066504,
+    "reward": 0.6065020724251832,
+    "number_of_traces": 658
+  },
+  {
+    "episode": 74,
+    "hash": "31e53af9",
+    "entropy": 7.577428828035749,
+    "reward": 0.7469977594524009,
+    "number_of_traces": 191
+  },
+  {
+    "episode": 75,
+    "hash": "879ad7e0",
+    "entropy": 7.566957623847267,
+    "reward": 0.7459506390335527,
+    "number_of_traces": 191
+  },
+  {
+    "episode": 76,
+    "hash": "2996c988",
+    "entropy": 6.207690917635535,
+    "reward": 0.5176001826060204,
+    "number_of_traces": 1135
+  },
+  {
+    "episode": 77,
+    "hash": "258918aa",
+    "entropy": 6.2358647509409115,
+    "reward": 0.5908189202519027,
+    "number_of_traces": 646
+  },
+  {
+    "episode": 78,
+    "hash": "ecf3d2b7",
+    "entropy": 6.581154733804049,
+    "reward": 0.62262994929911,
+    "number_of_traces": 679
+  },
+  {
+    "episode": 79,
+    "hash": "c0089452",
+    "entropy": 7.375039431346925,
+    "reward": 0.7274032582086144,
+    "number_of_traces": 166
+  },
+  {
+    "episode": 80,
+    "hash": "eadb2721",
+    "entropy": 7.475733430966398,
+    "reward": 0.7371682472472504,
+    "number_of_traces": 178
+  },
+  {
+    "episode": 81,
+    "hash": "75038a65",
+    "entropy": 6.238252565829806,
+    "reward": 0.5233992403164497,
+    "number_of_traces": 1123
+  },
+  {
+    "episode": 82,
+    "hash": "7063bfd2",
+    "entropy": 7.1799090900149345,
+    "reward": 0.7084018767084203,
+    "number_of_traces": 145
+  },
+  {
+    "episode": 83,
+    "hash": "f1c727ca",
+    "entropy": 7.483815777264257,
+    "reward": 0.7379507082693182,
+    "number_of_traces": 179
+  },
+  {
+    "episode": 84,
+    "hash": "a88fc413",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 85,
+    "hash": "28898293",
+    "entropy": 7.475733430966398,
+    "reward": 0.7371682472472504,
+    "number_of_traces": 178
+  },
+  {
+    "episode": 86,
+    "hash": "40856707",
+    "entropy": 7.546894459887636,
+    "reward": 0.7440501008876125,
+    "number_of_traces": 187
+  },
+  {
+    "episode": 87,
+    "hash": "5546a240",
+    "entropy": 6.068774433463003,
+    "reward": 0.578198670290698,
+    "number_of_traces": 591
+  },
+  {
+    "episode": 88,
+    "hash": "3f03cd29",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 89,
+    "hash": "ad352370",
+    "entropy": 7.648310492652785,
+    "reward": 0.7537896424310074,
+    "number_of_traces": 202
+  },
+  {
+    "episode": 90,
+    "hash": "c6442516",
+    "entropy": 7.6147098441152075,
+    "reward": 0.7505921743944468,
+    "number_of_traces": 196
+  },
+  {
+    "episode": 91,
+    "hash": "768c30f5",
+    "entropy": 7.6865005271832185,
+    "reward": 0.7574989153197533,
+    "number_of_traces": 206
+  },
+  {
+    "episode": 92,
+    "hash": "6f49d0e2",
+    "entropy": 7.266786540694902,
+    "reward": 0.716873562477786,
+    "number_of_traces": 154
+  },
+  {
+    "episode": 93,
+    "hash": "f73d8cb6",
+    "entropy": 7.451211111832328,
+    "reward": 0.7347929586639276,
+    "number_of_traces": 175
+  },
+  {
+    "episode": 94,
+    "hash": "80589157",
+    "entropy": 7.554588851677638,
+    "reward": 0.7447931924730538,
+    "number_of_traces": 188
+  },
+  {
+    "episode": 95,
+    "hash": "d2f9891b",
+    "entropy": 7.515699838284044,
+    "reward": 0.7410353867530989,
+    "number_of_traces": 183
+  },
+  {
+    "episode": 96,
+    "hash": "9aeb19b5",
+    "entropy": 6.571403482621535,
+    "reward": 0.6249229234431892,
+    "number_of_traces": 639
+  },
+  {
+    "episode": 97,
+    "hash": "57fdb34e",
+    "entropy": 7.569855608330949,
+    "reward": 0.7462669791681619,
+    "number_of_traces": 190
+  },
+  {
+    "episode": 98,
+    "hash": "961a826e",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 99,
+    "hash": "e422eb1f",
+    "entropy": 7.569855608330949,
+    "reward": 0.7462669791681619,
+    "number_of_traces": 190
+  },
+  {
+    "episode": 100,
+    "hash": "0e1712dc",
+    "entropy": 7.562242424221072,
+    "reward": 0.7455321375910072,
+    "number_of_traces": 189
+  },
+  {
+    "episode": 101,
+    "hash": "b012d642",
+    "entropy": 7.551660413639062,
+    "reward": 0.7444739365328062,
+    "number_of_traces": 189
+  },
+  {
+    "episode": 102,
+    "hash": "49ac0c75",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 103,
+    "hash": "b4d85ae9",
+    "entropy": 7.6220518194563756,
+    "reward": 0.7512994378537508,
+    "number_of_traces": 197
+  },
+  {
+    "episode": 104,
+    "hash": "8348ad0c",
+    "entropy": 7.400879436282184,
+    "reward": 0.7299119925505031,
+    "number_of_traces": 169
+  },
+  {
+    "episode": 105,
+    "hash": "5ca38615",
+    "entropy": 7.451211111832328,
+    "reward": 0.7347929586639276,
+    "number_of_traces": 175
+  },
+  {
+    "episode": 106,
+    "hash": "8455fbe4",
+    "entropy": 7.700439718141093,
+    "reward": 0.7588375654922663,
+    "number_of_traces": 208
+  },
+  {
+    "episode": 107,
+    "hash": "899a2da9",
+    "entropy": 7.774787059601173,
+    "reward": 0.765963444904971,
+    "number_of_traces": 219
+  },
+  {
+    "episode": 108,
+    "hash": "2395a40b",
+    "entropy": 7.732121192008623,
+    "reward": 0.7618382760459904,
+    "number_of_traces": 214
+  },
+  {
+    "episode": 109,
+    "hash": "eb990800",
+    "entropy": 6.447920312873065,
+    "reward": 0.6136482007525281,
+    "number_of_traces": 625
+  },
+  {
+    "episode": 110,
+    "hash": "cc753e5b",
+    "entropy": 7.562242424221072,
+    "reward": 0.7455321375910072,
+    "number_of_traces": 189
+  },
+  {
+    "episode": 111,
+    "hash": "ab9b515f",
+    "entropy": 7.721099188707186,
+    "reward": 0.7608201009862422,
+    "number_of_traces": 211
+  },
+  {
+    "episode": 112,
+    "hash": "660372d0",
+    "entropy": 7.7481928495894605,
+    "reward": 0.7634172962399693,
+    "number_of_traces": 215
+  },
+  {
+    "episode": 113,
+    "hash": "6a3f4615",
+    "entropy": 5.868898350202375,
+    "reward": 0.5057902567149801,
+    "number_of_traces": 1029
+  },
+  {
+    "episode": 114,
+    "hash": "a1bdc61c",
+    "entropy": 7.6220518194563756,
+    "reward": 0.7512994378537508,
+    "number_of_traces": 197
+  },
+  {
+    "episode": 115,
+    "hash": "3274f19f",
+    "entropy": 7.754887502163467,
+    "reward": 0.7640585470898761,
+    "number_of_traces": 216
+  },
+  {
+    "episode": 116,
+    "hash": "d106836f",
+    "entropy": 6.848215978265452,
+    "reward": 0.6442200388574172,
+    "number_of_traces": 735
+  },
+  {
+    "episode": 117,
+    "hash": "32df5a71",
+    "entropy": 7.577428828035749,
+    "reward": 0.7469977594524009,
+    "number_of_traces": 191
+  },
+  {
+    "episode": 118,
+    "hash": "da948144",
+    "entropy": 7.434628227636724,
+    "reward": 0.7331856527236539,
+    "number_of_traces": 173
+  },
+  {
+    "episode": 119,
+    "hash": "402057f4",
+    "entropy": 7.569855608330949,
+    "reward": 0.7462669791681619,
+    "number_of_traces": 190
+  },
+  {
+    "episode": 120,
+    "hash": "f5a5174b",
+    "entropy": 6.524544580681513,
+    "reward": 0.5438426613979302,
+    "number_of_traces": 1158
+  },
+  {
+    "episode": 121,
+    "hash": "ccd64cbf",
+    "entropy": 6.617190882031839,
+    "reward": 0.6278239240440057,
+    "number_of_traces": 660
+  },
+  {
+    "episode": 122,
+    "hash": "2d783691",
+    "entropy": 7.219168520462161,
+    "reward": 0.7122323816821639,
+    "number_of_traces": 149
+  },
+  {
+    "episode": 123,
+    "hash": "4f60e5f8",
+    "entropy": 7.459431618637297,
+    "reward": 0.7355894243326381,
+    "number_of_traces": 176
+  },
+  {
+    "episode": 124,
+    "hash": "d872343e",
+    "entropy": 7.6865005271832185,
+    "reward": 0.7574989153197533,
+    "number_of_traces": 206
+  },
+  {
+    "episode": 125,
+    "hash": "e5f9e66d",
+    "entropy": 7.483815777264257,
+    "reward": 0.7379507082693182,
+    "number_of_traces": 179
+  },
+  {
+    "episode": 126,
+    "hash": "34ca145b",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 127,
+    "hash": "92f50782",
+    "entropy": 7.7481928495894605,
+    "reward": 0.7634172962399693,
+    "number_of_traces": 215
+  },
+  {
+    "episode": 128,
+    "hash": "08419cbf",
+    "entropy": 7.569855608330949,
+    "reward": 0.7462669791681619,
+    "number_of_traces": 190
+  },
+  {
+    "episode": 129,
+    "hash": "7986ebb2",
+    "entropy": 7.383704292474052,
+    "reward": 0.7282447170295039,
+    "number_of_traces": 167
+  },
+  {
+    "episode": 130,
+    "hash": "cac299fd",
+    "entropy": 7.546894459887636,
+    "reward": 0.7440501008876125,
+    "number_of_traces": 187
+  },
+  {
+    "episode": 131,
+    "hash": "69c0b692",
+    "entropy": 7.459431618637297,
+    "reward": 0.7355894243326381,
+    "number_of_traces": 176
+  },
+  {
+    "episode": 132,
+    "hash": "4ee0fd96",
+    "entropy": 7.303780748177103,
+    "reward": 0.7204754162530232,
+    "number_of_traces": 158
+  },
+  {
+    "episode": 133,
+    "hash": "04f15f7a",
+    "entropy": 6.466375369382136,
+    "reward": 0.6141854439489702,
+    "number_of_traces": 642
+  },
+  {
+    "episode": 134,
+    "hash": "19ba6b89",
+    "entropy": 7.523561956057012,
+    "reward": 0.7417955075690781,
+    "number_of_traces": 184
+  },
+  {
+    "episode": 135,
+    "hash": "2915bd7b",
+    "entropy": 7.409390936137702,
+    "reward": 0.7307379306730005,
+    "number_of_traces": 170
+  },
+  {
+    "episode": 136,
+    "hash": "98dbc99a",
+    "entropy": 7.451211111832328,
+    "reward": 0.7347929586639276,
+    "number_of_traces": 175
+  },
+  {
+    "episode": 137,
+    "hash": "e091fcaf",
+    "entropy": 7.7279204545632,
+    "reward": 0.7614742875552276,
+    "number_of_traces": 212
+  },
+  {
+    "episode": 138,
+    "hash": "cb4b0147",
+    "entropy": 7.569855608330949,
+    "reward": 0.7462669791681619,
+    "number_of_traces": 190
+  },
+  {
+    "episode": 139,
+    "hash": "36e43f62",
+    "entropy": 7.475733430966398,
+    "reward": 0.7371682472472504,
+    "number_of_traces": 178
+  },
+  {
+    "episode": 140,
+    "hash": "3837d25f",
+    "entropy": 7.459431618637297,
+    "reward": 0.7355894243326381,
+    "number_of_traces": 176
+  },
+  {
+    "episode": 141,
+    "hash": "6fd2f834",
+    "entropy": 7.357552004618085,
+    "reward": 0.7257043865783347,
+    "number_of_traces": 164
+  },
+  {
+    "episode": 142,
+    "hash": "53fc1680",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 143,
+    "hash": "33b3d2cc",
+    "entropy": 7.6865005271832185,
+    "reward": 0.7574989153197533,
+    "number_of_traces": 206
+  },
+  {
+    "episode": 144,
+    "hash": "3d4b3b44",
+    "entropy": 7.409390936137702,
+    "reward": 0.7307379306730005,
+    "number_of_traces": 170
+  },
+  {
+    "episode": 145,
+    "hash": "95754dfe",
+    "entropy": 7.539158811108031,
+    "reward": 0.7433028192146391,
+    "number_of_traces": 186
+  },
+  {
+    "episode": 146,
+    "hash": "1bfdaae1",
+    "entropy": 7.693486957499324,
+    "reward": 0.7581699576604902,
+    "number_of_traces": 207
+  },
+  {
+    "episode": 147,
+    "hash": "c376c50d",
+    "entropy": 7.60733031374961,
+    "reward": 0.7498810896430484,
+    "number_of_traces": 195
+  },
+  {
+    "episode": 148,
+    "hash": "c81e6794",
+    "entropy": 7.442943495848728,
+    "reward": 0.7339917195126773,
+    "number_of_traces": 174
+  },
+  {
+    "episode": 149,
+    "hash": "ace9f9d6",
+    "entropy": 7.339850002884625,
+    "reward": 0.7239838137024474,
+    "number_of_traces": 162
+  },
+  {
+    "episode": 150,
+    "hash": "2d667dab",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 151,
+    "hash": "f4bb4ead",
+    "entropy": 7.467605550082998,
+    "reward": 0.736381169750657,
+    "number_of_traces": 177
+  },
+  {
+    "episode": 152,
+    "hash": "161adaf8",
+    "entropy": 7.857980995127572,
+    "reward": 0.7739069678683701,
+    "number_of_traces": 232
+  },
+  {
+    "episode": 153,
+    "hash": "9103bd2e",
+    "entropy": 7.483815777264257,
+    "reward": 0.7379507082693182,
+    "number_of_traces": 179
+  },
+  {
+    "episode": 154,
+    "hash": "9e9e5cc9",
+    "entropy": 7.491853096329675,
+    "reward": 0.7387286034010494,
+    "number_of_traces": 180
+  },
+  {
+    "episode": 155,
+    "hash": "9e08ddd7",
+    "entropy": 7.539158811108031,
+    "reward": 0.7433028192146391,
+    "number_of_traces": 186
+  },
+  {
+    "episode": 156,
+    "hash": "90dae804",
+    "entropy": 7.651051691178929,
+    "reward": 0.7540910276757252,
+    "number_of_traces": 201
+  },
+  {
+    "episode": 157,
+    "hash": "6253e1cd",
+    "entropy": 7.839203788096943,
+    "reward": 0.7721170483245506,
+    "number_of_traces": 229
+  },
+  {
+    "episode": 158,
+    "hash": "b2b1b903",
+    "entropy": 7.665335917185177,
+    "reward": 0.7554648527523569,
+    "number_of_traces": 203
+  },
+  {
+    "episode": 159,
+    "hash": "c60e0e16",
+    "entropy": 7.562242424221072,
+    "reward": 0.7455321375910072,
+    "number_of_traces": 189
+  },
+  {
+    "episode": 160,
+    "hash": "7b394648",
+    "entropy": 6.700439718141092,
+    "reward": 0.661381028029296,
+    "number_of_traces": 104
+  },
+  {
+    "episode": 161,
+    "hash": "85a8053c",
+    "entropy": 7.813781191217038,
+    "reward": 0.7696908611260094,
+    "number_of_traces": 225
+  },
+  {
+    "episode": 162,
+    "hash": "2ca0cc1d",
+    "entropy": 7.434628227636724,
+    "reward": 0.7331856527236539,
+    "number_of_traces": 173
+  },
+  {
+    "episode": 163,
+    "hash": "e4564070",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 164,
+    "hash": "131902da",
+    "entropy": 7.531381460516312,
+    "reward": 0.742551303125791,
+    "number_of_traces": 185
+  },
+  {
+    "episode": 165,
+    "hash": "df49871e",
+    "entropy": 7.845490050944374,
+    "reward": 0.7727164789617686,
+    "number_of_traces": 230
+  },
+  {
+    "episode": 166,
+    "hash": "04d16777",
+    "entropy": 7.5924570372680815,
+    "reward": 0.7484473018242991,
+    "number_of_traces": 193
+  },
+  {
+    "episode": 167,
+    "hash": "cd841d1c",
+    "entropy": 7.2761244052742375,
+    "reward": 0.7177830467869766,
+    "number_of_traces": 155
+  },
+  {
+    "episode": 168,
+    "hash": "10709245",
+    "entropy": 7.643856189774724,
+    "reward": 0.7533986763468793,
+    "number_of_traces": 200
+  },
+  {
+    "episode": 169,
+    "hash": "87b89e95",
+    "entropy": 7.417852514885897,
+    "reward": 0.7315588148653943,
+    "number_of_traces": 171
+  },
+  {
+    "episode": 170,
+    "hash": "79253f60",
+    "entropy": 7.451211111832328,
+    "reward": 0.7347929586639276,
+    "number_of_traces": 175
+  },
+  {
+    "episode": 171,
+    "hash": "db570333",
+    "entropy": 7.6220518194563756,
+    "reward": 0.7512994378537508,
+    "number_of_traces": 197
+  },
+  {
+    "episode": 172,
+    "hash": "4b71b77e",
+    "entropy": 7.6220518194563756,
+    "reward": 0.7512994378537508,
+    "number_of_traces": 197
+  },
+  {
+    "episode": 173,
+    "hash": "54740892",
+    "entropy": 7.584962500721155,
+    "reward": 0.7477245200269739,
+    "number_of_traces": 192
+  },
+  {
+    "episode": 174,
+    "hash": "3910f1dd",
+    "entropy": 7.539158811108031,
+    "reward": 0.7433028192146391,
+    "number_of_traces": 186
+  },
+  {
+    "episode": 175,
+    "hash": "06840ccb",
+    "entropy": 7.515699838284044,
+    "reward": 0.7410353867530989,
+    "number_of_traces": 183
+  },
+  {
+    "episode": 176,
+    "hash": "d1c6d787",
+    "entropy": 7.467605550082998,
+    "reward": 0.736381169750657,
+    "number_of_traces": 177
+  },
+  {
+    "episode": 177,
+    "hash": "fc18c234",
+    "entropy": 7.651051691178929,
+    "reward": 0.7540910276757252,
+    "number_of_traces": 201
+  },
+  {
+    "episode": 178,
+    "hash": "5a2f411d",
+    "entropy": 7.679480099505446,
+    "reward": 0.7568244058624004,
+    "number_of_traces": 205
+  },
+  {
+    "episode": 179,
+    "hash": "c71139f6",
+    "entropy": 7.294620748891627,
+    "reward": 0.7195838978057477,
+    "number_of_traces": 157
+  },
+  {
+    "episode": 180,
+    "hash": "94cdb0aa",
+    "entropy": 7.515699838284044,
+    "reward": 0.7410353867530989,
+    "number_of_traces": 183
+  }
+]

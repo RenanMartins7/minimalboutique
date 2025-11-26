@@ -13,6 +13,7 @@ spec:
       labels:
         app: cart 
     spec:
+      # nodeName: petshopboys
       containers:
         - name: cart
           image: momosuke07/cart:latest 

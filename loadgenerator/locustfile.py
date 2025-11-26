@@ -134,4 +134,4 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = between(1, 5)
+    wait_time = between(2, 10)

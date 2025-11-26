@@ -13,7 +13,9 @@ spec:
       labels:
         app: backend
     spec:
+      # nodeName: petshopboys
       containers:
+        
         # Container da aplicação Flask
         - name: backend
           image: momosuke07/backend:latest

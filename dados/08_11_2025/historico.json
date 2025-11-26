@@ -1,0 +1,3226 @@
+[
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.2542580754446908,
+    "number_of_traces": 2480
+  },
+  {
+    "reward": -0.24016861919622035,
+    "number_of_traces": 2439
+  },
+  {
+    "reward": -0.04592102187965885,
+    "number_of_traces": 1735
+  },
+  {
+    "reward": -0.16125023154961315,
+    "number_of_traces": 1803
+  },
+  {
+    "reward": 0.6516704617735547,
+    "number_of_traces": 778
+  },
+  {
+    "reward": 0.6146587003998011,
+    "number_of_traces": 928
+  },
+  {
+    "reward": 0.6899766879134946,
+    "number_of_traces": 545
+  },
+  {
+    "reward": -0.07223457572158198,
+    "number_of_traces": 1707
+  },
+  {
+    "reward": 0.0958379390935089,
+    "number_of_traces": 1043
+  },
+  {
+    "reward": -0.24875736601344534,
+    "number_of_traces": 2263
+  },
+  {
+    "reward": -0.21828071555139061,
+    "number_of_traces": 2401
+  },
+  {
+    "reward": -0.22965832142804887,
+    "number_of_traces": 2588
+  },
+  {
+    "reward": 0.6508811744877095,
+    "number_of_traces": 768
+  },
+  {
+    "reward": 0.12357791206498192,
+    "number_of_traces": 1207
+  },
+  {
+    "reward": 0.09358301137802927,
+    "number_of_traces": 1621
+  },
+  {
+    "reward": 0.06080828540230443,
+    "number_of_traces": 1699
+  },
+  {
+    "reward": 0.6143565085691296,
+    "number_of_traces": 897
+  },
+  {
+    "reward": 0.13964461941855022,
+    "number_of_traces": 1284
+  },
+  {
+    "reward": 0.1494965950829969,
+    "number_of_traces": 1188
+  },
+  {
+    "reward": 0.6648267535236722,
+    "number_of_traces": 536
+  },
+  {
+    "reward": 0.09470093130118484,
+    "number_of_traces": 1580
+  },
+  {
+    "reward": 0.15487305877446844,
+    "number_of_traces": 940
+  },
+  {
+    "reward": -0.169974529209455,
+    "number_of_traces": 2658
+  },
+  {
+    "reward": 0.015359220763559112,
+    "number_of_traces": 1893
+  },
+  {
+    "reward": 0.019400712466597914,
+    "number_of_traces": 2091
+  },
+  {
+    "reward": 0.5370693327781149,
+    "number_of_traces": 1107
+  },
+  {
+    "reward": 0.16388682354672685,
+    "number_of_traces": 866
+  },
+  {
+    "reward": 0.688877164409591,
+    "number_of_traces": 538
+  },
+  {
+    "reward": 0.5300233200864934,
+    "number_of_traces": 1148
+  },
+  {
+    "reward": -0.2411490416583716,
+    "number_of_traces": 2524
+  },
+  {
+    "reward": 0.09706184853594224,
+    "number_of_traces": 1019
+  },
+  {
+    "reward": -0.1772354771554021,
+    "number_of_traces": 2311
+  },
+  {
+    "reward": 0.18964587789262943,
+    "number_of_traces": 1115
+  },
+  {
+    "reward": 0.6499156008366576,
+    "number_of_traces": 265
+  },
+  {
+    "reward": -0.19504850693979925,
+    "number_of_traces": 2307
+  },
+  {
+    "reward": 0.024158529203784695,
+    "number_of_traces": 1979
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.2365526689130829,
+    "number_of_traces": 2192
+  },
+  {
+    "reward": 0.6486677368226577,
+    "number_of_traces": 696
+  },
+  {
+    "reward": -0.23231929840497323,
+    "number_of_traces": 2229
+  },
+  {
+    "reward": 0.6381741861768884,
+    "number_of_traces": 853
+  },
+  {
+    "reward": 0.5169362761127456,
+    "number_of_traces": 1196
+  },
+  {
+    "reward": 0.50195372251264,
+    "number_of_traces": 1177
+  },
+  {
+    "reward": -0.21077537477480834,
+    "number_of_traces": 2214
+  },
+  {
+    "reward": 0.5228587852812396,
+    "number_of_traces": 1165
+  },
+  {
+    "reward": -0.19906647826962165,
+    "number_of_traces": 2768
+  },
+  {
+    "reward": -0.19019530899467196,
+    "number_of_traces": 2650
+  },
+  {
+    "reward": 0.5842320508287089,
+    "number_of_traces": 993
+  },
+  {
+    "reward": 0.6557266257337289,
+    "number_of_traces": 685
+  },
+  {
+    "reward": -0.25453162362926074,
+    "number_of_traces": 2204
+  },
+  {
+    "reward": 0.04346275939332345,
+    "number_of_traces": 1739
+  },
+  {
+    "reward": 0.09423851917542114,
+    "number_of_traces": 1614
+  },
+  {
+    "reward": -0.2671587281846882,
+    "number_of_traces": 2399
+  },
+  {
+    "reward": -0.20394320875910132,
+    "number_of_traces": 2819
+  },
+  {
+    "reward": 0.6230278455529116,
+    "number_of_traces": 823
+  },
+  {
+    "reward": -0.21997616419670174,
+    "number_of_traces": 1889
+  },
+  {
+    "reward": 0.04499115057963621,
+    "number_of_traces": 1877
+  },
+  {
+    "reward": -0.24700333182547884,
+    "number_of_traces": 2100
+  },
+  {
+    "reward": -0.2576654036176139,
+    "number_of_traces": 2090
+  },
+  {
+    "reward": 0.135898257171142,
+    "number_of_traces": 959
+  },
+  {
+    "reward": 0.19783764337703957,
+    "number_of_traces": 1229
+  },
+  {
+    "reward": -0.22610550720913136,
+    "number_of_traces": 2583
+  },
+  {
+    "reward": 0.035772294575689534,
+    "number_of_traces": 1714
+  },
+  {
+    "reward": -0.10959402200964263,
+    "number_of_traces": 1597
+  },
+  {
+    "reward": 0.14291318213925253,
+    "number_of_traces": 908
+  },
+  {
+    "reward": -0.19039927957152736,
+    "number_of_traces": 2479
+  },
+  {
+    "reward": -0.19198468271320812,
+    "number_of_traces": 2828
+  },
+  {
+    "reward": -0.20919257030430893,
+    "number_of_traces": 2837
+  },
+  {
+    "reward": 0.6277060106687706,
+    "number_of_traces": 787
+  },
+  {
+    "reward": -0.20628369603522634,
+    "number_of_traces": 2878
+  },
+  {
+    "reward": -0.2744007100214425,
+    "number_of_traces": 2169
+  },
+  {
+    "reward": -0.2345986558899419,
+    "number_of_traces": 2055
+  },
+  {
+    "reward": -0.2117983273220868,
+    "number_of_traces": 2687
+  },
+  {
+    "reward": 0.6725530285501584,
+    "number_of_traces": 557
+  },
+  {
+    "reward": -0.23076126752946935,
+    "number_of_traces": 2280
+  },
+  {
+    "reward": -0.2144378096952705,
+    "number_of_traces": 2946
+  },
+  {
+    "reward": -0.25370908858565133,
+    "number_of_traces": 2035
+  },
+  {
+    "reward": -0.1884348137842996,
+    "number_of_traces": 2628
+  },
+  {
+    "reward": -0.26231327040858365,
+    "number_of_traces": 2128
+  },
+  {
+    "reward": -0.26096209269068715,
+    "number_of_traces": 1831
+  },
+  {
+    "reward": -0.1784441783023698,
+    "number_of_traces": 2357
+  },
+  {
+    "reward": 0.15937183220025206,
+    "number_of_traces": 11
+  },
+  {
+    "reward": -0.21013378411118733,
+    "number_of_traces": 2658
+  },
+  {
+    "reward": 0.4950550070633557,
+    "number_of_traces": 1236
+  },
+  {
+    "reward": -0.1505904239604271,
+    "number_of_traces": 2411
+  },
+  {
+    "reward": -0.2542451809523756,
+    "number_of_traces": 2338
+  },
+  {
+    "reward": -0.18477079380696793,
+    "number_of_traces": 2740
+  },
+  {
+    "reward": -0.26161205998618586,
+    "number_of_traces": 2132
+  },
+  {
+    "reward": -0.2361968178945386,
+    "number_of_traces": 2229
+  },
+  {
+    "reward": -0.26788853575043736,
+    "number_of_traces": 2290
+  },
+  {
+    "reward": -0.2463697127062927,
+    "number_of_traces": 2313
+  },
+  {
+    "reward": -0.19353361140200487,
+    "number_of_traces": 2407
+  },
+  {
+    "reward": 0.6029475265271425,
+    "number_of_traces": 915
+  },
+  {
+    "reward": -0.22708617742771753,
+    "number_of_traces": 2002
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.2534096496528834,
+    "number_of_traces": 2021
+  },
+  {
+    "reward": 0.6016217943002329,
+    "number_of_traces": 900
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.19444507586055415,
+    "number_of_traces": 2422
+  },
+  {
+    "reward": -0.2214242174332055,
+    "number_of_traces": 2462
+  },
+  {
+    "reward": -0.1981696801283549,
+    "number_of_traces": 2560
+  },
+  {
+    "reward": -0.2441932153127423,
+    "number_of_traces": 2310
+  },
+  {
+    "reward": -0.2545401264338344,
+    "number_of_traces": 2308
+  },
+  {
+    "reward": -0.2037646421872017,
+    "number_of_traces": 2545
+  },
+  {
+    "reward": -0.19218954571784508,
+    "number_of_traces": 2071
+  },
+  {
+    "reward": -0.2199919921481357,
+    "number_of_traces": 2356
+  },
+  {
+    "reward": -0.24925182217489517,
+    "number_of_traces": 2402
+  },
+  {
+    "reward": -0.27146848501816134,
+    "number_of_traces": 2114
+  },
+  {
+    "reward": -0.22018274364764978,
+    "number_of_traces": 2886
+  },
+  {
+    "reward": -0.2073476239778429,
+    "number_of_traces": 2763
+  },
+  {
+    "reward": -0.24946077507980413,
+    "number_of_traces": 2663
+  },
+  {
+    "reward": -0.2538229384533658,
+    "number_of_traces": 2591
+  },
+  {
+    "reward": -0.23041271425402665,
+    "number_of_traces": 2805
+  },
+  {
+    "reward": -0.2396303924046489,
+    "number_of_traces": 1982
+  },
+  {
+    "reward": 0.4945606824872958,
+    "number_of_traces": 1234
+  },
+  {
+    "reward": 0.5877093452754689,
+    "number_of_traces": 932
+  },
+  {
+    "reward": -0.24001238700756378,
+    "number_of_traces": 2546
+  },
+  {
+    "reward": 0.6662576722848174,
+    "number_of_traces": 331
+  },
+  {
+    "reward": -0.2390425295808618,
+    "number_of_traces": 2513
+  },
+  {
+    "reward": 0.5258795512292328,
+    "number_of_traces": 1154
+  },
+  {
+    "reward": -0.18481304307975466,
+    "number_of_traces": 2739
+  },
+  {
+    "reward": -0.2738418974031659,
+    "number_of_traces": 2663
+  },
+  {
+    "reward": -0.20014489047339257,
+    "number_of_traces": 2712
+  },
+  {
+    "reward": -0.19241859406734663,
+    "number_of_traces": 2759
+  },
+  {
+    "reward": -0.25529486692016223,
+    "number_of_traces": 2014
+  },
+  {
+    "reward": -0.16306163257080808,
+    "number_of_traces": 2561
+  },
+  {
+    "reward": -0.24148245837146198,
+    "number_of_traces": 2595
+  },
+  {
+    "reward": -0.20393808196974694,
+    "number_of_traces": 2419
+  },
+  {
+    "reward": -0.19868678757447,
+    "number_of_traces": 2691
+  },
+  {
+    "reward": 0.6445581729020398,
+    "number_of_traces": 321
+  },
+  {
+    "reward": 0.6662115754233695,
+    "number_of_traces": 561
+  },
+  {
+    "reward": -0.21012465023063598,
+    "number_of_traces": 2454
+  },
+  {
+    "reward": -0.22396581278954586,
+    "number_of_traces": 2539
+  },
+  {
+    "reward": -0.22485196160499843,
+    "number_of_traces": 2461
+  },
+  {
+    "reward": -0.19760718380289322,
+    "number_of_traces": 2395
+  },
+  {
+    "reward": -0.21851261204326033,
+    "number_of_traces": 2544
+  },
+  {
+    "reward": -0.19503256558886473,
+    "number_of_traces": 2106
+  },
+  {
+    "reward": -0.2172139215141634,
+    "number_of_traces": 2510
+  },
+  {
+    "reward": -0.21664160271493416,
+    "number_of_traces": 2679
+  },
+  {
+    "reward": 0.6256182970921191,
+    "number_of_traces": 841
+  },
+  {
+    "reward": -0.24511214156383854,
+    "number_of_traces": 2252
+  },
+  {
+    "reward": 0.6751001079592382,
+    "number_of_traces": 555
+  },
+  {
+    "reward": -0.2500796019600581,
+    "number_of_traces": 2150
+  },
+  {
+    "reward": 0.13640703093377438,
+    "number_of_traces": 1200
+  },
+  {
+    "reward": -0.24303234126265272,
+    "number_of_traces": 2031
+  },
+  {
+    "reward": -0.19547530486007048,
+    "number_of_traces": 2834
+  },
+  {
+    "reward": -0.20656503143029437,
+    "number_of_traces": 2721
+  },
+  {
+    "reward": -0.241396346758169,
+    "number_of_traces": 2578
+  },
+  {
+    "reward": -0.2705249411146131,
+    "number_of_traces": 2143
+  },
+  {
+    "reward": 0.6035102502751626,
+    "number_of_traces": 862
+  },
+  {
+    "reward": -0.2414538229979485,
+    "number_of_traces": 1984
+  },
+  {
+    "reward": 0.6522265670679556,
+    "number_of_traces": 761
+  },
+  {
+    "reward": -0.19176874554208478,
+    "number_of_traces": 2384
+  },
+  {
+    "reward": -0.19311373998994164,
+    "number_of_traces": 2252
+  },
+  {
+    "reward": -0.27215789030598514,
+    "number_of_traces": 2070
+  },
+  {
+    "reward": -0.25098031029409185,
+    "number_of_traces": 2580
+  },
+  {
+    "reward": -0.24564211953837667,
+    "number_of_traces": 2175
+  },
+  {
+    "reward": -0.2376092637717665,
+    "number_of_traces": 2448
+  },
+  {
+    "reward": -0.2185224506247676,
+    "number_of_traces": 1910
+  },
+  {
+    "reward": -0.21181246934116704,
+    "number_of_traces": 1892
+  },
+  {
+    "reward": -0.22571893996927983,
+    "number_of_traces": 2485
+  },
+  {
+    "reward": -0.26863902836312525,
+    "number_of_traces": 2455
+  },
+  {
+    "reward": -0.19291241572267104,
+    "number_of_traces": 2708
+  },
+  {
+    "reward": 0.6414029626013769,
+    "number_of_traces": 364
+  },
+  {
+    "reward": -0.2168624199635546,
+    "number_of_traces": 2684
+  },
+  {
+    "reward": 0.5571469093165486,
+    "number_of_traces": 1082
+  },
+  {
+    "reward": -0.16548730225667785,
+    "number_of_traces": 2408
+  },
+  {
+    "reward": -0.2345619602266078,
+    "number_of_traces": 2244
+  },
+  {
+    "reward": -0.27396849548858204,
+    "number_of_traces": 2138
+  },
+  {
+    "reward": -0.20016433140350665,
+    "number_of_traces": 2601
+  },
+  {
+    "reward": -0.2170550065270116,
+    "number_of_traces": 2651
+  },
+  {
+    "reward": -0.22066382806840157,
+    "number_of_traces": 2521
+  },
+  {
+    "reward": -0.2551487979490802,
+    "number_of_traces": 2063
+  },
+  {
+    "reward": -0.17800089282261877,
+    "number_of_traces": 2782
+  },
+  {
+    "reward": -0.26226502334247936,
+    "number_of_traces": 2046
+  },
+  {
+    "reward": -0.2185011331299883,
+    "number_of_traces": 2347
+  },
+  {
+    "reward": 0.6748019273673402,
+    "number_of_traces": 507
+  },
+  {
+    "reward": -0.19597203156926835,
+    "number_of_traces": 2846
+  },
+  {
+    "reward": -0.22637922460411863,
+    "number_of_traces": 2224
+  },
+  {
+    "reward": -0.2198041584122966,
+    "number_of_traces": 2705
+  },
+  {
+    "reward": -0.21670463812383267,
+    "number_of_traces": 2571
+  },
+  {
+    "reward": -0.2463324135602747,
+    "number_of_traces": 1989
+  },
+  {
+    "reward": -0.19562364558606182,
+    "number_of_traces": 2645
+  },
+  {
+    "reward": -0.1889768466936148,
+    "number_of_traces": 2804
+  },
+  {
+    "reward": -0.22971408176832386,
+    "number_of_traces": 2763
+  },
+  {
+    "reward": 0.6959718995340093,
+    "number_of_traces": 496
+  },
+  {
+    "reward": -0.20217972672785056,
+    "number_of_traces": 2339
+  },
+  {
+    "reward": -0.21730797777898547,
+    "number_of_traces": 2747
+  },
+  {
+    "reward": -0.2646290936011989,
+    "number_of_traces": 1826
+  },
+  {
+    "reward": 0.6434633365489291,
+    "number_of_traces": 806
+  },
+  {
+    "reward": -0.20500704104702716,
+    "number_of_traces": 2482
+  },
+  {
+    "reward": -0.20115567432053705,
+    "number_of_traces": 2780
+  },
+  {
+    "reward": -0.21228110315273108,
+    "number_of_traces": 2736
+  },
+  {
+    "reward": -0.2052110978773355,
+    "number_of_traces": 2614
+  },
+  {
+    "reward": -0.2424171055078892,
+    "number_of_traces": 2121
+  },
+  {
+    "reward": -0.18992409960800305,
+    "number_of_traces": 2727
+  },
+  {
+    "reward": -0.26297656656189083,
+    "number_of_traces": 2037
+  },
+  {
+    "reward": -0.2269310712713385,
+    "number_of_traces": 2165
+  },
+  {
+    "reward": -0.22684044063778486,
+    "number_of_traces": 2713
+  },
+  {
+    "reward": -0.21168011689059996,
+    "number_of_traces": 2618
+  },
+  {
+    "reward": -0.21186442368006442,
+    "number_of_traces": 2643
+  },
+  {
+    "reward": -0.2074286705396432,
+    "number_of_traces": 2867
+  },
+  {
+    "reward": -0.267750543322116,
+    "number_of_traces": 2331
+  },
+  {
+    "reward": -0.205753349553097,
+    "number_of_traces": 2707
+  },
+  {
+    "reward": -0.2157138767147364,
+    "number_of_traces": 2902
+  },
+  {
+    "reward": -0.2139048388888074,
+    "number_of_traces": 2722
+  },
+  {
+    "reward": -0.21488446723833987,
+    "number_of_traces": 2415
+  },
+  {
+    "reward": -0.23306981006952443,
+    "number_of_traces": 2563
+  },
+  {
+    "reward": -0.23342637888633178,
+    "number_of_traces": 2616
+  },
+  {
+    "reward": -0.2015338171529576,
+    "number_of_traces": 2773
+  },
+  {
+    "reward": -0.1808132538809918,
+    "number_of_traces": 2664
+  },
+  {
+    "reward": -0.19008468472391016,
+    "number_of_traces": 2785
+  },
+  {
+    "reward": -0.25578156602555446,
+    "number_of_traces": 2762
+  },
+  {
+    "reward": -0.24300067538106718,
+    "number_of_traces": 2502
+  },
+  {
+    "reward": -0.22343339959548036,
+    "number_of_traces": 2773
+  },
+  {
+    "reward": -0.21942275370687925,
+    "number_of_traces": 2830
+  },
+  {
+    "reward": -0.21717211496441657,
+    "number_of_traces": 2758
+  },
+  {
+    "reward": -0.19676963104399947,
+    "number_of_traces": 1904
+  },
+  {
+    "reward": -0.22235360812074478,
+    "number_of_traces": 2058
+  },
+  {
+    "reward": -0.19380681874866745,
+    "number_of_traces": 2803
+  },
+  {
+    "reward": -0.19718842922772595,
+    "number_of_traces": 2690
+  },
+  {
+    "reward": -0.23665717295154287,
+    "number_of_traces": 2580
+  },
+  {
+    "reward": -0.20439049337090986,
+    "number_of_traces": 2502
+  },
+  {
+    "reward": -0.1797351251616255,
+    "number_of_traces": 2720
+  },
+  {
+    "reward": -0.2045445565517402,
+    "number_of_traces": 2621
+  },
+  {
+    "reward": -0.25403386725625565,
+    "number_of_traces": 2290
+  },
+  {
+    "reward": -0.19192443986167407,
+    "number_of_traces": 2797
+  },
+  {
+    "reward": -0.2928310851810918,
+    "number_of_traces": 1940
+  },
+  {
+    "reward": -0.20460828019347743,
+    "number_of_traces": 2468
+  },
+  {
+    "reward": -0.2285326438538654,
+    "number_of_traces": 2480
+  },
+  {
+    "reward": -0.23764120257764154,
+    "number_of_traces": 2386
+  },
+  {
+    "reward": -0.23974936309680672,
+    "number_of_traces": 2336
+  },
+  {
+    "reward": -0.19153413409403452,
+    "number_of_traces": 2482
+  },
+  {
+    "reward": -0.20346539198275237,
+    "number_of_traces": 2827
+  },
+  {
+    "reward": -0.24001175581397394,
+    "number_of_traces": 2691
+  },
+  {
+    "reward": -0.23489372215549287,
+    "number_of_traces": 2582
+  },
+  {
+    "reward": -0.2017111545454624,
+    "number_of_traces": 2721
+  },
+  {
+    "reward": -0.22856349972758327,
+    "number_of_traces": 2878
+  },
+  {
+    "reward": -0.2758667388131134,
+    "number_of_traces": 2134
+  },
+  {
+    "reward": -0.24168311874687787,
+    "number_of_traces": 2465
+  },
+  {
+    "reward": -0.16533608504984088,
+    "number_of_traces": 2847
+  },
+  {
+    "reward": -0.21032206926184427,
+    "number_of_traces": 2735
+  },
+  {
+    "reward": -0.21936859246633533,
+    "number_of_traces": 2876
+  },
+  {
+    "reward": -0.21920688868528282,
+    "number_of_traces": 2758
+  },
+  {
+    "reward": -0.20137285890577405,
+    "number_of_traces": 2083
+  },
+  {
+    "reward": -0.24198936328227416,
+    "number_of_traces": 2551
+  },
+  {
+    "reward": -0.24705475620437722,
+    "number_of_traces": 2329
+  },
+  {
+    "reward": -0.1952628204482577,
+    "number_of_traces": 2781
+  },
+  {
+    "reward": -0.20073463521744528,
+    "number_of_traces": 2703
+  },
+  {
+    "reward": -0.24028255624217076,
+    "number_of_traces": 2625
+  },
+  {
+    "reward": -0.24765626818304087,
+    "number_of_traces": 2579
+  },
+  {
+    "reward": -0.1938540102432702,
+    "number_of_traces": 2810
+  },
+  {
+    "reward": -0.21143299780541214,
+    "number_of_traces": 2616
+  },
+  {
+    "reward": -0.2539069259437948,
+    "number_of_traces": 2297
+  },
+  {
+    "reward": -0.21519273335786426,
+    "number_of_traces": 2697
+  },
+  {
+    "reward": -0.18989259121496416,
+    "number_of_traces": 2232
+  },
+  {
+    "reward": -0.21716809464823472,
+    "number_of_traces": 2483
+  },
+  {
+    "reward": 0.45745819787529957,
+    "number_of_traces": 543
+  },
+  {
+    "reward": -0.20181779458251514,
+    "number_of_traces": 2685
+  },
+  {
+    "reward": -0.1996875309344165,
+    "number_of_traces": 2655
+  },
+  {
+    "reward": -0.18449523960000946,
+    "number_of_traces": 2544
+  },
+  {
+    "reward": -0.24784062999877254,
+    "number_of_traces": 2427
+  },
+  {
+    "reward": -0.19945146994533436,
+    "number_of_traces": 2639
+  },
+  {
+    "reward": -0.18251664914872157,
+    "number_of_traces": 2780
+  },
+  {
+    "reward": -0.21288878738867512,
+    "number_of_traces": 2394
+  },
+  {
+    "reward": -0.190064855312002,
+    "number_of_traces": 2609
+  },
+  {
+    "reward": -0.2905627215136404,
+    "number_of_traces": 2447
+  },
+  {
+    "reward": 0.6479983558101832,
+    "number_of_traces": 813
+  },
+  {
+    "reward": -0.22322373525822636,
+    "number_of_traces": 2758
+  },
+  {
+    "reward": -0.18510361539953968,
+    "number_of_traces": 2750
+  },
+  {
+    "reward": -0.17665156401672166,
+    "number_of_traces": 2692
+  },
+  {
+    "reward": -0.25285807932141646,
+    "number_of_traces": 2115
+  },
+  {
+    "reward": -0.20259931873671955,
+    "number_of_traces": 2601
+  },
+  {
+    "reward": -0.21863947336021172,
+    "number_of_traces": 2832
+  },
+  {
+    "reward": -0.21000081101373358,
+    "number_of_traces": 2667
+  },
+  {
+    "reward": -0.2572714554979286,
+    "number_of_traces": 2473
+  },
+  {
+    "reward": -0.23584293225777353,
+    "number_of_traces": 2192
+  },
+  {
+    "reward": -0.22103315709788496,
+    "number_of_traces": 2576
+  },
+  {
+    "reward": -0.20980890037151545,
+    "number_of_traces": 2853
+  },
+  {
+    "reward": -0.2176500696375695,
+    "number_of_traces": 2769
+  },
+  {
+    "reward": -0.22944907802607517,
+    "number_of_traces": 2540
+  },
+  {
+    "reward": -0.20850450332641202,
+    "number_of_traces": 2731
+  },
+  {
+    "reward": -0.2339142077383477,
+    "number_of_traces": 2784
+  },
+  {
+    "reward": -0.2267543576778157,
+    "number_of_traces": 2232
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.18518416505420698,
+    "number_of_traces": 2746
+  },
+  {
+    "reward": -0.21866832818513604,
+    "number_of_traces": 1944
+  },
+  {
+    "reward": -0.21739530097083537,
+    "number_of_traces": 2607
+  },
+  {
+    "reward": -0.20856005308391556,
+    "number_of_traces": 2997
+  },
+  {
+    "reward": -0.25370272074685885,
+    "number_of_traces": 2539
+  },
+  {
+    "reward": -0.21473626965633574,
+    "number_of_traces": 2660
+  },
+  {
+    "reward": -0.18965273654193815,
+    "number_of_traces": 2596
+  },
+  {
+    "reward": -0.2290791179155226,
+    "number_of_traces": 2519
+  },
+  {
+    "reward": -0.1868807867238036,
+    "number_of_traces": 2768
+  },
+  {
+    "reward": -0.21978598840188135,
+    "number_of_traces": 2634
+  },
+  {
+    "reward": -0.1959015379542175,
+    "number_of_traces": 2757
+  },
+  {
+    "reward": -0.23647766935319237,
+    "number_of_traces": 2724
+  },
+  {
+    "reward": -0.2384767936096852,
+    "number_of_traces": 2276
+  },
+  {
+    "reward": -0.2347807647405119,
+    "number_of_traces": 1992
+  },
+  {
+    "reward": -0.20232241232500814,
+    "number_of_traces": 2682
+  },
+  {
+    "reward": -0.23706714529832962,
+    "number_of_traces": 2153
+  },
+  {
+    "reward": -0.24935186437209833,
+    "number_of_traces": 2595
+  },
+  {
+    "reward": -0.21731198350519276,
+    "number_of_traces": 2759
+  },
+  {
+    "reward": -0.18755599796728817,
+    "number_of_traces": 2919
+  },
+  {
+    "reward": -0.2144545675439854,
+    "number_of_traces": 2594
+  },
+  {
+    "reward": -0.24368711591586634,
+    "number_of_traces": 2597
+  },
+  {
+    "reward": -0.2112464752697215,
+    "number_of_traces": 2685
+  },
+  {
+    "reward": -0.2389840547832296,
+    "number_of_traces": 2729
+  },
+  {
+    "reward": -0.17345337574793096,
+    "number_of_traces": 2824
+  },
+  {
+    "reward": -0.22714423619401913,
+    "number_of_traces": 2507
+  },
+  {
+    "reward": -0.21425227160953741,
+    "number_of_traces": 2669
+  },
+  {
+    "reward": -0.27040035615038693,
+    "number_of_traces": 2719
+  },
+  {
+    "reward": -0.1850316302129038,
+    "number_of_traces": 2775
+  },
+  {
+    "reward": -0.26235234808639774,
+    "number_of_traces": 2336
+  },
+  {
+    "reward": -0.2304711570312259,
+    "number_of_traces": 2512
+  },
+  {
+    "reward": -0.21628529601930213,
+    "number_of_traces": 2788
+  },
+  {
+    "reward": -0.24694406213579279,
+    "number_of_traces": 2010
+  },
+  {
+    "reward": -0.27432661450283535,
+    "number_of_traces": 2109
+  },
+  {
+    "reward": -0.19217375099395606,
+    "number_of_traces": 2699
+  },
+  {
+    "reward": -0.22916095871845987,
+    "number_of_traces": 2548
+  },
+  {
+    "reward": -0.20634630646927588,
+    "number_of_traces": 2853
+  },
+  {
+    "reward": -0.18186627461019156,
+    "number_of_traces": 2657
+  },
+  {
+    "reward": -0.19466249810194813,
+    "number_of_traces": 2823
+  },
+  {
+    "reward": -0.24549526560053447,
+    "number_of_traces": 2247
+  },
+  {
+    "reward": -0.19886938889004235,
+    "number_of_traces": 2700
+  },
+  {
+    "reward": -0.1983826307168981,
+    "number_of_traces": 2429
+  },
+  {
+    "reward": -0.2218860384644047,
+    "number_of_traces": 2841
+  },
+  {
+    "reward": -0.22994575609754986,
+    "number_of_traces": 2523
+  },
+  {
+    "reward": -0.17753546574862644,
+    "number_of_traces": 2490
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.16257894567996467,
+    "number_of_traces": 2506
+  },
+  {
+    "reward": -0.21865380844558469,
+    "number_of_traces": 2869
+  },
+  {
+    "reward": -0.23510238816336881,
+    "number_of_traces": 1928
+  },
+  {
+    "reward": -0.2071251076603562,
+    "number_of_traces": 2661
+  },
+  {
+    "reward": -0.21568489479199415,
+    "number_of_traces": 2934
+  },
+  {
+    "reward": -0.22641154636334693,
+    "number_of_traces": 2809
+  },
+  {
+    "reward": -0.19015597801258044,
+    "number_of_traces": 2781
+  },
+  {
+    "reward": -0.2506679956658151,
+    "number_of_traces": 2374
+  },
+  {
+    "reward": -0.25039059097721483,
+    "number_of_traces": 2552
+  },
+  {
+    "reward": -0.19592290700664539,
+    "number_of_traces": 2604
+  },
+  {
+    "reward": -0.21134060206292382,
+    "number_of_traces": 2676
+  },
+  {
+    "reward": -0.21126720450073044,
+    "number_of_traces": 2819
+  },
+  {
+    "reward": -0.2315639174275872,
+    "number_of_traces": 2577
+  },
+  {
+    "reward": -0.20862698249160883,
+    "number_of_traces": 2694
+  },
+  {
+    "reward": -0.2281357937368601,
+    "number_of_traces": 2888
+  },
+  {
+    "reward": -0.222181472192449,
+    "number_of_traces": 2458
+  },
+  {
+    "reward": 0.5223526996826053,
+    "number_of_traces": 1140
+  },
+  {
+    "reward": -0.20652251725039328,
+    "number_of_traces": 2462
+  },
+  {
+    "reward": -0.24655867109839202,
+    "number_of_traces": 2278
+  },
+  {
+    "reward": -0.18876012123484465,
+    "number_of_traces": 2555
+  },
+  {
+    "reward": -0.2020386573526396,
+    "number_of_traces": 2757
+  },
+  {
+    "reward": -0.24706158849492332,
+    "number_of_traces": 2631
+  },
+  {
+    "reward": -0.2179464422922417,
+    "number_of_traces": 2630
+  },
+  {
+    "reward": -0.22756978525528948,
+    "number_of_traces": 2314
+  },
+  {
+    "reward": -0.1943861504288491,
+    "number_of_traces": 2495
+  },
+  {
+    "reward": -0.267386897691511,
+    "number_of_traces": 2285
+  },
+  {
+    "reward": -0.1874012876346084,
+    "number_of_traces": 2608
+  },
+  {
+    "reward": -0.18309939434285238,
+    "number_of_traces": 2592
+  },
+  {
+    "reward": -0.2686145745099717,
+    "number_of_traces": 2083
+  },
+  {
+    "reward": -0.18317133017481135,
+    "number_of_traces": 2630
+  },
+  {
+    "reward": -0.22435642426200642,
+    "number_of_traces": 2474
+  },
+  {
+    "reward": -0.21110342706359975,
+    "number_of_traces": 2670
+  },
+  {
+    "reward": -0.22753836373797298,
+    "number_of_traces": 2675
+  },
+  {
+    "reward": -0.2161189446624917,
+    "number_of_traces": 2716
+  },
+  {
+    "reward": -0.20544433456763123,
+    "number_of_traces": 2581
+  },
+  {
+    "reward": -0.22734923185906863,
+    "number_of_traces": 2715
+  },
+  {
+    "reward": -0.22368981732221238,
+    "number_of_traces": 2653
+  },
+  {
+    "reward": 0.5337272228562993,
+    "number_of_traces": 1129
+  },
+  {
+    "reward": -0.20826216828573696,
+    "number_of_traces": 2426
+  },
+  {
+    "reward": -0.1983566548438097,
+    "number_of_traces": 2481
+  },
+  {
+    "reward": -0.19962998662335063,
+    "number_of_traces": 2471
+  },
+  {
+    "reward": -0.20834151756030284,
+    "number_of_traces": 2620
+  },
+  {
+    "reward": -0.1814881998555028,
+    "number_of_traces": 2539
+  },
+  {
+    "reward": -0.315306595451888,
+    "number_of_traces": 1959
+  },
+  {
+    "reward": -0.20798705873656842,
+    "number_of_traces": 2947
+  },
+  {
+    "reward": -0.2747513757295619,
+    "number_of_traces": 2123
+  },
+  {
+    "reward": -0.2507702181019751,
+    "number_of_traces": 2592
+  },
+  {
+    "reward": -0.23763306960439712,
+    "number_of_traces": 2342
+  },
+  {
+    "reward": -0.16179075728358072,
+    "number_of_traces": 2497
+  },
+  {
+    "reward": -0.1942240504388787,
+    "number_of_traces": 2735
+  },
+  {
+    "reward": -0.21056170300065036,
+    "number_of_traces": 2444
+  },
+  {
+    "reward": -0.21048034766926393,
+    "number_of_traces": 2709
+  },
+  {
+    "reward": -0.23595797618386882,
+    "number_of_traces": 2400
+  },
+  {
+    "reward": -0.19335654199736307,
+    "number_of_traces": 2759
+  },
+  {
+    "reward": -0.19278898062630212,
+    "number_of_traces": 2295
+  },
+  {
+    "reward": -0.18840778761888455,
+    "number_of_traces": 2816
+  },
+  {
+    "reward": -0.2645654833689438,
+    "number_of_traces": 2439
+  },
+  {
+    "reward": -0.2381286478642567,
+    "number_of_traces": 2569
+  },
+  {
+    "reward": -0.22909622243356298,
+    "number_of_traces": 2206
+  },
+  {
+    "reward": -0.19136584653206523,
+    "number_of_traces": 2694
+  },
+  {
+    "reward": -0.22856218827380637,
+    "number_of_traces": 2532
+  },
+  {
+    "reward": -0.19404257172601835,
+    "number_of_traces": 2923
+  },
+  {
+    "reward": -0.21041035209664505,
+    "number_of_traces": 2552
+  },
+  {
+    "reward": -0.18887526944356914,
+    "number_of_traces": 2618
+  },
+  {
+    "reward": -0.2548887635725503,
+    "number_of_traces": 2319
+  },
+  {
+    "reward": -0.24600857766164264,
+    "number_of_traces": 2428
+  },
+  {
+    "reward": -0.22857556201457718,
+    "number_of_traces": 2531
+  },
+  {
+    "reward": -0.21118164874122314,
+    "number_of_traces": 2881
+  },
+  {
+    "reward": -0.2141338277074576,
+    "number_of_traces": 2610
+  },
+  {
+    "reward": -0.28835555963134996,
+    "number_of_traces": 2323
+  },
+  {
+    "reward": -0.200230326941101,
+    "number_of_traces": 2851
+  },
+  {
+    "reward": -0.23590112028971566,
+    "number_of_traces": 2549
+  },
+  {
+    "reward": -0.20599690975546625,
+    "number_of_traces": 2532
+  },
+  {
+    "reward": -0.2053861844010061,
+    "number_of_traces": 2683
+  },
+  {
+    "reward": -0.23820330284761548,
+    "number_of_traces": 2506
+  },
+  {
+    "reward": -0.2435129087687603,
+    "number_of_traces": 2025
+  },
+  {
+    "reward": -0.2172240670105584,
+    "number_of_traces": 2465
+  },
+  {
+    "reward": -0.21503726870873419,
+    "number_of_traces": 2558
+  },
+  {
+    "reward": -0.23342317554544445,
+    "number_of_traces": 2129
+  },
+  {
+    "reward": -0.20145127002383056,
+    "number_of_traces": 2604
+  },
+  {
+    "reward": -0.18381222251653329,
+    "number_of_traces": 2829
+  },
+  {
+    "reward": -0.22783655852508045,
+    "number_of_traces": 2442
+  },
+  {
+    "reward": -0.2532688665384628,
+    "number_of_traces": 2747
+  },
+  {
+    "reward": -0.2063945399520264,
+    "number_of_traces": 2520
+  },
+  {
+    "reward": -0.22811046921564182,
+    "number_of_traces": 2415
+  },
+  {
+    "reward": -0.27234388654636144,
+    "number_of_traces": 2072
+  },
+  {
+    "reward": -0.07585818002124355,
+    "number_of_traces": 0
+  },
+  {
+    "reward": -0.20600253846176197,
+    "number_of_traces": 2604
+  },
+  {
+    "reward": -0.2389998230456828,
+    "number_of_traces": 2484
+  },
+  {
+    "reward": -0.200315789476062,
+    "number_of_traces": 2751
+  },
+  {
+    "reward": -0.2127512617292494,
+    "number_of_traces": 2824
+  },
+  {
+    "reward": -0.213195171829774,
+    "number_of_traces": 2465
+  },
+  {
+    "reward": -0.24341119865209704,
+    "number_of_traces": 2637
+  },
+  {
+    "reward": -0.19430262762500228,
+    "number_of_traces": 2477
+  },
+  {
+    "reward": -0.22440349312269603,
+    "number_of_traces": 2996
+  },
+  {
+    "reward": -0.2504031049894816,
+    "number_of_traces": 1807
+  },
+  {
+    "reward": -0.21555730391518269,
+    "number_of_traces": 2667
+  },
+  {
+    "reward": -0.21766095788732487,
+    "number_of_traces": 2790
+  },
+  {
+    "reward": -0.22234077654903817,
+    "number_of_traces": 2740
+  },
+  {
+    "reward": -0.21865262696879306,
+    "number_of_traces": 2832
+  },
+  {
+    "reward": -0.21970842028782633,
+    "number_of_traces": 2468
+  },
+  {
+    "reward": -0.21099084526911038,
+    "number_of_traces": 1919
+  },
+  {
+    "reward": -0.1987568647339103,
+    "number_of_traces": 2603
+  },
+  {
+    "reward": -0.23433155100378267,
+    "number_of_traces": 2815
+  },
+  {
+    "reward": -0.22786489023946543,
+    "number_of_traces": 2747
+  },
+  {
+    "reward": -0.18814135183159175,
+    "number_of_traces": 2657
+  },
+  {
+    "reward": -0.20749499606624178,
+    "number_of_traces": 2679
+  },
+  {
+    "reward": -0.18768569168125437,
+    "number_of_traces": 2499
+  },
+  {
+    "reward": -0.19670952840359812,
+    "number_of_traces": 2620
+  },
+  {
+    "reward": -0.22120784198963417,
+    "number_of_traces": 2522
+  },
+  {
+    "reward": -0.21016451566716543,
+    "number_of_traces": 2456
+  },
+  {
+    "reward": -0.24469079116884263,
+    "number_of_traces": 2473
+  },
+  {
+    "reward": -0.200203140269113,
+    "number_of_traces": 2765
+  },
+  {
+    "reward": -0.205849082738229,
+    "number_of_traces": 2676
+  },
+  {
+    "reward": -0.18967167202424773,
+    "number_of_traces": 2345
+  },
+  {
+    "reward": -0.24762884600623913,
+    "number_of_traces": 2402
+  },
+  {
+    "reward": -0.2521374111288456,
+    "number_of_traces": 2518
+  },
+  {
+    "reward": -0.2782890868370306,
+    "number_of_traces": 2346
+  },
+  {
+    "reward": -0.23071644835226324,
+    "number_of_traces": 1937
+  },
+  {
+    "reward": -0.17889753140541031,
+    "number_of_traces": 2592
+  },
+  {
+    "reward": -0.2230992808848823,
+    "number_of_traces": 2805
+  },
+  {
+    "reward": -0.21225940923931608,
+    "number_of_traces": 2760
+  },
+  {
+    "reward": -0.2645083662116582,
+    "number_of_traces": 2819
+  },
+  {
+    "reward": -0.2005679431876033,
+    "number_of_traces": 2705
+  },
+  {
+    "reward": -0.2415534878848068,
+    "number_of_traces": 2274
+  },
+  {
+    "reward": -0.25698573286654247,
+    "number_of_traces": 2777
+  },
+  {
+    "reward": -0.17862964175140927,
+    "number_of_traces": 2678
+  },
+  {
+    "reward": -0.20163825910805055,
+    "number_of_traces": 2804
+  },
+  {
+    "reward": -0.1968307218555102,
+    "number_of_traces": 2666
+  },
+  {
+    "reward": -0.22494308210500769,
+    "number_of_traces": 2867
+  },
+  {
+    "reward": -0.1916477720370553,
+    "number_of_traces": 2696
+  },
+  {
+    "reward": -0.2508844447440337,
+    "number_of_traces": 2447
+  },
+  {
+    "reward": -0.21023897841025896,
+    "number_of_traces": 2481
+  },
+  {
+    "reward": -0.22218778692993257,
+    "number_of_traces": 2799
+  },
+  {
+    "reward": -0.2040523095718043,
+    "number_of_traces": 2342
+  },
+  {
+    "reward": -0.24184300074738008,
+    "number_of_traces": 2404
+  },
+  {
+    "reward": -0.21288554027411688,
+    "number_of_traces": 2374
+  },
+  {
+    "reward": -0.20091251445621827,
+    "number_of_traces": 2683
+  },
+  {
+    "reward": -0.2320729594351053,
+    "number_of_traces": 2242
+  },
+  {
+    "reward": -0.2332504074680607,
+    "number_of_traces": 2563
+  },
+  {
+    "reward": -0.2122040243407639,
+    "number_of_traces": 2375
+  },
+  {
+    "reward": -0.21157645189761676,
+    "number_of_traces": 2805
+  },
+  {
+    "reward": -0.19464526485243094,
+    "number_of_traces": 2830
+  },
+  {
+    "reward": -0.22514148984709503,
+    "number_of_traces": 2546
+  },
+  {
+    "reward": -0.21370534173472666,
+    "number_of_traces": 2731
+  },
+  {
+    "reward": -0.19990966660509413,
+    "number_of_traces": 2801
+  },
+  {
+    "reward": -0.23600635132224768,
+    "number_of_traces": 2528
+  },
+  {
+    "reward": -0.22839271313375742,
+    "number_of_traces": 2505
+  },
+  {
+    "reward": -0.15402923500219534,
+    "number_of_traces": 2137
+  },
+  {
+    "reward": -0.21469055530588121,
+    "number_of_traces": 2675
+  },
+  {
+    "reward": -0.21197674315218817,
+    "number_of_traces": 2693
+  },
+  {
+    "reward": -0.20116690479242683,
+    "number_of_traces": 2792
+  },
+  {
+    "reward": -0.20759507130445332,
+    "number_of_traces": 2742
+  },
+  {
+    "reward": -0.21467636070588347,
+    "number_of_traces": 2688
+  },
+  {
+    "reward": -0.2033738993662202,
+    "number_of_traces": 2754
+  },
+  {
+    "reward": -0.2336502625054514,
+    "number_of_traces": 2582
+  },
+  {
+    "reward": -0.20986132299742988,
+    "number_of_traces": 2717
+  },
+  {
+    "reward": -0.21204766741210146,
+    "number_of_traces": 2569
+  },
+  {
+    "reward": -0.23451942066344067,
+    "number_of_traces": 2722
+  },
+  {
+    "reward": -0.2181497254487086,
+    "number_of_traces": 2389
+  },
+  {
+    "reward": -0.22288475030323074,
+    "number_of_traces": 2705
+  },
+  {
+    "reward": -0.27003201008611155,
+    "number_of_traces": 2430
+  },
+  {
+    "reward": -0.23450901610303532,
+    "number_of_traces": 2646
+  },
+  {
+    "reward": -0.2547984055665079,
+    "number_of_traces": 2044
+  },
+  {
+    "reward": -0.20674407234410686,
+    "number_of_traces": 2580
+  },
+  {
+    "reward": -0.2285927717749774,
+    "number_of_traces": 2168
+  },
+  {
+    "reward": 0.5063941311534479,
+    "number_of_traces": 1212
+  },
+  {
+    "reward": -0.22834960554660932,
+    "number_of_traces": 2712
+  },
+  {
+    "reward": -0.23186814636121444,
+    "number_of_traces": 3082
+  },
+  {
+    "reward": -0.23267940751543548,
+    "number_of_traces": 2627
+  },
+  {
+    "reward": -0.23570439174158764,
+    "number_of_traces": 2888
+  },
+  {
+    "reward": -0.23992953271745832,
+    "number_of_traces": 2357
+  },
+  {
+    "reward": -0.2112358720459696,
+    "number_of_traces": 2395
+  },
+  {
+    "reward": -0.22330328728608906,
+    "number_of_traces": 2941
+  },
+  {
+    "reward": -0.25922565628993555,
+    "number_of_traces": 2879
+  },
+  {
+    "reward": -0.19699178592954703,
+    "number_of_traces": 2812
+  },
+  {
+    "reward": -0.23085499707999457,
+    "number_of_traces": 2778
+  },
+  {
+    "reward": -0.2147892389759417,
+    "number_of_traces": 2914
+  },
+  {
+    "reward": -0.22334698839170564,
+    "number_of_traces": 3144
+  },
+  {
+    "reward": -0.20628672083533883,
+    "number_of_traces": 3498
+  },
+  {
+    "reward": -0.3549158586202952,
+    "number_of_traces": 2517
+  },
+  {
+    "reward": -0.2330308709729184,
+    "number_of_traces": 3341
+  },
+  {
+    "reward": -0.2662845561701169,
+    "number_of_traces": 3305
+  },
+  {
+    "reward": -0.20748559509033238,
+    "number_of_traces": 3363
+  },
+  {
+    "reward": -0.21162709320821704,
+    "number_of_traces": 2975
+  },
+  {
+    "reward": -0.22480449000411273,
+    "number_of_traces": 3004
+  },
+  {
+    "reward": -0.21608081957590386,
+    "number_of_traces": 2891
+  },
+  {
+    "reward": -0.20378029126536001,
+    "number_of_traces": 2728
+  },
+  {
+    "reward": -0.21425967475535812,
+    "number_of_traces": 3117
+  },
+  {
+    "reward": -0.23865157903656142,
+    "number_of_traces": 2419
+  },
+  {
+    "reward": -0.23030926288104814,
+    "number_of_traces": 2711
+  },
+  {
+    "reward": -0.2650948981145228,
+    "number_of_traces": 2788
+  },
+  {
+    "reward": -0.21654911789947995,
+    "number_of_traces": 3051
+  },
+  {
+    "reward": -0.2180876002154779,
+    "number_of_traces": 2696
+  },
+  {
+    "reward": -0.18721016335691087,
+    "number_of_traces": 2462
+  },
+  {
+    "reward": -0.24002564771157608,
+    "number_of_traces": 2846
+  },
+  {
+    "reward": -0.2272306507314219,
+    "number_of_traces": 2577
+  },
+  {
+    "reward": -0.20654129006232025,
+    "number_of_traces": 2978
+  },
+  {
+    "reward": -0.20553712048589523,
+    "number_of_traces": 2673
+  },
+  {
+    "reward": -0.2112716888699233,
+    "number_of_traces": 2406
+  },
+  {
+    "reward": -0.21244393323738975,
+    "number_of_traces": 2691
+  },
+  {
+    "reward": -0.18860786003955043,
+    "number_of_traces": 2860
+  },
+  {
+    "reward": -0.20172995611942424,
+    "number_of_traces": 2754
+  },
+  {
+    "reward": -0.22922561221028392,
+    "number_of_traces": 2581
+  },
+  {
+    "reward": -0.21544979635577743,
+    "number_of_traces": 2758
+  },
+  {
+    "reward": -0.22580510909145157,
+    "number_of_traces": 2520
+  },
+  {
+    "reward": -0.23600852779882853,
+    "number_of_traces": 2614
+  },
+  {
+    "reward": -0.2112624778915151,
+    "number_of_traces": 2637
+  },
+  {
+    "reward": -0.22583748047926033,
+    "number_of_traces": 2449
+  },
+  {
+    "reward": -0.22378807721734828,
+    "number_of_traces": 2844
+  },
+  {
+    "reward": -0.22709875559368742,
+    "number_of_traces": 2665
+  },
+  {
+    "reward": -0.23037074786377698,
+    "number_of_traces": 2613
+  },
+  {
+    "reward": -0.23827203947360276,
+    "number_of_traces": 2636
+  },
+  {
+    "reward": -0.22579522250674733,
+    "number_of_traces": 2536
+  },
+  {
+    "reward": -0.21601629747131623,
+    "number_of_traces": 2577
+  },
+  {
+    "reward": -0.22713271511898858,
+    "number_of_traces": 2109
+  },
+  {
+    "reward": -0.19935258706367298,
+    "number_of_traces": 2720
+  },
+  {
+    "reward": -0.20936605284967402,
+    "number_of_traces": 2629
+  },
+  {
+    "reward": -0.18521877775854179,
+    "number_of_traces": 2449
+  },
+  {
+    "reward": -0.2052287598574879,
+    "number_of_traces": 2760
+  },
+  {
+    "reward": -0.2082179090289229,
+    "number_of_traces": 2694
+  },
+  {
+    "reward": -0.2154600790371678,
+    "number_of_traces": 2669
+  },
+  {
+    "reward": -0.24870713392180588,
+    "number_of_traces": 2039
+  },
+  {
+    "reward": -0.23561555020006464,
+    "number_of_traces": 2465
+  },
+  {
+    "reward": -0.19600307804397898,
+    "number_of_traces": 2816
+  },
+  {
+    "reward": -0.27421424987289067,
+    "number_of_traces": 2087
+  },
+  {
+    "reward": -0.2442742123675351,
+    "number_of_traces": 2684
+  },
+  {
+    "reward": -0.20871625915963188,
+    "number_of_traces": 2913
+  },
+  {
+    "reward": -0.20476506333077105,
+    "number_of_traces": 2881
+  },
+  {
+    "reward": -0.1983404391460406,
+    "number_of_traces": 2605
+  },
+  {
+    "reward": -0.19647595067904322,
+    "number_of_traces": 2430
+  },
+  {
+    "reward": -0.21187262183735955,
+    "number_of_traces": 2715
+  },
+  {
+    "reward": -0.19476391715527674,
+    "number_of_traces": 2767
+  },
+  {
+    "reward": -0.19589069294349404,
+    "number_of_traces": 2383
+  },
+  {
+    "reward": -0.20182961941343813,
+    "number_of_traces": 2641
+  },
+  {
+    "reward": -0.18335818521387448,
+    "number_of_traces": 2655
+  },
+  {
+    "reward": -0.2403632389055369,
+    "number_of_traces": 2282
+  },
+  {
+    "reward": -0.2489033603755485,
+    "number_of_traces": 2649
+  },
+  {
+    "reward": -0.2088215835913655,
+    "number_of_traces": 2675
+  },
+  {
+    "reward": -0.2694591534831061,
+    "number_of_traces": 2088
+  },
+  {
+    "reward": -0.16291763836915607,
+    "number_of_traces": 2679
+  },
+  {
+    "reward": -0.22254888161082087,
+    "number_of_traces": 2493
+  },
+  {
+    "reward": -0.22090492138690765,
+    "number_of_traces": 2847
+  },
+  {
+    "reward": -0.20840338171854167,
+    "number_of_traces": 2358
+  },
+  {
+    "reward": -0.24222367174005976,
+    "number_of_traces": 2715
+  },
+  {
+    "reward": -0.2094517435108464,
+    "number_of_traces": 2634
+  },
+  {
+    "reward": -0.18713585521951814,
+    "number_of_traces": 2690
+  },
+  {
+    "reward": -0.221402018712322,
+    "number_of_traces": 2343
+  },
+  {
+    "reward": -0.19389041550828645,
+    "number_of_traces": 2672
+  },
+  {
+    "reward": -0.27108354045678607,
+    "number_of_traces": 2446
+  },
+  {
+    "reward": -0.2500669293423047,
+    "number_of_traces": 2297
+  },
+  {
+    "reward": -0.2131865030076162,
+    "number_of_traces": 2469
+  },
+  {
+    "reward": -0.21963361677678017,
+    "number_of_traces": 2464
+  },
+  {
+    "reward": -0.2414191781820112,
+    "number_of_traces": 2489
+  },
+  {
+    "reward": -0.2066321090833646,
+    "number_of_traces": 2694
+  },
+  {
+    "reward": -0.2049244188377397,
+    "number_of_traces": 2672
+  },
+  {
+    "reward": -0.22852542341037174,
+    "number_of_traces": 2612
+  },
+  {
+    "reward": -0.21546368354597534,
+    "number_of_traces": 2502
+  },
+  {
+    "reward": -0.22319817575195622,
+    "number_of_traces": 2779
+  },
+  {
+    "reward": -0.24231155516470482,
+    "number_of_traces": 2714
+  },
+  {
+    "reward": -0.22142241458055156,
+    "number_of_traces": 2609
+  },
+  {
+    "reward": -0.223997342711312,
+    "number_of_traces": 2720
+  },
+  {
+    "reward": -0.19360236617312687,
+    "number_of_traces": 3030
+  },
+  {
+    "reward": -0.23937879997108535,
+    "number_of_traces": 2480
+  },
+  {
+    "reward": -0.23171563210493473,
+    "number_of_traces": 2564
+  },
+  {
+    "reward": 0.5040594643056835,
+    "number_of_traces": 1172
+  },
+  {
+    "reward": -0.22387599725107732,
+    "number_of_traces": 2598
+  },
+  {
+    "reward": -0.21654736070690273,
+    "number_of_traces": 2900
+  },
+  {
+    "reward": -0.22915246555676405,
+    "number_of_traces": 2723
+  },
+  {
+    "reward": -0.2012910985542672,
+    "number_of_traces": 2766
+  },
+  {
+    "reward": -0.19999414074907618,
+    "number_of_traces": 2621
+  },
+  {
+    "reward": -0.2081025846562483,
+    "number_of_traces": 2632
+  },
+  {
+    "reward": -0.24568648612864274,
+    "number_of_traces": 2440
+  },
+  {
+    "reward": -0.2323251531290581,
+    "number_of_traces": 2483
+  },
+  {
+    "reward": -0.193245859705798,
+    "number_of_traces": 2882
+  },
+  {
+    "reward": -0.23379215064638448,
+    "number_of_traces": 2721
+  },
+  {
+    "reward": -0.20943968653586575,
+    "number_of_traces": 1885
+  },
+  {
+    "reward": -0.24067319417115618,
+    "number_of_traces": 2635
+  },
+  {
+    "reward": -0.23524107768380786,
+    "number_of_traces": 2593
+  },
+  {
+    "reward": -0.2688151230734569,
+    "number_of_traces": 2103
+  },
+  {
+    "reward": -0.22236488455579695,
+    "number_of_traces": 2718
+  },
+  {
+    "reward": -0.2137407436516402,
+    "number_of_traces": 2884
+  },
+  {
+    "reward": -0.2141022070014793,
+    "number_of_traces": 2469
+  },
+  {
+    "reward": -0.2438536936217217,
+    "number_of_traces": 2487
+  },
+  {
+    "reward": -0.23417853358666685,
+    "number_of_traces": 2650
+  },
+  {
+    "reward": -0.21825999203798696,
+    "number_of_traces": 2542
+  },
+  {
+    "reward": -0.22392230660267276,
+    "number_of_traces": 2490
+  },
+  {
+    "reward": -0.2679643036559479,
+    "number_of_traces": 2478
+  },
+  {
+    "reward": -0.21419137932897148,
+    "number_of_traces": 2271
+  },
+  {
+    "reward": -0.2401864710735434,
+    "number_of_traces": 2569
+  },
+  {
+    "reward": -0.21109224383149028,
+    "number_of_traces": 2551
+  },
+  {
+    "reward": -0.2054090843519173,
+    "number_of_traces": 2764
+  },
+  {
+    "reward": -0.2076125755784275,
+    "number_of_traces": 2576
+  },
+  {
+    "reward": -0.2187903783667159,
+    "number_of_traces": 2579
+  },
+  {
+    "reward": -0.2176099227290621,
+    "number_of_traces": 2923
+  },
+  {
+    "reward": -0.2338981150839744,
+    "number_of_traces": 2636
+  },
+  {
+    "reward": -0.23649154126691307,
+    "number_of_traces": 2942
+  },
+  {
+    "reward": -0.2205953489379897,
+    "number_of_traces": 2917
+  },
+  {
+    "reward": -0.2384562833023055,
+    "number_of_traces": 2656
+  },
+  {
+    "reward": -0.2194942846719663,
+    "number_of_traces": 2936
+  },
+  {
+    "reward": -0.19108100991675347,
+    "number_of_traces": 2681
+  },
+  {
+    "reward": 0.5573233557604629,
+    "number_of_traces": 1088
+  },
+  {
+    "reward": -0.2306069025887596,
+    "number_of_traces": 2611
+  },
+  {
+    "reward": -0.20728629736724824,
+    "number_of_traces": 2557
+  },
+  {
+    "reward": -0.2798681965041303,
+    "number_of_traces": 2476
+  },
+  {
+    "reward": -0.21267629173211666,
+    "number_of_traces": 2557
+  },
+  {
+    "reward": -0.23329690187942964,
+    "number_of_traces": 2751
+  },
+  {
+    "reward": -0.240325104946166,
+    "number_of_traces": 2840
+  },
+  {
+    "reward": -0.23496420508435778,
+    "number_of_traces": 2530
+  },
+  {
+    "reward": -0.2840151221482181,
+    "number_of_traces": 2062
+  },
+  {
+    "reward": -0.2524695803816259,
+    "number_of_traces": 2718
+  },
+  {
+    "reward": -0.24982904997679134,
+    "number_of_traces": 2737
+  },
+  {
+    "reward": -0.2366961861761211,
+    "number_of_traces": 2637
+  },
+  {
+    "reward": -0.22271783283000524,
+    "number_of_traces": 2726
+  },
+  {
+    "reward": -0.23886413577593602,
+    "number_of_traces": 2600
+  },
+  {
+    "reward": -0.2652861959080024,
+    "number_of_traces": 2745
+  },
+  {
+    "reward": -0.2200455092985536,
+    "number_of_traces": 2657
+  },
+  {
+    "reward": -0.2006354332371152,
+    "number_of_traces": 2849
+  },
+  {
+    "reward": -0.19751036150350243,
+    "number_of_traces": 2693
+  },
+  {
+    "reward": -0.22834444582741786,
+    "number_of_traces": 2664
+  },
+  {
+    "reward": -0.19980468762263448,
+    "number_of_traces": 2656
+  },
+  {
+    "reward": -0.21168158257844216,
+    "number_of_traces": 2800
+  },
+  {
+    "reward": -0.2183793243543981,
+    "number_of_traces": 2961
+  },
+  {
+    "reward": -0.23423028922964695,
+    "number_of_traces": 2557
+  },
+  {
+    "reward": -0.20722699363111385,
+    "number_of_traces": 2733
+  },
+  {
+    "reward": -0.2138552414163606,
+    "number_of_traces": 2867
+  },
+  {
+    "reward": -0.23953161538649326,
+    "number_of_traces": 2658
+  },
+  {
+    "reward": -0.2306941609016555,
+    "number_of_traces": 2894
+  },
+  {
+    "reward": -0.22503427915311947,
+    "number_of_traces": 2737
+  },
+  {
+    "reward": -0.21864598574903338,
+    "number_of_traces": 2882
+  },
+  {
+    "reward": -0.20781746963090086,
+    "number_of_traces": 2842
+  },
+  {
+    "reward": -0.20783621311840927,
+    "number_of_traces": 2538
+  },
+  {
+    "reward": -0.21287817107377238,
+    "number_of_traces": 2455
+  },
+  {
+    "reward": -0.22623269845237726,
+    "number_of_traces": 2512
+  },
+  {
+    "reward": -0.199180898932789,
+    "number_of_traces": 2573
+  },
+  {
+    "reward": -0.2100094024254785,
+    "number_of_traces": 2462
+  },
+  {
+    "reward": -0.23309754730187826,
+    "number_of_traces": 2752
+  },
+  {
+    "reward": -0.19550407080987897,
+    "number_of_traces": 3010
+  },
+  {
+    "reward": -0.23796500978767832,
+    "number_of_traces": 2811
+  },
+  {
+    "reward": -0.20841421489011136,
+    "number_of_traces": 2888
+  },
+  {
+    "reward": -0.22074326277118694,
+    "number_of_traces": 2611
+  },
+  {
+    "reward": -0.2346186458465076,
+    "number_of_traces": 2535
+  },
+  {
+    "reward": -0.216259777910648,
+    "number_of_traces": 2876
+  },
+  {
+    "reward": -0.24471947112257797,
+    "number_of_traces": 2791
+  },
+  {
+    "reward": -0.22097090079494308,
+    "number_of_traces": 2524
+  },
+  {
+    "reward": -0.21633917457884588,
+    "number_of_traces": 2999
+  },
+  {
+    "reward": -0.23365111213142686,
+    "number_of_traces": 2682
+  },
+  {
+    "reward": -0.25385951202588264,
+    "number_of_traces": 2419
+  },
+  {
+    "reward": -0.21941354040004513,
+    "number_of_traces": 2446
+  },
+  {
+    "reward": -0.23238297067121605,
+    "number_of_traces": 2430
+  },
+  {
+    "reward": -0.2168456393217577,
+    "number_of_traces": 2798
+  },
+  {
+    "reward": -0.25253310939636486,
+    "number_of_traces": 2399
+  },
+  {
+    "reward": -0.1958881189981897,
+    "number_of_traces": 2447
+  },
+  {
+    "reward": -0.23330696204920665,
+    "number_of_traces": 2524
+  },
+  {
+    "reward": -0.20877044864498895,
+    "number_of_traces": 2458
+  },
+  {
+    "reward": -0.23952180371850063,
+    "number_of_traces": 2684
+  },
+  {
+    "reward": -0.19653835134148268,
+    "number_of_traces": 2759
+  },
+  {
+    "reward": -0.196589478972654,
+    "number_of_traces": 2845
+  },
+  {
+    "reward": -0.2388539082452279,
+    "number_of_traces": 2607
+  },
+  {
+    "reward": -0.2114259006643353,
+    "number_of_traces": 3028
+  },
+  {
+    "reward": -0.2164698317000624,
+    "number_of_traces": 2965
+  },
+  {
+    "reward": -0.22631179491982656,
+    "number_of_traces": 2282
+  },
+  {
+    "reward": -0.24590825048973897,
+    "number_of_traces": 2685
+  },
+  {
+    "reward": -0.23575312777653679,
+    "number_of_traces": 2664
+  },
+  {
+    "reward": -0.24792185578886206,
+    "number_of_traces": 2621
+  },
+  {
+    "reward": -0.21294315729818636,
+    "number_of_traces": 2412
+  },
+  {
+    "reward": -0.18918210920800094,
+    "number_of_traces": 2996
+  },
+  {
+    "reward": -0.21377361434863207,
+    "number_of_traces": 2776
+  },
+  {
+    "reward": -0.22460998285767275,
+    "number_of_traces": 2402
+  },
+  {
+    "reward": -0.20730591939598664,
+    "number_of_traces": 2442
+  },
+  {
+    "reward": -0.24416640104261955,
+    "number_of_traces": 2621
+  },
+  {
+    "reward": -0.24591932953618412,
+    "number_of_traces": 2724
+  },
+  {
+    "reward": -0.2411786580012687,
+    "number_of_traces": 2601
+  },
+  {
+    "reward": -0.22423184336477298,
+    "number_of_traces": 2633
+  },
+  {
+    "reward": -0.19865900495114353,
+    "number_of_traces": 2497
+  },
+  {
+    "reward": -0.25115327560976575,
+    "number_of_traces": 2766
+  },
+  {
+    "reward": -0.2665953830542819,
+    "number_of_traces": 2415
+  },
+  {
+    "reward": -0.22029056294585136,
+    "number_of_traces": 2559
+  },
+  {
+    "reward": -0.222878988499856,
+    "number_of_traces": 2271
+  },
+  {
+    "reward": -0.1935964530216845,
+    "number_of_traces": 2794
+  },
+  {
+    "reward": -0.2115815158204426,
+    "number_of_traces": 2191
+  },
+  {
+    "reward": -0.23461749787383301,
+    "number_of_traces": 2639
+  },
+  {
+    "reward": -0.19138790924558802,
+    "number_of_traces": 2600
+  },
+  {
+    "reward": -0.24932643057046489,
+    "number_of_traces": 2459
+  },
+  {
+    "reward": -0.20997354146196878,
+    "number_of_traces": 2729
+  },
+  {
+    "reward": -0.19839159160025077,
+    "number_of_traces": 2971
+  },
+  {
+    "reward": -0.23985029848745265,
+    "number_of_traces": 2693
+  },
+  {
+    "reward": -0.27746953155386833,
+    "number_of_traces": 2144
+  },
+  {
+    "reward": -0.2201052912481415,
+    "number_of_traces": 2849
+  },
+  {
+    "reward": -0.21431920212354372,
+    "number_of_traces": 2659
+  },
+  {
+    "reward": -0.22470956264867448,
+    "number_of_traces": 2965
+  },
+  {
+    "reward": -0.22867448558447567,
+    "number_of_traces": 2954
+  },
+  {
+    "reward": -0.22249031594743762,
+    "number_of_traces": 2795
+  },
+  {
+    "reward": -0.25707099664848865,
+    "number_of_traces": 2288
+  },
+  {
+    "reward": -0.22177610630283617,
+    "number_of_traces": 2715
+  },
+  {
+    "reward": -0.21679350744573966,
+    "number_of_traces": 2719
+  },
+  {
+    "reward": -0.22548501834341939,
+    "number_of_traces": 2833
+  },
+  {
+    "reward": -0.2071040168661017,
+    "number_of_traces": 2685
+  },
+  {
+    "reward": -0.22045206891944202,
+    "number_of_traces": 2970
+  },
+  {
+    "reward": -0.21671670586654634,
+    "number_of_traces": 2830
+  },
+  {
+    "reward": -0.22773522673015745,
+    "number_of_traces": 2662
+  },
+  {
+    "reward": -0.2454388375926142,
+    "number_of_traces": 2665
+  },
+  {
+    "reward": -0.22830378738991064,
+    "number_of_traces": 2846
+  },
+  {
+    "reward": -0.23078977115799815,
+    "number_of_traces": 2594
+  },
+  {
+    "reward": -0.2591593541666356,
+    "number_of_traces": 2586
+  },
+  {
+    "reward": -0.26024220655534724,
+    "number_of_traces": 2745
+  },
+  {
+    "reward": -0.2447753785203335,
+    "number_of_traces": 2599
+  },
+  {
+    "reward": -0.25210160426388317,
+    "number_of_traces": 2469
+  },
+  {
+    "reward": -0.20885204444756866,
+    "number_of_traces": 2630
+  },
+  {
+    "reward": -0.2918226821835569,
+    "number_of_traces": 2161
+  },
+  {
+    "reward": -0.18978424843644393,
+    "number_of_traces": 2702
+  },
+  {
+    "reward": -0.2545604615709488,
+    "number_of_traces": 2642
+  },
+  {
+    "reward": -0.2116942845516827,
+    "number_of_traces": 2821
+  },
+  {
+    "reward": -0.2022126846782456,
+    "number_of_traces": 2927
+  },
+  {
+    "reward": -0.20265190871912986,
+    "number_of_traces": 3030
+  },
+  {
+    "reward": -0.2121923191022982,
+    "number_of_traces": 2579
+  },
+  {
+    "reward": -0.27197562717217727,
+    "number_of_traces": 2507
+  },
+  {
+    "reward": -0.2420925079945836,
+    "number_of_traces": 2720
+  },
+  {
+    "reward": -0.27836196627480403,
+    "number_of_traces": 2666
+  },
+  {
+    "reward": -0.2542907458149375,
+    "number_of_traces": 2825
+  },
+  {
+    "reward": -0.25789591291617997,
+    "number_of_traces": 2048
+  },
+  {
+    "reward": -0.23686869642149655,
+    "number_of_traces": 2706
+  },
+  {
+    "reward": -0.22041300028452382,
+    "number_of_traces": 2652
+  },
+  {
+    "reward": -0.25196132111080294,
+    "number_of_traces": 2681
+  },
+  {
+    "reward": -0.2456342488827833,
+    "number_of_traces": 2587
+  },
+  {
+    "reward": -0.20376491092415072,
+    "number_of_traces": 2907
+  },
+  {
+    "reward": -0.20678360719262523,
+    "number_of_traces": 2746
+  },
+  {
+    "reward": -0.23683850780877524,
+    "number_of_traces": 2565
+  },
+  {
+    "reward": -0.20491880671129314,
+    "number_of_traces": 2581
+  },
+  {
+    "reward": -0.25558459126307687,
+    "number_of_traces": 2601
+  },
+  {
+    "reward": -0.21957622073395477,
+    "number_of_traces": 2690
+  },
+  {
+    "reward": -0.2217528483404183,
+    "number_of_traces": 2667
+  },
+  {
+    "reward": -0.22000394986708804,
+    "number_of_traces": 2616
+  },
+  {
+    "reward": -0.225783580849652,
+    "number_of_traces": 2935
+  },
+  {
+    "reward": -0.2278711723360317,
+    "number_of_traces": 2629
+  },
+  {
+    "reward": -0.22065595631615353,
+    "number_of_traces": 2573
+  },
+  {
+    "reward": -0.233846624600897,
+    "number_of_traces": 2816
+  },
+  {
+    "reward": -0.22158586351867537,
+    "number_of_traces": 2493
+  },
+  {
+    "reward": -0.2557540359406978,
+    "number_of_traces": 2349
+  },
+  {
+    "reward": -0.248434527729129,
+    "number_of_traces": 2453
+  },
+  {
+    "reward": -0.21368689196002832,
+    "number_of_traces": 2611
+  },
+  {
+    "reward": -0.2256391349856709,
+    "number_of_traces": 2793
+  },
+  {
+    "reward": -0.21664746299160353,
+    "number_of_traces": 2899
+  },
+  {
+    "reward": -0.20627396130295994,
+    "number_of_traces": 2718
+  },
+  {
+    "reward": -0.21267868448040872,
+    "number_of_traces": 2838
+  },
+  {
+    "reward": -0.23935065089871288,
+    "number_of_traces": 2659
+  },
+  {
+    "reward": -0.21408489645028494,
+    "number_of_traces": 2909
+  },
+  {
+    "reward": -0.1993164732005287,
+    "number_of_traces": 2869
+  },
+  {
+    "reward": -0.2223710545989357,
+    "number_of_traces": 2814
+  },
+  {
+    "reward": -0.21510217160858536,
+    "number_of_traces": 2976
+  },
+  {
+    "reward": -0.1927401082167549,
+    "number_of_traces": 2804
+  },
+  {
+    "reward": -0.2167426845995506,
+    "number_of_traces": 2813
+  },
+  {
+    "reward": -0.23540067145267207,
+    "number_of_traces": 2502
+  },
+  {
+    "reward": -0.2906441737549861,
+    "number_of_traces": 2317
+  },
+  {
+    "reward": -0.23426543898801833,
+    "number_of_traces": 2800
+  },
+  {
+    "reward": -0.2239340740403537,
+    "number_of_traces": 2609
+  },
+  {
+    "reward": -0.22128972089648258,
+    "number_of_traces": 2539
+  },
+  {
+    "reward": -0.23572981316646047,
+    "number_of_traces": 2693
+  },
+  {
+    "reward": -0.2133714545609776,
+    "number_of_traces": 2774
+  },
+  {
+    "reward": -0.24313043249877386,
+    "number_of_traces": 2521
+  },
+  {
+    "reward": -0.208380559679746,
+    "number_of_traces": 2667
+  },
+  {
+    "reward": -0.23209391552985426,
+    "number_of_traces": 2576
+  },
+  {
+    "reward": -0.2144896503114313,
+    "number_of_traces": 2947
+  },
+  {
+    "reward": -0.24504177928424742,
+    "number_of_traces": 2785
+  },
+  {
+    "reward": -0.23283057169462384,
+    "number_of_traces": 2509
+  },
+  {
+    "reward": -0.22067531128090756,
+    "number_of_traces": 2638
+  },
+  {
+    "reward": -0.24850254725942134,
+    "number_of_traces": 2853
+  },
+  {
+    "reward": -0.26838842393030626,
+    "number_of_traces": 2487
+  },
+  {
+    "reward": -0.2083081939260124,
+    "number_of_traces": 2437
+  },
+  {
+    "reward": -0.2593407578824236,
+    "number_of_traces": 2793
+  },
+  {
+    "reward": -0.22415260619043686,
+    "number_of_traces": 2560
+  },
+  {
+    "reward": -0.24272878312368984,
+    "number_of_traces": 2451
+  },
+  {
+    "reward": -0.21573430777601244,
+    "number_of_traces": 2586
+  },
+  {
+    "reward": -0.24882434112965424,
+    "number_of_traces": 2830
+  },
+  {
+    "reward": -0.20685006247237026,
+    "number_of_traces": 2941
+  }
+]

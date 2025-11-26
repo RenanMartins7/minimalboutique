@@ -35,9 +35,9 @@ def generate_config(selected_policies, config_hash):
         },
         "processors": {
             "tail_sampling": {
-                "decision_wait": "10s",
-                "num_traces": 10000,
-                "expected_new_traces_per_sec": 500,
+                "decision_wait": "40s",
+                "num_traces": 15000,
+                "expected_new_traces_per_sec": 1000,
                 "policies": selected_policies
             },
             
@@ -126,7 +126,7 @@ def trace_penalty_function(traces, C, k=25, midpoint=0.20):
 
     
 #Função de reward para o conjunto de regras definido
-def reward_function(entropy, traces, alpha=1.0, beta=1.2, C = 8000, lambd=3.0):
+def reward_function(entropy, traces, alpha=1.0, beta=1.0, C = 10000, lambd=3.0):
     norm_entropy = entropy/10
 
     trace_penalty = trace_penalty_function(traces, C)
@@ -136,6 +136,13 @@ def reward_function(entropy, traces, alpha=1.0, beta=1.2, C = 8000, lambd=3.0):
 #Função principal
 if __name__ == "__main__":
 
+    MAX_NUMBER_EPISODES = 300
+    current_episode = 0
+
+    current_test = 0
+    MAX_NUMBER_OF_TESTS = 25
+    history_buffer = []
+
     with open(POLICIES_FILE, "r") as f:
         all_policies = json.load(f)
 
@@ -144,18 +151,14 @@ if __name__ == "__main__":
     first = True
 
     while True:
+        current_episode = current_episode + 1
         if first:#Primeira hash não é utilizada e nem gera traces
             old_hash = "jausj"
             first = False
         else:
             old_hash = config_hash
     
-        selected_policies = agent.select_actions(all_policies)
-        selected_policies.append({
-            "name": "default-probabilistic-policy",
-            "type": "probabilistic",
-            "probabilistic": {"sampling_percentage": 0.1}
-        })
+        selected_policies, selected_actions = agent.select_actions(all_policies)
         
         policies_str = json.dumps(selected_policies, sort_keys = True)
         timestamp = str(time.time())
@@ -171,13 +174,30 @@ if __name__ == "__main__":
         entropia, number_of_traces = export_traces_by_hash(old_hash)
 
         reward = reward_function(entropia, number_of_traces)
-        agent.update(selected_policies, reward)
+        agent.update(selected_policies, reward, selected_actions)
         print(f"Hash: {config_hash}, reward: {reward}, Entropia: {entropia}, Número de traces: {number_of_traces}")
 
-        agent.save_policies()
-        agent.save_history(reward, number_of_traces)
+        history_buffer.append({
+            "episode": current_episode,
+            "hash": old_hash,
+            "entropy": entropia,
+            "reward": reward,
+            "number_of_traces": number_of_traces,
+        })
 
-        time.sleep(60)
+        if current_episode < MAX_NUMBER_EPISODES:
+            time.sleep(60)
+        else:
+            with open("episodes_history_" + str(current_test) + ".json", "w") as f:
+                json.dump(history_buffer, f, indent=2)
+            agent.save_policies(current_test)
+            first = True
+            agent = ReinforceAgent(num_policies = len(all_policies))
+            current_test = current_test + 1
+            history_buffer = []
+            current_episode = 0
+            if current_test >= MAX_NUMBER_OF_TESTS:
+                time.sleep(100000)
 
 
 

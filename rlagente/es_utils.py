@@ -9,6 +9,25 @@ import hashlib
 ES_HOST = os.getenv("ES_HOST", "http://elasticsearch:9200")
 ES_INDEX = os.getenv("ES_INDEX", "jaeger-span-*")
 
+# 🔧 Parâmetros de entropia e quantização (via ENV, sem mudar assinaturas)
+def _env_float(name, default):
+    try:
+        return float(os.getenv(name, default))
+    except Exception:
+        return default
+
+def _env_int(name, default):
+    try:
+        return int(os.getenv(name, default))
+    except Exception:
+        return default
+
+ENTROPY_ALPHA = _env_float("ENTROPY_ALPHA", 1.0)  # α>1 => mais punitivo para repetidos
+QUANTIZE_MS = _env_int("QUANTIZE_MS", 200)         # bucketização de durações/latências
+QUANTIZE_KEYS = set(
+    [s.strip() for s in os.getenv("QUANTIZE_KEYS", "duration_ms,latency_ms,http.duration_ms,db.duration_ms").split(",") if s.strip()]
+)
+
 # Cria cliente Elasticsearch
 es = Elasticsearch([ES_HOST])
 
@@ -47,6 +66,38 @@ def get_spans_by_hash(config_hash, scroll_size=5000):
     return spans
 
 
+def _is_number(x):
+    if isinstance(x, (int, float)):
+        return True
+    if isinstance(x, str):
+        try:
+            float(x)
+            return True
+        except Exception:
+            return False
+    return False
+
+def _to_float(x):
+    if isinstance(x, (int, float)):
+        return float(x)
+    try:
+        return float(str(x))
+    except Exception:
+        return None
+
+def _quantize_value_if_applicable(key, value, bucket_ms):
+    """
+    Se a chave estiver em QUANTIZE_KEYS e o valor for numérico, aplica bucketização (ms).
+    Retorna (string) o valor possivelmente quantizado para estabilizar padrões.
+    """
+    if key in QUANTIZE_KEYS and _is_number(value):
+        v = _to_float(value)
+        if v is not None and bucket_ms > 0:
+            # arredonda para o bucket mais próximo
+            bucketed = int(round(v / bucket_ms)) * bucket_ms
+            return str(bucketed)
+    # fallback: string
+    return str(value)
 
 
 def trace_to_string(spans, use_hash=True, tag_blacklist=None):
@@ -56,8 +107,10 @@ def trace_to_string(spans, use_hash=True, tag_blacklist=None):
     - A hierarquia é respeitada: pai → filhos (em ordem de startTime)
     - Tags que estão na 'tag_blacklist' são ignoradas.
     - Se use_hash=True, retorna o hash SHA256 da string final.
-    """
 
+    🔧 Modificações:
+    - Quantização de tags numéricas em QUANTIZE_KEYS por buckets de QUANTIZE_MS (via ENV).
+    """
     if tag_blacklist is None:
         tag_blacklist = {
             "otel.status_code",
@@ -76,7 +129,6 @@ def trace_to_string(spans, use_hash=True, tag_blacklist=None):
             "net.peer.port",
             "user.id",
             "order.id"
-
         }
 
     # Mapeia spans por ID e constrói estrutura pai → filhos
@@ -104,17 +156,19 @@ def trace_to_string(spans, use_hash=True, tag_blacklist=None):
         """
         Constrói recursivamente um bloco de texto para um span e seus filhos.
         """
-        indent = "  " * level  # Apenas para facilitar visualização e manter determinismo
+        indent = "  " * level  # apenas para visualização/estabilidade
         service = span.get("process", {}).get("serviceName", "unknown")
         operation = span.get("operationName", "unknown")
 
-        # Filtra e ordena tags
+        # Filtra, quantiza (quando aplicável) e ordena tags
         tags = []
         for tag in sorted(span.get("tags", []), key=lambda t: t["key"]):
             k = tag["key"]
-            if k not in tag_blacklist:
-                v = str(tag["value"])
-                tags.append(f"{k}={v}")
+            if k in tag_blacklist:
+                continue
+            v = tag.get("value")
+            v_str = _quantize_value_if_applicable(k, v, QUANTIZE_MS)
+            tags.append(f"{k}={v_str}")
 
         # Monta o bloco do span
         span_str = f"{indent}{service}:{operation}"
@@ -141,40 +195,16 @@ def trace_to_string(spans, use_hash=True, tag_blacklist=None):
     else:
         return canonical_str
 
-# def trace_to_string(spans, use_hash=True):
-#     """
-#     Constrói uma representação determinística de um trace a partir de sua lista de spans.
-#     Se use_hash=True, retorna um hash SHA256 curto.
-#     """
-#     spans_repr = []
-#     for span in sorted(spans, key=lambda s: (s.get("startTime", 0), s.get("spanID", ""))):
-#         span_repr = {
-#             "operationName": span.get("operationName"),
-#             "serviceName": span.get("process", {}).get("serviceName"),
-#             "tags": {
-#                 tag["key"]: str(tag["value"])
-#                 for tag in sorted(span.get("tags", []), key=lambda t: t["key"])
-#             }
-#         }
-#         spans_repr.append(span_repr)
-
-#     # String JSON determinística
-#     canonical = json.dumps(spans_repr, sort_keys=True, separators=(",", ":"))
-
-#     if use_hash:
-#         # Retorna só o hash SHA256 (mais compacto e eficiente p/ entropia)
-#         return hashlib.sha256(canonical.encode()).hexdigest()
-#     else:
-#         return canonical
-
 
 def calcular_entropia(traces):
     """
-    Calcula a entropia Shannon a partir das strings representando cada trace.
+    Calcula a entropia (por padrão, Rényi com α=ENTROPY_ALPHA) a partir das strings representando cada trace.
+    - Se ENTROPY_ALPHA == 1.0 => Shannon (compatível conceitualmente).
+    - Mantém a mesma assinatura e retorna um float como antes.
     """
     strings = []
     for trace_id, spans in traces.items():
-        s = trace_to_string(spans)  # agora spans é a lista já organizada
+        s = trace_to_string(spans)  # spans já organizados; aplica quantização na serialização
         strings.append(s)
 
     if not strings:
@@ -182,12 +212,21 @@ def calcular_entropia(traces):
 
     counter = Counter(strings)
     total = sum(counter.values())
+    ps = [c / total for c in counter.values()]
 
-    entropia = 0.0
-    for freq in counter.values():
-        p = freq / total
-        entropia -= p * math.log2(p)
+    alpha = ENTROPY_ALPHA
 
+    # Shannon (base 2) se α=1
+    if abs(alpha - 1.0) < 1e-12:
+        entropia = -sum(p * math.log2(p) for p in ps if p > 0)
+        return entropia
+
+    # Rényi geral (base 2): H_α = (1/(1-α)) * log2(Σ p_i^α)
+    # α>1 penaliza fortemente duplicatas
+    sum_p_alpha = sum((p ** alpha) for p in ps)
+    # Evita problemas numéricos
+    sum_p_alpha = max(sum_p_alpha, 1e-300)
+    entropia = (1.0 / (1.0 - alpha)) * math.log2(sum_p_alpha)
     return entropia
 
 
@@ -248,13 +287,14 @@ def group_spans_by_trace(spans):
 
     #print(f"Total de traces agrupados: {len(traces)}")
 
-    # 🔹 Calcula e retorna a entropia diretamente
+    # 🔹 Retorna os traces (entropia calculada separadamente)
     return traces
 
 
 def export_traces_by_hash(config_hash):
     """
     Função principal: busca spans de um hash, monta os traces e retorna a entropia.
+    Retorna (entropia, quantidade_de_traces) — mesmas saídas de antes.
     """
     spans = get_spans_by_hash(config_hash)
     traces = group_spans_by_trace(spans)

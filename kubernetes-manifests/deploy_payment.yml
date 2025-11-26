@@ -13,6 +13,7 @@ spec:
       labels:
         app: payment
     spec:
+      # nodeName: petshopboys
       containers:
         - name: payment
           image: momosuke07/payment:latest
